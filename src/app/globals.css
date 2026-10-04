@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import "./design-tokens.css";
+
+/* Clean reset and overrides */
+@layer base {
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: var(--font-serif-body);
+  }
+}
