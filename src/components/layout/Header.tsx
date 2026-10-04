@@ -259,7 +259,7 @@ export default function Header() {
           ref={mobileDrawerRef}
           className="md:hidden fixed inset-x-0 bottom-0 top-[65px] bg-[var(--color-bg)] z-40 overflow-y-auto px-[var(--gutter-mobile)] py-8 border-t border-[var(--color-border)] animate-in fade-in duration-300 flex flex-col justify-between"
         >
-          <nav className="flex flex-col gap-6" aria-label="Mobile Navigation">
+          <nav className="flex flex-col gap-4 font-[family-name:var(--font-sans-nav)] tracking-[var(--tracking-wider)] uppercase text-[12px] sm:text-[13px]" aria-label="Mobile Navigation">
             {navItems.map((item) => {
               const hasChildren = Boolean(item.children && item.children.length > 0);
               const isExpanded = mobileExpandedId === item.id;
@@ -270,16 +270,20 @@ export default function Header() {
 
               if (hasChildren) {
                 return (
-                  <div key={item.id} className="border-b border-[var(--color-border-subtle)] pb-5">
+                  <div key={item.id} className="border-b border-[var(--color-border-subtle)] pb-4">
                     <button
                       type="button"
-                      className="w-full flex items-center justify-between text-left py-1 cursor-pointer"
+                      className="w-full flex items-center justify-between text-left py-2 cursor-pointer uppercase font-[family-name:var(--font-sans-nav)] tracking-[var(--tracking-wider)]"
                       onClick={() =>
                         setMobileExpandedId(isExpanded ? null : item.id)
                       }
                       aria-expanded={isExpanded}
                     >
-                      <span className="font-[family-name:var(--font-serif-display)] text-[var(--text-2xl)] text-[var(--color-text-primary)]">
+                      <span className={`text-[13px] sm:text-[14px] uppercase ${
+                        isCurrentActive
+                          ? "text-[var(--color-text-primary)] font-semibold"
+                          : "text-[var(--color-text-primary)] font-medium"
+                      }`}>
                         {item.label}
                       </span>
                       <svg
@@ -295,34 +299,23 @@ export default function Header() {
                     </button>
 
                     {isExpanded && (
-                      <div className="mt-4 pl-4 border-l border-[var(--color-border)] flex flex-col gap-3.5 animate-in fade-in duration-200">
-                        {item.href && (
-                          <Link
-                            href={item.href}
-                            className="text-[var(--text-xs)] font-[family-name:var(--font-sans-nav)] tracking-[var(--tracking-widest)] text-[var(--color-accent-mustard)] uppercase font-medium"
-                          >
-                            All {item.label} Overview &rarr;
-                          </Link>
-                        )}
-                        {item.children?.map((child, idx) => (
-                          <Link
-                            key={child.id}
-                            href={child.href}
-                            className="group block py-1"
-                          >
-                            <span className="block font-[family-name:var(--font-serif-display)] text-[var(--text-lg)] text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-mustard)] transition-colors">
-                              <span className="text-[var(--text-xs)] font-[family-name:var(--font-sans-nav)] text-[var(--color-text-muted)] mr-2">
-                                0{idx + 1}.
-                              </span>
+                      <div className="mt-2 pl-3 border-l border-[var(--color-border)] flex flex-col gap-2.5 animate-in fade-in duration-200">
+                        {item.children?.map((child) => {
+                          const isChildActive = pathname === child.href;
+                          return (
+                            <Link
+                              key={child.id}
+                              href={child.href}
+                              className={`block py-1 font-[family-name:var(--font-sans-nav)] text-[11px] sm:text-[11.5px] tracking-[0.06em] uppercase font-medium leading-snug transition-colors ${
+                                isChildActive
+                                  ? "text-[var(--color-text-primary)] font-semibold"
+                                  : "text-[var(--color-text-primary)]/85 hover:text-[var(--color-text-primary)]"
+                              }`}
+                            >
                               {child.label}
-                            </span>
-                            {child.subtitle && (
-                              <span className="block text-[var(--text-xs)] font-[family-name:var(--font-serif-body)] italic text-[var(--color-text-muted)] pl-5">
-                                {child.subtitle}
-                              </span>
-                            )}
-                          </Link>
-                        ))}
+                            </Link>
+                          );
+                        })}
                       </div>
                     )}
                   </div>
@@ -330,13 +323,13 @@ export default function Header() {
               }
 
               return (
-                <div key={item.id} className="border-b border-[var(--color-border-subtle)] pb-5">
+                <div key={item.id} className="border-b border-[var(--color-border-subtle)] pb-4">
                   <Link
                     href={item.href || "#"}
-                    className={`block font-[family-name:var(--font-serif-display)] text-[var(--text-2xl)] transition-colors ${
+                    className={`block py-2 uppercase font-[family-name:var(--font-sans-nav)] text-[13px] sm:text-[14px] tracking-[var(--tracking-wider)] transition-colors ${
                       isCurrentActive
-                        ? "text-[var(--color-accent-mustard)] font-medium"
-                        : "text-[var(--color-text-primary)] hover:text-[var(--color-accent-mustard)]"
+                        ? "text-[var(--color-text-primary)] font-semibold"
+                        : "text-[var(--color-text-primary)] hover:text-[var(--color-accent-mustard)] font-medium"
                     }`}
                   >
                     {item.label}
@@ -347,24 +340,52 @@ export default function Header() {
           </nav>
 
           {/* Mobile Footer Colophon inside Drawer */}
-          <div className="pt-8 mt-6 border-t border-[var(--color-border)] flex flex-col gap-3 text-[var(--text-xs)] font-[family-name:var(--font-sans-nav)] text-[var(--color-text-muted)]">
-            <div className="flex gap-4 uppercase tracking-[var(--tracking-wider)]">
+          <div className="pt-8 mt-6 border-t border-[var(--color-border)] flex flex-col gap-4 text-[var(--text-xs)] font-[family-name:var(--font-sans-nav)] text-[var(--color-text-muted)]">
+            <div className="flex items-center gap-4 text-[#FFFFFF]" style={{ color: "#FFFFFF" }}>
+              {/* Instagram */}
               <a
-                href="https://instagram.com/aanchalmalhotra"
+                href="https://www.instagram.com/aanch_m/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[var(--color-text-primary)]"
+                className="p-0.5 rounded-xs focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FFFFFF] hover:opacity-80 transition-opacity duration-200"
+                style={{ color: "#FFFFFF" }}
+                aria-label="Instagram"
               >
-                Instagram
+                <svg
+                  className="w-5 h-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#FFFFFF"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  style={{ color: "#FFFFFF", stroke: "#FFFFFF", fill: "none" }}
+                  aria-hidden="true"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="#FFFFFF" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="#FFFFFF" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="#FFFFFF" />
+                </svg>
               </a>
-              <span>&bull;</span>
+
+              {/* X / Twitter */}
               <a
-                href="https://twitter.com/AanchalMalhotra"
+                href="https://x.com/aanchalmalhotra"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[var(--color-text-primary)]"
+                className="p-0.5 rounded-xs focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FFFFFF] hover:opacity-80 transition-opacity duration-200"
+                style={{ color: "#FFFFFF" }}
+                aria-label="X (formerly Twitter)"
               >
-                Twitter / X
+                <svg
+                  className="w-4.5 h-4.5"
+                  viewBox="0 0 24 24"
+                  fill="#FFFFFF"
+                  style={{ color: "#FFFFFF", fill: "#FFFFFF" }}
+                  aria-hidden="true"
+                >
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
               </a>
             </div>
             <p className="m-0 italic font-[family-name:var(--font-serif-body)]">
