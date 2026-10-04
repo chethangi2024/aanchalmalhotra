@@ -341,30 +341,30 @@ export default function Header() {
 
           {/* Mobile Footer Colophon inside Drawer */}
           <div className="pt-8 mt-6 border-t border-[var(--color-border)] flex flex-col gap-4 text-[var(--text-xs)] font-[family-name:var(--font-sans-nav)] text-[var(--color-text-muted)]">
-            <div className="flex items-center gap-4 text-[#FFFFFF]" style={{ color: "#FFFFFF" }}>
+            <div className="flex items-center gap-4 text-[#2B2723]" style={{ color: "#2B2723" }}>
               {/* Instagram */}
               <a
                 href="https://www.instagram.com/aanch_m/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-0.5 rounded-xs focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FFFFFF] hover:opacity-80 transition-opacity duration-200"
-                style={{ color: "#FFFFFF" }}
+                className="p-0.5 rounded-xs focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#2B2723] hover:opacity-80 transition-opacity duration-200"
+                style={{ color: "#2B2723" }}
                 aria-label="Instagram"
               >
                 <svg
                   className="w-5 h-5"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="#FFFFFF"
+                  stroke="#2B2723"
                   strokeWidth="1.8"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  style={{ color: "#FFFFFF", stroke: "#FFFFFF", fill: "none" }}
+                  style={{ color: "#2B2723", stroke: "#2B2723", fill: "none" }}
                   aria-hidden="true"
                 >
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="#FFFFFF" />
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="#FFFFFF" />
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="#FFFFFF" />
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="#2B2723" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="#2B2723" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="#2B2723" />
                 </svg>
               </a>
 
@@ -373,15 +373,15 @@ export default function Header() {
                 href="https://x.com/aanchalmalhotra"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-0.5 rounded-xs focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FFFFFF] hover:opacity-80 transition-opacity duration-200"
-                style={{ color: "#FFFFFF" }}
+                className="p-0.5 rounded-xs focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#2B2723] hover:opacity-80 transition-opacity duration-200"
+                style={{ color: "#2B2723" }}
                 aria-label="X (formerly Twitter)"
               >
                 <svg
                   className="w-4.5 h-4.5"
                   viewBox="0 0 24 24"
-                  fill="#FFFFFF"
-                  style={{ color: "#FFFFFF", fill: "#FFFFFF" }}
+                  fill="#2B2723"
+                  style={{ color: "#2B2723", fill: "#2B2723" }}
                   aria-hidden="true"
                 >
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
