@@ -43,9 +43,6 @@ export default function BookCover({
 
       {/* Book Metadata Below Cover */}
       <div className="mt-5 text-left">
-        <span className="block text-[var(--text-2xs)] font-[family-name:var(--font-sans-nav)] tracking-[var(--tracking-widest)] text-[var(--color-text-muted)] uppercase mb-1">
-          Vol. 0{index + 1}
-        </span>
         <h2
           id={`book-title-${book.id}`}
           className="text-[var(--text-lg)] md:text-[var(--text-xl)] font-[family-name:var(--font-serif-display)] font-normal text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-mustard)] transition-colors duration-300 leading-snug"
