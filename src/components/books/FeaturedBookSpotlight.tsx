@@ -122,7 +122,7 @@ export default function FeaturedBookSpotlight({
           >
             {/* Publication Label */}
             <div className="spotlight-text-reveal mb-2.5">
-              <span className="text-[11px] sm:text-[11.5px] font-[family-name:var(--font-sans-nav)] tracking-[var(--tracking-widest)] text-[var(--color-accent-mustard)] uppercase font-medium">
+              <span className="text-[12px] sm:text-[13px] tracking-[var(--tracking-widest)] text-[var(--color-accent-mustard)] uppercase font-semibold">
                 FORTHCOMING IN MAY 2026
               </span>
             </div>
@@ -152,7 +152,7 @@ export default function FeaturedBookSpotlight({
             </p>
 
             {/* Exact Client Synopsis (Discreet paragraph spacing) */}
-            <div className="spotlight-text-reveal space-y-2.5 text-[var(--color-text-secondary)] font-[family-name:var(--font-serif-body)] text-[13.5px] sm:text-[14.5px] leading-relaxed mb-5">
+            <div className="spotlight-text-reveal space-y-2.5 text-[var(--color-text-secondary)] text-[15px] sm:text-[16px] leading-relaxed mb-5">
               <p className="m-0">
                 Containing 100 objects from the Partition of India, oral historian and expert Aanchal Malhotra transforms a complex history into a gentle and accessible introduction for younger readers.
               </p>

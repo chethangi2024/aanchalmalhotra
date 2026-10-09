@@ -23,15 +23,15 @@ export default function PageTitle({
     >
       <AnimatedReveal yOffset={16} triggerOnScroll={false}>
         {tag && (
-          <span className="block mb-3 text-[var(--text-xs)] uppercase tracking-[var(--tracking-widest)] text-[var(--color-accent-mustard)] font-[family-name:var(--font-sans-nav)] font-medium">
+          <span className="block mb-3 text-[12px] uppercase tracking-[var(--tracking-widest)] text-[var(--color-accent-mustard)] font-semibold">
             {tag}
           </span>
         )}
-        <h1 className="text-[var(--text-3xl)] md:text-[var(--text-4xl)] lg:text-[var(--text-5xl)] font-[family-name:var(--font-serif-display)] text-[var(--color-text-primary)] leading-[var(--leading-tight)]">
+        <h1 className="text-[var(--text-3xl)] md:text-[var(--text-4xl)] lg:text-[var(--text-5xl)] text-[var(--color-text-primary)] leading-[var(--leading-tight)]">
           {title}
         </h1>
         {subtitle && (
-          <p className="mt-4 text-[var(--text-md)] md:text-[var(--text-lg)] text-[var(--color-text-secondary)] font-[family-name:var(--font-serif-body)] italic leading-[var(--leading-normal)] max-w-2xl">
+          <p className="mt-4 text-[var(--text-md)] md:text-[var(--text-lg)] text-[var(--color-text-secondary)] italic leading-[var(--leading-normal)] max-w-2xl">
             {subtitle}
           </p>
         )}

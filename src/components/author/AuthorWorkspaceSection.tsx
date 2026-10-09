@@ -131,7 +131,7 @@ export default function AuthorWorkspaceSection({
           >
             <p
               id="author-section-title"
-              className="bio-text-element text-[14px] sm:text-[15px] font-[family-name:var(--font-serif-body)] text-[var(--color-text-secondary)] leading-relaxed m-0 mb-5"
+              className="bio-text-element text-[15px] sm:text-[16px] text-[var(--color-text-secondary)] leading-relaxed m-0 mb-5"
             >
               {data.leadParagraph}
             </p>

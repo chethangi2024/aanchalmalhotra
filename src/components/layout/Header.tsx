@@ -340,7 +340,7 @@ export default function Header() {
           </nav>
 
           {/* Mobile Footer Colophon inside Drawer */}
-          <div className="pt-8 mt-6 border-t border-[var(--color-border)] flex flex-col gap-4 text-[var(--text-xs)] font-[family-name:var(--font-sans-nav)] text-[var(--color-text-muted)]">
+          <div className="pt-8 mt-6 border-t border-[var(--color-border)] flex flex-col gap-4 text-[13px] text-[var(--color-text-muted)]">
             <div className="flex items-center gap-4 text-[#2B2723]" style={{ color: "#2B2723" }}>
               {/* Instagram */}
               <a
@@ -388,7 +388,7 @@ export default function Header() {
                 </svg>
               </a>
             </div>
-            <p className="m-0 italic font-[family-name:var(--font-serif-body)]">
+            <p className="m-0 italic text-[14px]">
               Aanchal Malhotra &mdash; New Delhi, India
             </p>
           </div>

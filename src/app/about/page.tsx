@@ -19,9 +19,9 @@ export default function AboutPage() {
               style={{
                 fontSize: "clamp(24px, 2.5vw, 28px)",
                 letterSpacing: "0.2em",
-                fontWeight: 300,
+                fontWeight: 400,
               }}
-              className="font-[family-name:var(--font-sans-nav)] text-[#222222] uppercase leading-tight m-0"
+              className="text-[#222222] uppercase leading-tight m-0 font-normal"
             >
               ABOUT
             </h1>
@@ -45,7 +45,7 @@ export default function AboutPage() {
 
           {/* Right Column: Complete Biography, Left-Aligned with Compact Spacing */}
           <div className="md:col-span-7 flex flex-col justify-start text-left pt-1 md:pt-2">
-            <div className="space-y-4 text-[var(--color-text-secondary)] font-[family-name:var(--font-serif-body)] text-[15px] sm:text-[16px] leading-[1.6]">
+            <div className="space-y-4 text-[var(--color-text-secondary)] text-[16px] sm:text-[17px] leading-[1.6]">
               {authorProfile.bio.map((paragraph, index) => (
                 <p key={index} className="m-0">
                   {paragraph}

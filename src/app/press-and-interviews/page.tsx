@@ -122,10 +122,9 @@ export default function PressAndInterviewsPage() {
           <section className="mb-10 md:mb-12" aria-labelledby="heading-interview">
             <h2
               id="heading-interview"
-              className="press-reveal-item !text-[12px] sm:!text-[13px] !font-[family-name:var(--font-sans-nav)] !font-bold !tracking-[0.08em] !text-[var(--color-text-primary)] !uppercase mb-4"
+              className="press-reveal-item !text-[13px] sm:!text-[14px] !font-bold !tracking-[0.08em] !text-[var(--color-text-primary)] !uppercase mb-4"
               style={{
-                fontSize: "12px",
-                fontFamily: "var(--font-sans-nav)",
+                fontSize: "13px",
                 fontWeight: 700,
                 letterSpacing: "0.08em",
                 textTransform: "uppercase"
@@ -133,7 +132,7 @@ export default function PressAndInterviewsPage() {
             >
               INTERVIEW
             </h2>
-            <div className="space-y-3.5 font-[family-name:var(--font-serif-body)] text-[15px] sm:text-[16px] text-[var(--color-text-secondary)] leading-[1.6]">
+            <div className="space-y-3.5 text-[16px] sm:text-[17px] text-[var(--color-text-secondary)] leading-[1.6]">
               {interviewEntries.map((item, idx) => (
                 <p key={idx} className="press-reveal-item m-0">
                   <a
@@ -165,10 +164,9 @@ export default function PressAndInterviewsPage() {
           <section className="mb-10 md:mb-12" aria-labelledby="heading-podcast-video">
             <h2
               id="heading-podcast-video"
-              className="press-reveal-item !text-[12px] sm:!text-[13px] !font-[family-name:var(--font-sans-nav)] !font-bold !tracking-[0.08em] !text-[var(--color-text-primary)] !uppercase mb-4"
+              className="press-reveal-item !text-[13px] sm:!text-[14px] !font-bold !tracking-[0.08em] !text-[var(--color-text-primary)] !uppercase mb-4"
               style={{
-                fontSize: "12px",
-                fontFamily: "var(--font-sans-nav)",
+                fontSize: "13px",
                 fontWeight: 700,
                 letterSpacing: "0.08em",
                 textTransform: "uppercase"
@@ -176,7 +174,7 @@ export default function PressAndInterviewsPage() {
             >
               PODCAST &amp; VIDEO
             </h2>
-            <div className="space-y-3.5 font-[family-name:var(--font-serif-body)] text-[15px] sm:text-[16px] text-[var(--color-text-secondary)] leading-[1.6]">
+            <div className="space-y-3.5 text-[16px] sm:text-[17px] text-[var(--color-text-secondary)] leading-[1.6]">
               {podcastVideoEntries.map((item, idx) => (
                 <p key={idx} className="press-reveal-item m-0">
                   <a
@@ -208,10 +206,9 @@ export default function PressAndInterviewsPage() {
           <section className="mb-10 md:mb-12" aria-labelledby="heading-other">
             <h2
               id="heading-other"
-              className="press-reveal-item !text-[12px] sm:!text-[13px] !font-[family-name:var(--font-sans-nav)] !font-bold !tracking-[0.08em] !text-[var(--color-text-primary)] !uppercase mb-4"
+              className="press-reveal-item !text-[13px] sm:!text-[14px] !font-bold !tracking-[0.08em] !text-[var(--color-text-primary)] !uppercase mb-4"
               style={{
-                fontSize: "12px",
-                fontFamily: "var(--font-sans-nav)",
+                fontSize: "13px",
                 fontWeight: 700,
                 letterSpacing: "0.08em",
                 textTransform: "uppercase"
@@ -219,7 +216,7 @@ export default function PressAndInterviewsPage() {
             >
               OTHER
             </h2>
-            <div className="space-y-3.5 font-[family-name:var(--font-serif-body)] text-[15px] sm:text-[16px] text-[var(--color-text-secondary)] leading-[1.6]">
+            <div className="space-y-3.5 text-[16px] sm:text-[17px] text-[var(--color-text-secondary)] leading-[1.6]">
               {otherEntries.map((item, idx) => (
                 <p key={idx} className="press-reveal-item m-0">
                   <a

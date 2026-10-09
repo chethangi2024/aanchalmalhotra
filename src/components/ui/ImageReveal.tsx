@@ -97,7 +97,7 @@ export default function ImageReveal({
         )}
       </div>
       {caption && (
-        <figcaption className="mt-3 text-[var(--text-xs)] tracking-[var(--tracking-wide)] text-[var(--color-text-muted)] font-[family-name:var(--font-sans-nav)] uppercase">
+        <figcaption className="mt-3 text-[12px] tracking-[var(--tracking-wide)] text-[var(--color-text-muted)] uppercase">
           {caption}
         </figcaption>
       )}

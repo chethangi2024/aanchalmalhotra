@@ -77,7 +77,7 @@ export default function Footer() {
               href="https://museumofmaterialmemory.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[11px] sm:text-[11.5px] font-[family-name:var(--font-sans-nav)] tracking-[0.12em] uppercase font-normal block py-0.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FFFFFF]"
+              className="text-[12px] sm:text-[13px] tracking-[0.14em] uppercase font-normal block py-0.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FFFFFF]"
               style={{ color: "#FFFFFF" }}
             >
               MUSEUM OF MATERIAL MEMORY
@@ -87,7 +87,7 @@ export default function Footer() {
           {/* Copyright Notice */}
           <div className="pt-2">
             <p
-              className="m-0 text-[10.5px] sm:text-[11px] font-[family-name:var(--font-sans-nav)] tracking-[0.04em] font-light"
+              className="m-0 text-[12px] sm:text-[12.5px] tracking-[0.04em] font-normal"
               style={{ color: "#FFFFFF" }}
             >
               © 2026 Aanchal Malhotra. All rights reserved.

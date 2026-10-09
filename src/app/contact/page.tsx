@@ -11,15 +11,15 @@ export default function ContactPage() {
     <div className="w-full min-h-[calc(100vh-var(--header-height)-180px)] bg-[#FAF8F5] pt-10 md:pt-14 pb-20 md:pb-28">
       <div className="editorial-container">
         <div className="max-w-4xl lg:max-w-5xl mx-auto">
-          {/* Centered, Uppercase, Letter-spaced CONTACT Heading (~28px lightweight sans-serif) */}
+          {/* Centered, Uppercase, Letter-spaced CONTACT Heading (~28px Cormorant Garamond) */}
           <div className="text-center mb-6 md:mb-8">
             <h1
               style={{
                 fontSize: "clamp(24px, 2.5vw, 28px)",
                 letterSpacing: "0.2em",
-                fontWeight: 300,
+                fontWeight: 400,
               }}
-              className="font-[family-name:var(--font-sans-nav)] text-[#222222] uppercase leading-tight m-0"
+              className="text-[#222222] uppercase leading-tight m-0 font-normal"
             >
               CONTACT
             </h1>
@@ -32,17 +32,17 @@ export default function ContactPage() {
           />
 
           {/* Three-Column Layout Beneath the Divider */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8 lg:gap-12 items-start text-left text-[14px] sm:text-[15px] font-[family-name:var(--font-serif-body)] text-[var(--color-text-secondary)] leading-[1.6]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8 lg:gap-12 items-start text-left text-[15px] sm:text-[16px] text-[var(--color-text-secondary)] leading-[1.6]">
             {/* LEFT COLUMN: INTERVIEWS, PUBLICITY & SPEAKING */}
             <div className="flex flex-col">
               <h2
                 style={{
                   fontSize: "17px",
-                  letterSpacing: "normal",
+                  letterSpacing: "0.04em",
                   fontWeight: 500,
                   lineHeight: "1.4",
                 }}
-                className="font-[family-name:var(--font-sans-nav)] italic text-[#222222] uppercase mb-3"
+                className="italic text-[#222222] uppercase mb-3 font-medium"
               >
                 INTERVIEWS, PUBLICITY &amp; SPEAKING
               </h2>
@@ -69,11 +69,11 @@ export default function ContactPage() {
               <h2
                 style={{
                   fontSize: "17px",
-                  letterSpacing: "normal",
+                  letterSpacing: "0.04em",
                   fontWeight: 500,
                   lineHeight: "1.4",
                 }}
-                className="font-[family-name:var(--font-sans-nav)] italic text-[#222222] uppercase mb-3"
+                className="italic text-[#222222] uppercase mb-3 font-medium"
               >
                 RIGHTS &amp; OTHER ENQUIRIES
               </h2>
@@ -100,11 +100,11 @@ export default function ContactPage() {
               <h2
                 style={{
                   fontSize: "17px",
-                  letterSpacing: "normal",
+                  letterSpacing: "0.04em",
                   fontWeight: 500,
                   lineHeight: "1.4",
                 }}
-                className="font-[family-name:var(--font-sans-nav)] italic text-[#222222] uppercase mb-3"
+                className="italic text-[#222222] uppercase mb-3 font-medium"
               >
                 SIGNED BOOKS
               </h2>
