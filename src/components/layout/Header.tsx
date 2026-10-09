@@ -120,7 +120,7 @@ export default function Header() {
         <Link
           href="/"
           className="group py-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)] rounded-xs shrink-0"
-          aria-label="AANCHAL MALHOTRA"
+          aria-label="Aanchal Malhotra"
           onClick={(e) => {
             if (pathname === "/") {
               e.preventDefault();
@@ -128,14 +128,14 @@ export default function Header() {
             }
           }}
         >
-          <span className="block font-[family-name:var(--font-serif-display)] text-[16px] sm:text-[17px] md:text-[18px] font-normal tracking-[0.01em] text-[var(--color-text-primary)] transition-opacity duration-200 group-hover:opacity-70 leading-none">
-            AANCHAL MALHOTRA
+          <span className="block font-[family-name:var(--font-serif-display)] text-[19px] sm:text-[20px] md:text-[21px] lg:text-[22px] font-normal tracking-[0.01em] text-[var(--color-text-primary)] transition-opacity duration-200 group-hover:opacity-70 leading-none">
+            Aanchal Malhotra
           </span>
         </Link>
 
-        {/* Desktop Navigation (Horizontal, quiet, balanced whitespace, unified vertical baseline) */}
+        {/* Desktop Navigation (Horizontal, quiet, balanced whitespace, unified vertical baseline, editorial Cormorant Garamond serif in Proper Case) */}
         <nav
-          className="hidden md:flex items-center gap-5 lg:gap-7 xl:gap-8 text-[11px] lg:text-[12px] font-[family-name:var(--font-sans-nav)] tracking-[var(--tracking-wider)] uppercase"
+          className="hidden md:flex items-center gap-6 lg:gap-8 xl:gap-9 text-[17px] lg:text-[18px] font-[family-name:var(--font-serif-display)] tracking-normal"
           aria-label="Main Navigation"
         >
           {navItems.map((item) => {
@@ -156,10 +156,10 @@ export default function Header() {
                 >
                   <button
                     type="button"
-                    className={`group inline-flex items-center py-2 whitespace-nowrap transition-colors cursor-pointer leading-normal uppercase focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)] rounded-xs ${
+                    className={`group inline-flex items-center py-2 whitespace-nowrap transition-colors cursor-pointer leading-normal focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)] rounded-xs ${
                       isCurrentActive
                         ? "text-[var(--color-text-primary)] font-medium"
-                        : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+                        : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] font-normal"
                     }`}
                     onClick={() =>
                       setOpenDropdownId(isOpen ? null : item.id)
@@ -168,29 +168,29 @@ export default function Header() {
                     aria-haspopup="true"
                     aria-controls={`dropdown-${item.id}`}
                   >
-                    <span className="uppercase">{item.label}</span>
+                    <span>{item.label}</span>
                   </button>
 
-                  {/* Refined Books Dropdown: Right-aligned to BOOKS right edge, opening leftward */}
+                  {/* Refined Books Dropdown: Right-aligned to Books right edge, opening leftward */}
                   {isOpen && (
                     <div
                       id={`dropdown-${item.id}`}
                       className="absolute top-full right-0 pt-0.5 z-50 animate-in fade-in duration-150"
                       role="menu"
                     >
-                      <div className="bg-[#FAF8F5]/90 backdrop-blur-xs border border-[var(--color-border-subtle)]/60 shadow-[0_2px_10px_rgba(0,0,0,0.03)] py-3 px-4 rounded-none w-max min-w-[280px]">
-                        {/* Compact Vertically Stacked Book Titles - Right-aligned, Editorial Uppercase */}
-                        <div className="flex flex-col gap-2 items-end text-right">
+                      <div className="bg-[#FAF8F5]/95 backdrop-blur-xs border border-[var(--color-border-subtle)]/70 shadow-[0_4px_16px_rgba(0,0,0,0.04)] py-3 px-4.5 rounded-none w-max min-w-[280px]">
+                        {/* Compact Vertically Stacked Book Titles - Right-aligned, Editorial Proper Case */}
+                        <div className="flex flex-col gap-2.5 items-end text-right">
                           {item.children?.map((child) => {
                             const isChildActive = pathname === child.href;
                             return (
                               <Link
                                 key={child.id}
                                 href={child.href}
-                                className={`block w-full py-0.5 whitespace-nowrap transition-colors text-right font-[family-name:var(--font-sans-nav)] text-[10.5px] leading-tight tracking-[0.07em] uppercase font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)] ${
+                                className={`block w-full py-0.5 whitespace-nowrap transition-colors text-right font-[family-name:var(--font-serif-display)] text-[16.5px] lg:text-[17px] leading-snug tracking-normal font-normal focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)] ${
                                   isChildActive
-                                    ? "text-[var(--color-text-primary)] font-semibold"
-                                    : "text-[var(--color-text-primary)]/85 hover:text-[var(--color-text-primary)] hover:opacity-100 opacity-90"
+                                    ? "text-[var(--color-text-primary)] font-medium"
+                                    : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:opacity-100 opacity-90"
                                 }`}
                                 role="menuitem"
                                 tabIndex={0}
@@ -211,7 +211,7 @@ export default function Header() {
               <Link
                 key={item.id}
                 href={item.href || "#"}
-                className={`py-2 whitespace-nowrap transition-colors relative leading-normal focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)] rounded-xs ${
+                className={`py-2 whitespace-nowrap transition-colors relative leading-normal font-normal focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)] rounded-xs ${
                   isCurrentActive
                     ? "text-[var(--color-text-primary)] font-medium after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-[var(--color-text-primary)]"
                     : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
@@ -259,7 +259,7 @@ export default function Header() {
           ref={mobileDrawerRef}
           className="md:hidden fixed inset-x-0 bottom-0 top-[65px] bg-[var(--color-bg)] z-40 overflow-y-auto px-[var(--gutter-mobile)] py-8 border-t border-[var(--color-border)] animate-in fade-in duration-300 flex flex-col justify-between"
         >
-          <nav className="flex flex-col gap-4 font-[family-name:var(--font-sans-nav)] tracking-[var(--tracking-wider)] uppercase text-[12px] sm:text-[13px]" aria-label="Mobile Navigation">
+          <nav className="flex flex-col gap-4 font-[family-name:var(--font-serif-display)] tracking-normal text-[18px] sm:text-[19px]" aria-label="Mobile Navigation">
             {navItems.map((item) => {
               const hasChildren = Boolean(item.children && item.children.length > 0);
               const isExpanded = mobileExpandedId === item.id;
@@ -273,16 +273,16 @@ export default function Header() {
                   <div key={item.id} className="border-b border-[var(--color-border-subtle)] pb-4">
                     <button
                       type="button"
-                      className="w-full flex items-center justify-between text-left py-2 cursor-pointer uppercase font-[family-name:var(--font-sans-nav)] tracking-[var(--tracking-wider)]"
+                      className="w-full flex items-center justify-between text-left py-2 cursor-pointer font-[family-name:var(--font-serif-display)] tracking-normal"
                       onClick={() =>
                         setMobileExpandedId(isExpanded ? null : item.id)
                       }
                       aria-expanded={isExpanded}
                     >
-                      <span className={`text-[13px] sm:text-[14px] uppercase ${
+                      <span className={`text-[18px] sm:text-[19px] ${
                         isCurrentActive
-                          ? "text-[var(--color-text-primary)] font-semibold"
-                          : "text-[var(--color-text-primary)] font-medium"
+                          ? "text-[var(--color-text-primary)] font-medium"
+                          : "text-[var(--color-text-primary)] font-normal"
                       }`}>
                         {item.label}
                       </span>
@@ -306,10 +306,10 @@ export default function Header() {
                             <Link
                               key={child.id}
                               href={child.href}
-                              className={`block py-1 font-[family-name:var(--font-sans-nav)] text-[11px] sm:text-[11.5px] tracking-[0.06em] uppercase font-medium leading-snug transition-colors ${
+                              className={`block py-1 font-[family-name:var(--font-serif-display)] text-[16.5px] sm:text-[17px] tracking-normal font-normal leading-snug transition-colors ${
                                 isChildActive
-                                  ? "text-[var(--color-text-primary)] font-semibold"
-                                  : "text-[var(--color-text-primary)]/85 hover:text-[var(--color-text-primary)]"
+                                  ? "text-[var(--color-text-primary)] font-medium"
+                                  : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
                               }`}
                             >
                               {child.label}
@@ -326,10 +326,10 @@ export default function Header() {
                 <div key={item.id} className="border-b border-[var(--color-border-subtle)] pb-4">
                   <Link
                     href={item.href || "#"}
-                    className={`block py-2 uppercase font-[family-name:var(--font-sans-nav)] text-[13px] sm:text-[14px] tracking-[var(--tracking-wider)] transition-colors ${
+                    className={`block py-2 font-[family-name:var(--font-serif-display)] text-[18px] sm:text-[19px] tracking-normal transition-colors ${
                       isCurrentActive
-                        ? "text-[var(--color-text-primary)] font-semibold"
-                        : "text-[var(--color-text-primary)] hover:text-[var(--color-accent-mustard)] font-medium"
+                        ? "text-[var(--color-text-primary)] font-medium"
+                        : "text-[var(--color-text-secondary)] hover:text-[var(--color-accent-mustard)] font-normal"
                     }`}
                   >
                     {item.label}

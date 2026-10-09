@@ -42,20 +42,22 @@ export default function BookCover({
       </Link>
 
       {/* Book Metadata Below Cover */}
-      <div className="mt-5 text-left">
+      <div className="mt-4 w-full">
         <h2
           id={`book-title-${book.id}`}
-          className="text-[var(--text-lg)] md:text-[var(--text-xl)] font-[family-name:var(--font-serif-display)] font-normal text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-mustard)] transition-colors duration-300 leading-snug"
+          style={{
+            fontSize: "clamp(18px, 1.8vw, 24px)",
+            lineHeight: "1.2",
+            wordBreak: "normal",
+            overflowWrap: "normal",
+            hyphens: "none",
+          }}
+          className="font-[family-name:var(--font-serif-display)] font-normal text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-mustard)] transition-colors duration-300 tracking-normal"
         >
-          <Link href={`/books/${book.slug}`} className="hover:underline focus:outline-none">
+          <Link href={`/books/${book.slug}`} className="hover:underline focus:outline-none block">
             {book.title}
           </Link>
         </h2>
-        {book.subtitle && (
-          <p className="mt-1 text-[var(--text-xs)] font-[family-name:var(--font-serif-body)] italic text-[var(--color-text-secondary)] line-clamp-1">
-            {book.subtitle}
-          </p>
-        )}
       </div>
     </article>
   );

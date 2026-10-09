@@ -94,71 +94,53 @@ export default function AuthorWorkspaceSection({
     return () => ctx.revert();
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <section
       ref={sectionRef}
-      className="relative w-full py-24 md:py-36 bg-[var(--color-bg)] border-t border-[var(--color-border)]"
-      aria-labelledby="author-section-title"
+      className="relative w-full py-16 md:py-24 bg-[var(--color-bg)] border-t border-[var(--color-border)]"
+      aria-label="Author and Workspace"
     >
       <div className="editorial-container">
-        {/* Asymmetric 3-Column Editorial Composition */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
-          {/* Column 1: Workspace & Research Pinboard (Col 1-4 on Desktop) */}
+        {/* Asymmetric 3-Column Editorial Composition with Generous Outer Margins & Scaled Down Visuals */}
+        <div className="max-w-4xl lg:max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 lg:gap-10 items-center">
+          {/* Column 1: Workspace & Research Pinboard (Col 1-4 on Desktop, reduced 10-15%) */}
           <div
             ref={workspaceColRef}
-            className="lg:col-span-4 order-2 lg:order-1 will-change-transform"
+            className="md:col-span-4 order-2 md:order-1 will-change-transform flex justify-center"
           >
-            <div className="relative w-full aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] overflow-hidden bg-[var(--color-bg-muted)] shadow-[0_16px_40px_rgba(28,27,26,0.06)] group rounded-xs">
+            <div className="relative w-full max-w-[270px] sm:max-w-[290px] md:max-w-[310px] aspect-[3/4] overflow-hidden bg-[var(--color-bg-muted)] shadow-[0_10px_28px_rgba(28,27,26,0.05)] group rounded-xs">
               <Image
                 src={data.workspaceImage.src}
                 alt={data.workspaceImage.alt}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 35vw, 420px"
+                sizes="(max-width: 768px) 80vw, 310px"
                 unoptimized
                 className="object-cover object-center transition-transform duration-700 ease-[var(--ease-editorial)] group-hover:scale-[1.015]"
               />
-              <div
-                className="absolute inset-0 border border-[var(--color-border)] pointer-events-none"
-                aria-hidden="true"
-              />
             </div>
-            {data.workspaceImage.caption && (
-              <span className="block mt-3 text-[var(--text-2xs)] font-[family-name:var(--font-sans-nav)] tracking-[var(--tracking-widest)] text-[var(--color-text-muted)] uppercase">
-                {data.workspaceImage.caption}
-              </span>
-            )}
           </div>
 
           {/* Column 2: Biography & Editorial Focus (Col 5-8 on Desktop) */}
           <div
             ref={textColRef}
-            className="lg:col-span-4 order-3 lg:order-2 flex flex-col justify-center text-left px-0 lg:px-4"
+            className="md:col-span-4 order-3 md:order-2 flex flex-col justify-center text-left px-0 md:px-2"
           >
-            {/* Tag / Role */}
-            <div className="bio-text-element flex items-center gap-3 mb-4">
-              <span
-                className="w-6 h-[1px] bg-[var(--color-accent-mustard)]"
-                aria-hidden="true"
-              />
-              <span className="text-[var(--text-xs)] font-[family-name:var(--font-sans-nav)] tracking-[var(--tracking-widest)] text-[var(--color-accent-mustard)] uppercase font-medium">
-                {data.tag}
-              </span>
-            </div>
-
-            <h2
+            <p
               id="author-section-title"
-              className="bio-text-element text-[var(--text-2xl)] md:text-[var(--text-3xl)] lg:text-[var(--text-3xl)] font-[family-name:var(--font-serif-display)] font-normal text-[var(--color-text-primary)] leading-[1.2] mb-6"
+              className="bio-text-element text-[14px] sm:text-[15px] font-[family-name:var(--font-serif-body)] text-[var(--color-text-secondary)] leading-relaxed m-0 mb-5"
             >
               {data.leadParagraph}
-            </h2>
-
-
+            </p>
 
             {/* Link to full About page */}
-            <div className="bio-text-element pt-2">
+            <div className="bio-text-element">
               <Link
                 href={data.link.href}
-                className="group inline-flex items-center gap-2 text-[var(--text-sm)] font-[family-name:var(--font-serif-display)] border-b border-[var(--color-text-primary)] pb-0.5 hover:text-[var(--color-accent-mustard)] hover:border-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
+                className="group inline-flex items-center gap-2 text-[12.5px] font-[family-name:var(--font-serif-display)] border-b border-[var(--color-text-primary)] pb-0.5 hover:text-[var(--color-accent-mustard)] hover:border-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
               >
                 <span className="font-medium">{data.link.label}</span>
                 <span
@@ -171,32 +153,47 @@ export default function AuthorWorkspaceSection({
             </div>
           </div>
 
-          {/* Column 3: Author Portrait (Col 9-12 on Desktop) */}
+          {/* Column 3: Author Portrait (Col 9-12 on Desktop, reduced 10-15%) */}
           <div
             ref={portraitColRef}
-            className="lg:col-span-4 order-1 lg:order-3 will-change-transform"
+            className="md:col-span-4 order-1 md:order-3 will-change-transform flex justify-center"
           >
-            <div className="relative w-full aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] overflow-hidden bg-[var(--color-bg-muted)] shadow-[0_16px_40px_rgba(28,27,26,0.06)] group rounded-xs">
+            <div className="relative w-full max-w-[270px] sm:max-w-[290px] md:max-w-[310px] aspect-[3/4] overflow-hidden bg-[var(--color-bg-muted)] shadow-[0_10px_28px_rgba(28,27,26,0.05)] group rounded-xs">
               <Image
                 src={data.authorPortrait.src}
                 alt={data.authorPortrait.alt}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 35vw, 420px"
+                sizes="(max-width: 768px) 80vw, 310px"
                 loading="lazy"
                 unoptimized
                 className="object-cover object-top transition-transform duration-700 ease-[var(--ease-editorial)] group-hover:scale-[1.015]"
               />
-              <div
-                className="absolute inset-0 border border-[var(--color-border)] pointer-events-none"
-                aria-hidden="true"
-              />
             </div>
-            {data.authorPortrait.caption && (
-              <span className="block mt-3 text-[var(--text-2xs)] font-[family-name:var(--font-sans-nav)] tracking-[var(--tracking-widest)] text-[var(--color-text-muted)] uppercase">
-                {data.authorPortrait.caption}
-              </span>
-            )}
           </div>
+        </div>
+
+        {/* Discreet Back to Top Arrow */}
+        <div className="mt-14 md:mt-20 flex justify-center">
+          <button
+            type="button"
+            onClick={scrollToTop}
+            aria-label="Back to top"
+            className="group p-2.5 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)] rounded-xs cursor-pointer"
+          >
+            <svg
+              className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4.5 15.75l7.5-7.5 7.5 7.5"
+              />
+            </svg>
+          </button>
         </div>
       </div>
     </section>
