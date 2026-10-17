@@ -10,8 +10,8 @@ export default function ContactPage() {
   return (
     <div className="w-full min-h-[calc(100vh-var(--header-height)-180px)] bg-[#FAF8F5] pt-10 md:pt-14 pb-20 md:pb-28">
       <div className="editorial-container">
-        <div className="max-w-4xl lg:max-w-5xl mx-auto">
-          {/* Centered, Uppercase, Letter-spaced CONTACT Heading (~28px Cormorant Garamond) */}
+        <div className="max-w-4xl lg:max-w-5xl mx-auto font-[family-name:var(--font-cormorant)]">
+          {/* Centered, Uppercase, Letter-spaced CONTACT Heading matching other pages */}
           <div className="text-center mb-6 md:mb-8">
             <h1
               style={{
@@ -19,112 +19,144 @@ export default function ContactPage() {
                 letterSpacing: "0.2em",
                 fontWeight: 400,
               }}
-              className="text-[#222222] uppercase leading-tight m-0 font-normal"
+              className="text-[#222222] uppercase leading-tight m-0 font-normal font-[family-name:var(--font-cormorant)]"
             >
               CONTACT
             </h1>
           </div>
 
-          {/* Thin Orange Horizontal Divider Spanning Nearly Full Content Width */}
+          {/* Thin Horizontal Divider in exact footer colour (#947D53) */}
           <div
-            className="w-full h-[1px] bg-[#E8734A] mb-10 md:mb-12 opacity-85"
+            className="w-full h-[1px] mb-10 md:mb-12"
+            style={{ backgroundColor: "#947D53" }}
             aria-hidden="true"
           />
 
-          {/* Three-Column Layout Beneath the Divider */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8 lg:gap-12 items-start text-left text-[15px] sm:text-[16px] text-[var(--color-text-secondary)] leading-[1.6]">
-            {/* LEFT COLUMN: INTERVIEWS, PUBLICITY & SPEAKING */}
-            <div className="flex flex-col">
-              <h2
-                style={{
-                  fontSize: "17px",
-                  letterSpacing: "0.04em",
-                  fontWeight: 500,
-                  lineHeight: "1.4",
-                }}
-                className="italic text-[#222222] uppercase mb-3 font-medium"
-              >
-                INTERVIEWS, PUBLICITY &amp; SPEAKING
-              </h2>
-              <p className="m-0 mb-3 text-[var(--color-text-secondary)] leading-[1.6]">
-                For enquiries relating to Interviews, Publicity and Speaking Invitations within South Asia, please contact:
-              </p>
-              <div className="mb-3 text-[var(--color-text-primary)] leading-[1.6]">
-                <p className="m-0 font-medium">Naiyya Singh</p>
-                <p className="m-0 text-[var(--color-text-secondary)]">HarperCollins India</p>
-              </div>
-              <p className="m-0 text-[var(--color-text-primary)] leading-[1.6]">
-                <span className="text-[var(--color-text-muted)] mr-1">Email:</span>
-                <a
-                  href="mailto:naiyya.singh@harpercollins.co.in"
-                  className="underline underline-offset-2 decoration-[var(--color-border-dark)] hover:text-[var(--color-accent-mustard)] hover:decoration-[var(--color-accent-mustard)] transition-colors break-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
+          {/* Three-Column Layout Beneath the Divider - Equal widths, identical top alignment and vertical rhythm */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8 lg:gap-10 items-stretch text-left text-[17px] sm:text-[18px] text-[var(--color-text-secondary)] leading-[1.45] font-[family-name:var(--font-cormorant)] font-normal">
+            
+            {/* COLUMN 1: INTERVIEWS, PUBLICITY & SPEAKING */}
+            <div className="flex flex-col justify-between h-full">
+              <div>
+                <h2
+                  style={{
+                    fontSize: "17.5px",
+                    letterSpacing: "0.04em",
+                    fontWeight: 600,
+                    lineHeight: "1.3",
+                    minHeight: "2.6em",
+                  }}
+                  className="italic text-[#222222] uppercase m-0 mb-3 font-semibold font-[family-name:var(--font-cormorant)] flex items-start"
                 >
-                  naiyya.singh@harpercollins.co.in
-                </a>
-              </p>
+                  INTERVIEWS, PUBLICITY &amp; SPEAKING
+                </h2>
+                <div className="min-h-[4.5em] mb-4">
+                  <p className="m-0 text-[var(--color-text-secondary)] leading-[1.45]">
+                    For enquiries relating to Interviews, Publicity and Speaking Invitations within South Asia, please contact:
+                  </p>
+                </div>
+              </div>
+              <div className="pt-1">
+                <div className="mb-2 text-[var(--color-text-primary)] leading-[1.4]">
+                  <p className="m-0 font-normal">
+                    <span className="font-medium text-[#1C1B1A]">Naiyya Singh</span>,{" "}
+                    <em className="italic">HarperCollins India</em>
+                  </p>
+                </div>
+                <p className="m-0 text-[var(--color-text-primary)] leading-[1.4]">
+                  <span className="text-[var(--color-text-muted)] mr-1">Email:</span>
+                  <a
+                    href="mailto:naiyya.singh@harpercollins.co.in"
+                    className="underline underline-offset-2 decoration-[var(--color-border-dark)] hover:text-[var(--color-accent-mustard)] hover:decoration-[var(--color-accent-mustard)] transition-colors inline-block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
+                    style={{ textUnderlineOffset: "3px", wordBreak: "break-word" }}
+                  >
+                    naiyya.singh@harpercollins.co.in
+                  </a>
+                </p>
+              </div>
             </div>
 
-            {/* MIDDLE COLUMN: RIGHTS & OTHER ENQUIRIES */}
-            <div className="flex flex-col">
-              <h2
-                style={{
-                  fontSize: "17px",
-                  letterSpacing: "0.04em",
-                  fontWeight: 500,
-                  lineHeight: "1.4",
-                }}
-                className="italic text-[#222222] uppercase mb-3 font-medium"
-              >
-                RIGHTS &amp; OTHER ENQUIRIES
-              </h2>
-              <p className="m-0 mb-3 text-[var(--color-text-secondary)] leading-[1.6]">
-                For Rights and all other enquiries, please contact:
-              </p>
-              <div className="mb-3 text-[var(--color-text-primary)] leading-[1.6]">
-                <p className="m-0 font-medium">David Godwin</p>
-                <p className="m-0 text-[var(--color-text-secondary)]">DGA</p>
-              </div>
-              <p className="m-0 text-[var(--color-text-primary)] leading-[1.6]">
-                <span className="text-[var(--color-text-muted)] mr-1">Email:</span>
-                <a
-                  href="mailto:assistant@davidgodwinassociates.co.uk"
-                  className="underline underline-offset-2 decoration-[var(--color-border-dark)] hover:text-[var(--color-accent-mustard)] hover:decoration-[var(--color-accent-mustard)] transition-colors break-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
+            {/* COLUMN 2: RIGHTS & OTHER ENQUIRIES */}
+            <div className="flex flex-col justify-between h-full">
+              <div>
+                <h2
+                  style={{
+                    fontSize: "17.5px",
+                    letterSpacing: "0.04em",
+                    fontWeight: 600,
+                    lineHeight: "1.3",
+                    minHeight: "2.6em",
+                  }}
+                  className="italic text-[#222222] uppercase m-0 mb-3 font-semibold font-[family-name:var(--font-cormorant)] flex items-start"
                 >
-                  assistant@davidgodwinassociates.co.uk
-                </a>
-              </p>
+                  RIGHTS &amp; OTHER ENQUIRIES
+                </h2>
+                <div className="min-h-[4.5em] mb-4">
+                  <p className="m-0 text-[var(--color-text-secondary)] leading-[1.45]">
+                    For Rights and all other enquiries, please contact:
+                  </p>
+                </div>
+              </div>
+              <div className="pt-1">
+                <div className="mb-2 text-[var(--color-text-primary)] leading-[1.4]">
+                  <p className="m-0 font-normal">
+                    <span className="font-medium text-[#1C1B1A]">David Godwin</span>,{" "}
+                    <em className="italic">DGA</em>
+                  </p>
+                </div>
+                <p className="m-0 text-[var(--color-text-primary)] leading-[1.4]">
+                  <span className="text-[var(--color-text-muted)] mr-1">Email:</span>
+                  <a
+                    href="mailto:assistant@davidgodwinassociates.co.uk"
+                    className="underline underline-offset-2 decoration-[var(--color-border-dark)] hover:text-[var(--color-accent-mustard)] hover:decoration-[var(--color-accent-mustard)] transition-colors inline-block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
+                    style={{ textUnderlineOffset: "3px", wordBreak: "break-word" }}
+                  >
+                    assistant@davidgodwinassociates.co.uk
+                  </a>
+                </p>
+              </div>
             </div>
 
-            {/* RIGHT COLUMN: SIGNED BOOKS */}
-            <div className="flex flex-col">
-              <h2
-                style={{
-                  fontSize: "17px",
-                  letterSpacing: "0.04em",
-                  fontWeight: 500,
-                  lineHeight: "1.4",
-                }}
-                className="italic text-[#222222] uppercase mb-3 font-medium"
-              >
-                SIGNED BOOKS
-              </h2>
-              <p className="m-0 mb-3 text-[var(--color-text-secondary)] leading-[1.6]">
-                To order signed/personalized copies of Aanchal&apos;s books, please contact:
-              </p>
-              <div className="mb-3 text-[var(--color-text-primary)] leading-[1.6]">
-                <p className="m-0 font-medium">Bahrisons Booksellers</p>
-                <p className="m-0 text-[var(--color-text-secondary)]">New Delhi</p>
-              </div>
-              <p className="m-0 text-[var(--color-text-primary)] leading-[1.6]">
-                <span className="text-[var(--color-text-muted)] mr-1">Email:</span>
-                <a
-                  href="mailto:bahrisons@outlook.com"
-                  className="underline underline-offset-2 decoration-[var(--color-border-dark)] hover:text-[var(--color-accent-mustard)] hover:decoration-[var(--color-accent-mustard)] transition-colors break-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
+            {/* COLUMN 3: SIGNED BOOKS */}
+            <div className="flex flex-col justify-between h-full">
+              <div>
+                <h2
+                  style={{
+                    fontSize: "17.5px",
+                    letterSpacing: "0.04em",
+                    fontWeight: 600,
+                    lineHeight: "1.3",
+                    minHeight: "2.6em",
+                  }}
+                  className="italic text-[#222222] uppercase m-0 mb-3 font-semibold font-[family-name:var(--font-cormorant)] flex items-start"
                 >
-                  bahrisons@outlook.com
-                </a>
-              </p>
+                  SIGNED BOOKS
+                </h2>
+                <div className="min-h-[4.5em] mb-4">
+                  <p className="m-0 text-[var(--color-text-secondary)] leading-[1.45]">
+                    To order signed/personalized copies of Aanchal&apos;s books, please contact:
+                  </p>
+                </div>
+              </div>
+              <div className="pt-1">
+                <div className="mb-2 text-[var(--color-text-primary)] leading-[1.4]">
+                  <p className="m-0 font-normal text-[#1C1B1A]">
+                    Bahrisons Booksellers, New Delhi
+                  </p>
+                </div>
+                <p className="m-0 text-[var(--color-text-primary)] leading-[1.4]">
+                  <span className="text-[var(--color-text-muted)] mr-1">Email:</span>
+                  <a
+                    href="mailto:bahrisons@outlook.com"
+                    className="underline underline-offset-2 decoration-[var(--color-border-dark)] hover:text-[var(--color-accent-mustard)] hover:decoration-[var(--color-accent-mustard)] transition-colors inline-block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
+                    style={{ textUnderlineOffset: "3px", wordBreak: "break-word" }}
+                  >
+                    bahrisons@outlook.com
+                  </a>
+                </p>
+              </div>
             </div>
+
           </div>
         </div>
       </div>

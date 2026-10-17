@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Link from "next/link";
 import { Book } from "@/data/types";
 import BookCover from "./BookCover";
 import { registerGSAP } from "@/lib/animations";
@@ -25,50 +24,55 @@ export default function BookLanding({ books }: BookLandingProps) {
     if (prefersReducedMotion || !sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Initial page load reveal: Quiet, confident entry of book covers
+      // Scroll-triggered subtle entry reveal for the landing book covers
       gsap.fromTo(
         ".book-landing-item",
-        { opacity: 0, y: 30 },
+        { opacity: 0, y: 28 },
         {
           opacity: 1,
           y: 0,
-          duration: 1.1,
+          duration: 1.0,
           stagger: 0.15,
-          ease: "power3.out",
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
         }
       );
 
-      // ScrollTrigger subtle depth shift
+      // Subtle parallax/depth drift as visitor scrolls down
       gsap.to(".book-landing-item-0", {
-        y: -20,
+        y: -15,
         ease: "none",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
           end: "bottom top",
-          scrub: 1.2,
+          scrub: 1,
         },
       });
 
       gsap.to(".book-landing-item-1", {
-        y: -10,
+        y: -8,
         ease: "none",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
           end: "bottom top",
-          scrub: 1.2,
+          scrub: 1,
         },
       });
 
       gsap.to(".book-landing-item-2", {
-        y: -25,
+        y: -18,
         ease: "none",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
           end: "bottom top",
-          scrub: 1.2,
+          scrub: 1,
         },
       });
     }, sectionRef);
@@ -79,20 +83,20 @@ export default function BookLanding({ books }: BookLandingProps) {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full pt-6 md:pt-10 pb-16 md:pb-24 overflow-hidden"
+      className="relative w-full pt-4 md:pt-6 pb-10 md:pb-14 overflow-hidden"
       aria-label="Selected Books"
     >
       <div className="editorial-container w-full">
-        {/* The Three Book Covers Composition - Concentrated grouping with generous horizontal margins & smaller discreet covers */}
+        {/* The Three Book Covers Composition - Scaled up visual presence (max ~280-300px) creating symmetry with final section */}
         <div
           ref={cardsContainerRef}
-          className="max-w-3xl lg:max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-5 md:gap-6 lg:gap-8 items-start justify-items-center"
+          className="max-w-4xl lg:max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 md:gap-7 lg:gap-9 items-start justify-items-center"
         >
           {books.map((book, index) => (
             <div
               key={book.id}
-              className={`book-landing-item book-landing-item-${index} w-full max-w-[210px] sm:max-w-[220px] md:max-w-[240px] will-change-transform ${
-                index === 1 ? "md:translate-y-4" : ""
+              className={`book-landing-item book-landing-item-${index} w-full max-w-[260px] sm:max-w-[270px] md:max-w-[290px] lg:max-w-[305px] will-change-transform ${
+                index === 1 ? "sm:translate-y-3" : ""
               }`}
             >
               <BookCover book={book} index={index} priority={index === 0} />
@@ -103,3 +107,4 @@ export default function BookLanding({ books }: BookLandingProps) {
     </section>
   );
 }
+

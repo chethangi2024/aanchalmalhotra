@@ -29,11 +29,11 @@ export default function AuthorWorkspaceSection({
     if (prefersReducedMotion || !sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // 1. Coordinated ScrollTrigger timeline for visual rhythm
+      // Coordinated ScrollTrigger timeline for visual rhythm
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 75%",
+          start: "top 78%",
           toggleActions: "play none none none",
         },
       });
@@ -43,15 +43,13 @@ export default function AuthorWorkspaceSection({
         workspaceColRef.current,
         {
           opacity: 0,
-          y: 35,
-          clipPath: "inset(6% 0% 0% 0%)",
+          y: 28,
         },
         {
           opacity: 1,
           y: 0,
-          clipPath: "inset(0% 0% 0% 0%)",
-          duration: 1.2,
-          ease: "power3.out",
+          duration: 1.0,
+          ease: "power2.out",
         }
       );
 
@@ -69,7 +67,7 @@ export default function AuthorWorkspaceSection({
           stagger: 0.12,
           ease: "power2.out",
         },
-        "-=0.9"
+        "-=0.8"
       );
 
       // Author portrait reveal (Col 3)
@@ -77,17 +75,15 @@ export default function AuthorWorkspaceSection({
         portraitColRef.current,
         {
           opacity: 0,
-          y: 35,
-          clipPath: "inset(6% 0% 0% 0%)",
+          y: 28,
         },
         {
           opacity: 1,
           y: 0,
-          clipPath: "inset(0% 0% 0% 0%)",
-          duration: 1.2,
-          ease: "power3.out",
+          duration: 1.0,
+          ease: "power2.out",
         },
-        "-=0.9"
+        "-=0.8"
       );
     }, sectionRef);
 
@@ -101,37 +97,45 @@ export default function AuthorWorkspaceSection({
   return (
     <section
       ref={sectionRef}
-      className="relative w-full py-16 md:py-24 bg-[var(--color-bg)] border-t border-[var(--color-border)]"
+      className="relative w-full py-12 md:py-16 lg:py-20 bg-[var(--color-bg)] border-t border-[var(--color-border)]"
       aria-label="Author and Workspace"
     >
       <div className="editorial-container">
-        {/* Asymmetric 3-Column Editorial Composition with Generous Outer Margins & Scaled Down Visuals */}
-        <div className="max-w-4xl lg:max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 lg:gap-10 items-center">
-          {/* Column 1: Workspace & Research Pinboard (Col 1-4 on Desktop, reduced 10-15%) */}
+        {/* Asymmetric 3-Column Composition:
+            Col 1 (Workspace): md:col-span-4 lg:col-span-4
+            Col 2 (Biography): md:col-span-4 lg:col-span-4 with left margin pushing closer to portrait
+            Col 3 (Portrait): md:col-span-4 lg:col-span-4
+        */}
+        <div className="max-w-4xl lg:max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 lg:gap-8 items-center">
+          {/* Column 1: Workspace & Research Pinboard */}
           <div
             ref={workspaceColRef}
-            className="md:col-span-4 order-2 md:order-1 will-change-transform flex justify-center"
+            className="md:col-span-4 order-2 md:order-1 will-change-transform flex flex-col items-center sm:items-start"
           >
-            <div className="relative w-full max-w-[270px] sm:max-w-[290px] md:max-w-[310px] aspect-[3/4] overflow-hidden bg-[var(--color-bg-muted)] shadow-[0_10px_28px_rgba(28,27,26,0.05)] group rounded-xs">
+            <div className="relative w-full max-w-[260px] sm:max-w-[270px] md:max-w-[290px] lg:max-w-[305px] aspect-[3/4] overflow-hidden bg-[var(--color-bg-muted)] shadow-[0_10px_28px_rgba(28,27,26,0.06)] group rounded-xs">
               <Image
-                src={data.workspaceImage.src}
+                src="/images/workspace-delhi-2026.png"
                 alt={data.workspaceImage.alt}
                 fill
                 sizes="(max-width: 768px) 80vw, 310px"
-                unoptimized
+                priority={false}
                 className="object-cover object-center transition-transform duration-700 ease-[var(--ease-editorial)] group-hover:scale-[1.015]"
               />
             </div>
+            {/* Restored small caption styled consistently with small book captions */}
+            <p className="mt-3 text-center sm:text-left font-[family-name:var(--font-cormorant)] text-[16px] sm:text-[17px] text-[var(--color-text-secondary)] tracking-normal m-0 w-full max-w-[260px] sm:max-w-[270px] md:max-w-[290px] lg:max-w-[305px]">
+              Workspace, New Delhi
+            </p>
           </div>
 
-          {/* Column 2: Biography & Editorial Focus (Col 5-8 on Desktop) */}
+          {/* Column 2: Biography & Editorial Focus - sits naturally closer to portrait */}
           <div
             ref={textColRef}
-            className="md:col-span-4 order-3 md:order-2 flex flex-col justify-center text-left px-0 md:px-2"
+            className="md:col-span-4 order-3 md:order-2 flex flex-col justify-center text-left md:pl-3 lg:pl-5"
           >
             <p
               id="author-section-title"
-              className="bio-text-element text-[15px] sm:text-[16px] text-[var(--color-text-secondary)] leading-relaxed m-0 mb-5"
+              className="bio-text-element font-[family-name:var(--font-cormorant)] text-[18px] sm:text-[19px] md:text-[20px] text-[var(--color-text-secondary)] leading-[1.55] m-0 mb-5"
             >
               {data.leadParagraph}
             </p>
@@ -140,11 +144,11 @@ export default function AuthorWorkspaceSection({
             <div className="bio-text-element">
               <Link
                 href={data.link.href}
-                className="group inline-flex items-center gap-2 text-[12.5px] font-[family-name:var(--font-serif-display)] border-b border-[var(--color-text-primary)] pb-0.5 hover:text-[var(--color-accent-mustard)] hover:border-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
+                className="group inline-flex items-center gap-2.5 text-[16px] sm:text-[17px] font-[family-name:var(--font-cormorant)] font-medium border-b border-[var(--color-text-primary)] pb-0.5 hover:text-[var(--color-accent-mustard)] hover:border-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
               >
-                <span className="font-medium">{data.link.label}</span>
+                <span>{data.link.label}</span>
                 <span
-                  className="transition-transform duration-200 group-hover:translate-x-1"
+                  className="transition-transform duration-200 group-hover:translate-x-1 font-sans text-[14px]"
                   aria-hidden="true"
                 >
                   &rarr;
@@ -153,19 +157,18 @@ export default function AuthorWorkspaceSection({
             </div>
           </div>
 
-          {/* Column 3: Author Portrait (Col 9-12 on Desktop, reduced 10-15%) */}
+          {/* Column 3: Author Portrait */}
           <div
             ref={portraitColRef}
-            className="md:col-span-4 order-1 md:order-3 will-change-transform flex justify-center"
+            className="md:col-span-4 order-1 md:order-3 will-change-transform flex justify-center md:justify-end"
           >
-            <div className="relative w-full max-w-[270px] sm:max-w-[290px] md:max-w-[310px] aspect-[3/4] overflow-hidden bg-[var(--color-bg-muted)] shadow-[0_10px_28px_rgba(28,27,26,0.05)] group rounded-xs">
+            <div className="relative w-full max-w-[260px] sm:max-w-[270px] md:max-w-[290px] lg:max-w-[305px] aspect-[3/4] overflow-hidden bg-[var(--color-bg-muted)] shadow-[0_10px_28px_rgba(28,27,26,0.06)] group rounded-xs">
               <Image
                 src={data.authorPortrait.src}
                 alt={data.authorPortrait.alt}
                 fill
                 sizes="(max-width: 768px) 80vw, 310px"
                 loading="lazy"
-                unoptimized
                 className="object-cover object-top transition-transform duration-700 ease-[var(--ease-editorial)] group-hover:scale-[1.015]"
               />
             </div>
@@ -173,7 +176,7 @@ export default function AuthorWorkspaceSection({
         </div>
 
         {/* Discreet Back to Top Arrow */}
-        <div className="mt-14 md:mt-20 flex justify-center">
+        <div className="mt-12 md:mt-16 flex justify-center">
           <button
             type="button"
             onClick={scrollToTop}

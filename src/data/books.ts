@@ -10,8 +10,8 @@ export const booksData: Book[] = [
     tagline: "Transforms a complex history into a gentle and accessible introduction for younger readers.",
     authorCredit: "Aanchal Malhotra, Illustrated by Maryam Huq",
     publisherCredit: "Coming May 2026",
-    coverImage: "/images/books/handful-of-home-placeholder.webp",
-    coverAlt: "A Handful of Home book cover placeholder",
+    coverImage: "/images/books/handful-of-home-clean.jpg",
+    coverAlt: "A Handful of Home book cover",
     synopsis: [
       "A Handful of Home is a museum you can hold in your hands.",
       "Containing 100 objects from the Partition of India, oral historian and expert Aanchal Malhotra transforms a complex history into a gentle and accessible introduction for younger readers.",
