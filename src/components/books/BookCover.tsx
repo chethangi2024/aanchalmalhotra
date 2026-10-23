@@ -32,7 +32,7 @@ export default function BookCover({
             src={book.coverImage}
             alt={book.coverAlt || `Front cover of ${book.title}`}
             fill
-            sizes="(max-width: 640px) 70vw, (max-width: 1024px) 30vw, 320px"
+            sizes="(max-width: 640px) 70vw, (max-width: 1024px) 25vw, 260px"
             priority={priority}
             className="object-cover transition-transform duration-700 ease-[var(--ease-editorial)] group-hover:scale-[1.02]"
           />
@@ -45,7 +45,7 @@ export default function BookCover({
       <div className="mt-3.5 w-full text-center sm:text-left">
         <h2
           id={`book-title-${book.id}`}
-          className="font-[family-name:var(--font-cormorant)] font-normal text-[17px] sm:text-[17.5px] md:text-[18px] leading-[1.3] text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-mustard)] transition-colors duration-300 tracking-normal m-0"
+          className="book-cover-title font-[family-name:var(--font-serif-display)] font-normal leading-[1.35] text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-mustard)] transition-colors duration-300 tracking-normal m-0"
           style={{
             wordBreak: "normal",
             overflowWrap: "break-word",

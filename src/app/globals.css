@@ -7,5 +7,379 @@
     background-color: var(--color-bg);
     color: var(--color-text-primary);
     font-family: var(--font-serif-body);
+    font-size: 18.6px;
+    line-height: 24.2px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: 0px;
+    font-style: normal;
+    font-variant-numeric: oldstyle-nums;
   }
 }
+
+/* Global Content Container - Centered, 1235px max content boundary */
+.editorial-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--gutter-desktop);
+  padding-right: var(--gutter-desktop);
+}
+
+@media (max-width: 1024px) {
+  .editorial-container {
+    padding-left: var(--gutter-tablet);
+    padding-right: var(--gutter-tablet);
+  }
+}
+
+@media (max-width: 640px) {
+  .editorial-container {
+    padding-left: var(--gutter-mobile);
+    padding-right: var(--gutter-mobile);
+  }
+}
+
+@media (min-width: 1280px) {
+  .editorial-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* Homepage Hero Book Titles */
+.book-cover-title,
+.book-landing-item h2 {
+  font-size: 16px !important;
+  line-height: 1.35;
+}
+
+@media (min-width: 640px) {
+  .book-cover-title,
+  .book-landing-item h2 {
+    font-size: 18px !important;
+  }
+}
+
+/* Individual Book Opening Section Layout & Compact Typography */
+.book-opening-section {
+  width: 100%;
+}
+
+.book-title-header {
+  margin-bottom: 1.75rem;
+}
+@media (min-width: 768px) {
+  .book-title-header {
+    margin-bottom: 2rem;
+  }
+}
+
+.book-title-heading {
+  font-size: clamp(24px, 2.5vw, 28px) !important;
+  line-height: 1.15 !important;
+  letter-spacing: 0.2em !important;
+  font-weight: 400 !important;
+  text-transform: uppercase !important;
+}
+
+.book-author-byline {
+  font-size: 17px !important;
+  line-height: 1.8 !important;
+  font-style: italic !important;
+  color: var(--color-text-secondary) !important;
+  margin-top: 0.75rem !important;
+  margin-bottom: 0 !important;
+}
+@media (min-width: 640px) {
+  .book-author-byline {
+    font-size: 19px !important;
+  }
+}
+
+/* Two-column layout container: 375px cover column, expanded text column, 24px-32px gap */
+.book-opening-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .book-opening-columns {
+    flex-direction: row;
+    gap: 28px;
+    align-items: flex-start;
+  }
+  
+  .book-opening-cover-col {
+    width: 315px;
+    max-width: 315px;
+    min-width: 280px;
+    flex-shrink: 0;
+  }
+
+  .book-opening-text-col {
+    flex: 1 1 0%;
+    min-width: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .book-opening-columns {
+    gap: 32px;
+  }
+  
+  .book-opening-cover-col {
+    width: 375px;
+    max-width: 375px;
+    min-width: 375px;
+    flex-shrink: 0;
+  }
+}
+
+/* Book Cover & Caption - 25% Larger (375px on desktop) */
+.book-cover-wrapper {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 640px) {
+  .book-cover-wrapper {
+    max-width: 315px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .book-cover-wrapper {
+    max-width: 375px;
+  }
+}
+
+.book-cover-caption {
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.3 !important;
+  margin-top: 10px !important;
+  margin-bottom: 0 !important;
+  color: var(--color-text-muted);
+}
+@media (min-width: 640px) {
+  .book-cover-caption {
+    font-size: 17px;
+  }
+}
+
+/* Awards Section */
+.book-awards-section {
+  margin-top: 0 !important;
+  margin-bottom: 1rem !important;
+}
+@media (min-width: 768px) {
+  .book-awards-section {
+    margin-bottom: 1.25rem !important;
+  }
+}
+
+.book-awards-section h2 {
+  font-size: 13px !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  color: var(--color-accent-mustard) !important;
+  margin-top: 0 !important;
+  margin-bottom: 6px !important;
+}
+@media (min-width: 640px) {
+  .book-awards-section h2 {
+    font-size: 14px !important;
+  }
+}
+
+.book-awards-list p {
+  font-size: 16.5px;
+  line-height: 1.26 !important;
+  margin-top: 0 !important;
+  margin-bottom: 5px !important;
+  color: var(--color-text-primary);
+}
+@media (min-width: 640px) {
+  .book-awards-list p {
+    font-size: 17.5px;
+  }
+}
+.book-awards-list p:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Synopsis / Body text matching EB Garamond reference baseline (17.6px / 24.2px) */
+.book-synopsis-content {
+  margin-top: 0 !important;
+}
+
+.book-synopsis-content p {
+  font-family: var(--font-serif-body);
+  font-size: 18.6px !important;
+  line-height: 24.2px !important;
+  font-weight: 400;
+  letter-spacing: normal;
+  word-spacing: 0px;
+  font-style: normal;
+  font-variant-numeric: oldstyle-nums;
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+  text-align: left;
+  color: var(--color-text-secondary);
+}
+
+@media (min-width: 640px) {
+  .book-synopsis-content p {
+    font-size: 18.6px !important;
+    line-height: 24.2px !important;
+    text-align: justify;
+    text-align-last: left;
+    text-justify: inter-word;
+  }
+}
+
+@media (min-width: 1024px) {
+  .book-synopsis-content p {
+    font-size: 18.6px !important;
+    line-height: 24.2px !important;
+    margin-bottom: 12px !important;
+  }
+}
+
+.book-synopsis-content p:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Reading Guide intro text matching EB Garamond reference baseline (17.6px / 24.2px) */
+.reading-guide-intro-text p {
+  font-family: var(--font-serif-body);
+  font-size: 18.6px !important;
+  line-height: 24.2px !important;
+  font-weight: 400;
+  letter-spacing: normal;
+  word-spacing: 0px;
+  font-style: normal;
+  font-variant-numeric: oldstyle-nums;
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+  text-align: justify;
+  text-align-last: left;
+}
+@media (min-width: 640px) {
+  .reading-guide-intro-text p {
+    font-size: 18.6px !important;
+    line-height: 24.2px !important;
+  }
+}
+.reading-guide-intro-text p:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Shared typography utility classes matching reference standard */
+.page-title {
+  font-size: clamp(24px, 2.5vw, 28px);
+  line-height: 1.15;
+  letter-spacing: 0.2em;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #222222;
+  margin: 0;
+}
+
+.page-subtitle {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin-top: 0.75rem;
+}
+@media (min-width: 640px) {
+  .page-subtitle {
+    font-size: 19px;
+  }
+}
+
+.section-title {
+  font-size: 22px;
+  line-height: 1.25;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+@media (min-width: 640px) {
+  .section-title {
+    font-size: 24px;
+  }
+}
+
+.section-subtitle {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-top: 0.25rem;
+}
+@media (min-width: 640px) {
+  .section-subtitle {
+    font-size: 17px;
+  }
+}
+
+.body-text,
+.editorial-prose p {
+  font-family: var(--font-serif-body);
+  font-size: 18.6px;
+  line-height: 24.2px;
+  font-weight: 400;
+  letter-spacing: normal;
+  word-spacing: 0px;
+  font-style: normal;
+  font-variant-numeric: oldstyle-nums;
+  color: var(--color-text-secondary);
+}
+@media (min-width: 640px) {
+  .body-text,
+  .editorial-prose p {
+    font-size: 18.6px;
+    line-height: 24.2px;
+  }
+}
+
+.tag-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  color: var(--color-accent-mustard);
+}
+
+.content-link {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  color: inherit;
+  transition: color var(--duration-fast) ease;
+}
+.content-link:hover {
+  color: var(--color-accent-mustard);
+}
+
+
+

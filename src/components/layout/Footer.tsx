@@ -87,7 +87,7 @@ export default function Footer() {
           {/* Copyright Notice */}
           <div className="pt-2">
             <p
-              className="m-0 text-[12px] sm:text-[12.5px] tracking-[0.04em] font-normal"
+              className="m-0 text-[13px] sm:text-[13.5px] tracking-[0.04em] font-normal"
               style={{ color: "#FFFFFF" }}
             >
               © 2026 Aanchal Malhotra. All rights reserved.

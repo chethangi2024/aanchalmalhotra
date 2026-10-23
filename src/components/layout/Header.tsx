@@ -133,9 +133,9 @@ export default function Header() {
           </span>
         </Link>
 
-        {/* Desktop Navigation (Horizontal, quiet, balanced whitespace, unified vertical baseline, editorial Cormorant Garamond serif in Proper Case) */}
+        {/* Desktop Navigation (Horizontal, quiet, balanced whitespace, unified vertical baseline, editorial EB Garamond serif in Proper Case) */}
         <nav
-          className="hidden md:flex items-center gap-6 lg:gap-8 xl:gap-9 text-[17px] lg:text-[18px] font-[family-name:var(--font-serif-display)] tracking-normal"
+          className="hidden md:flex items-center gap-3 lg:gap-8 xl:gap-9 text-[14px] md:text-[14.5px] lg:text-[18px] font-[family-name:var(--font-serif-display)] tracking-normal"
           aria-label="Main Navigation"
         >
           {navItems.map((item) => {

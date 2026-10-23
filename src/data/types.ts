@@ -44,7 +44,7 @@ export interface Book {
   title: string;
   subtitle?: string;
   tagline?: string;
-  authorCredit: string;
+  authorCredit?: string;
   publisherCredit: string;
   synopsis: string[];
   coverImage: string;
@@ -58,6 +58,8 @@ export interface Book {
   excerptsAndWriting?: BookExcerptOrWriting[];
   relatedMedia?: BookRelatedMedia[];
   readingGuideUrl?: string;
+  readingGuideLabel?: string;
+  forthcomingEditionsNotice?: string;
   galleryImages?: { src: string; caption?: string; alt: string }[];
   prologue?: {
     title: string;

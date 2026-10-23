@@ -133,17 +133,17 @@ export default function PressAndInterviewsPage() {
     return (
       <p
         key={idx}
-        className="press-reveal-item m-0 font-[family-name:var(--font-cormorant)] text-[18px] sm:text-[19px] md:text-[20px] leading-[1.45] text-[var(--color-text-secondary)]"
+        className="press-reveal-item m-0 font-[family-name:var(--font-serif-body)] text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums]"
       >
         <a
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="underline underline-offset-2 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
+          className="underline underline-offset-4 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
           style={{
             color: "#947D53",
             textDecoration: "underline",
-            textUnderlineOffset: "3px",
+            textUnderlineOffset: "4px",
           }}
         >
           {item.title}
@@ -170,7 +170,7 @@ export default function PressAndInterviewsPage() {
       className="w-full pt-10 md:pt-14 pb-20 md:pb-28 bg-[var(--color-bg)]"
     >
       <div className="editorial-container">
-        <div className="max-w-3xl mx-auto text-left font-[family-name:var(--font-cormorant)]">
+        <div className="w-full text-left font-[family-name:var(--font-serif-body)]">
           {/* Main Editorial Page Heading - Consistent with other pages (e.g. ABOUT, CONTACT) */}
           <div className="mb-10 md:mb-12">
             <h1
@@ -179,7 +179,7 @@ export default function PressAndInterviewsPage() {
                 letterSpacing: "0.2em",
                 fontWeight: 400,
               }}
-              className="text-[#222222] uppercase leading-tight m-0 font-normal"
+              className="text-[#222222] uppercase leading-tight m-0 font-normal font-[family-name:var(--font-serif-display)]"
             >
               PRESS &amp; INTERVIEWS
             </h1>
@@ -189,7 +189,7 @@ export default function PressAndInterviewsPage() {
           <section className="mb-8 md:mb-10" aria-labelledby="heading-interview">
             <h2
               id="heading-interview"
-              className="press-reveal-item font-[family-name:var(--font-cormorant)] text-[#222222] text-[18px] sm:text-[19px] md:text-[20px] font-semibold tracking-[0.08em] uppercase m-0 mb-3"
+              className="press-reveal-item font-[family-name:var(--font-serif-display)] text-[#222222] text-[16px] sm:text-[18px] font-semibold tracking-[0.08em] uppercase m-0 mb-3 leading-snug"
             >
               INTERVIEW
             </h2>
@@ -205,7 +205,7 @@ export default function PressAndInterviewsPage() {
           >
             <h2
               id="heading-podcast-video"
-              className="press-reveal-item font-[family-name:var(--font-cormorant)] text-[#222222] text-[18px] sm:text-[19px] md:text-[20px] font-semibold tracking-[0.08em] uppercase m-0 mb-3"
+              className="press-reveal-item font-[family-name:var(--font-serif-display)] text-[#222222] text-[16px] sm:text-[18px] font-semibold tracking-[0.08em] uppercase m-0 mb-3 leading-snug"
             >
               PODCAST &amp; VIDEO
             </h2>
@@ -218,7 +218,7 @@ export default function PressAndInterviewsPage() {
           <section className="mb-8 md:mb-10" aria-labelledby="heading-other">
             <h2
               id="heading-other"
-              className="press-reveal-item font-[family-name:var(--font-cormorant)] text-[#222222] text-[18px] sm:text-[19px] md:text-[20px] font-semibold tracking-[0.08em] uppercase m-0 mb-3"
+              className="press-reveal-item font-[family-name:var(--font-serif-display)] text-[#222222] text-[16px] sm:text-[18px] font-semibold tracking-[0.08em] uppercase m-0 mb-3 leading-snug"
             >
               OTHER
             </h2>

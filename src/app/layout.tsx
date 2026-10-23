@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond } from "next/font/google";
+import { EB_Garamond } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
-// Cormorant Garamond - the unified typography throughout the entire website
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+// EB Garamond - the unified typography throughout the entire website
+const ebGaramond = EB_Garamond({
+  variable: "--font-eb-garamond",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
   display: "swap",
 });
@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable}`}
+      className={`${ebGaramond.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-[var(--color-bg)] text-[var(--color-text-primary)] antialiased">
         <Header />

@@ -83,25 +83,32 @@ export default function BookLanding({ books }: BookLandingProps) {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full pt-4 md:pt-6 pb-10 md:pb-14 overflow-hidden"
+      className="relative w-full pt-4 md:pt-6 pb-10 sm:pb-14 md:pb-20 overflow-hidden"
       aria-label="Selected Books"
     >
       <div className="editorial-container w-full">
-        {/* The Three Book Covers Composition - Scaled up visual presence (max ~280-300px) creating symmetry with final section */}
+        {/* The Three Book Covers Composition - Spanning full content width, aligned to left and right boundaries */}
         <div
           ref={cardsContainerRef}
-          className="max-w-4xl lg:max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 md:gap-7 lg:gap-9 items-start justify-items-center"
+          className="w-full grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 md:gap-8 items-start"
         >
-          {books.map((book, index) => (
-            <div
-              key={book.id}
-              className={`book-landing-item book-landing-item-${index} w-full max-w-[260px] sm:max-w-[270px] md:max-w-[290px] lg:max-w-[305px] will-change-transform ${
-                index === 1 ? "sm:translate-y-3" : ""
-              }`}
-            >
-              <BookCover book={book} index={index} priority={index === 0} />
-            </div>
-          ))}
+          {books.map((book, index) => {
+            const alignmentClass =
+              index === 0
+                ? "justify-self-center sm:justify-self-start"
+                : index === 1
+                ? "justify-self-center"
+                : "justify-self-center sm:justify-self-end";
+
+            return (
+              <div
+                key={book.id}
+                className={`book-landing-item book-landing-item-${index} w-full max-w-[220px] sm:max-w-[230px] md:max-w-[245px] lg:max-w-[255px] ${alignmentClass} will-change-transform`}
+              >
+                <BookCover book={book} index={index} priority={index === 0} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

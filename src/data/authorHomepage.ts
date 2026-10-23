@@ -34,12 +34,12 @@ export const authorHomepageData: AuthorHomepageConfig = {
     caption: "Aanchal Malhotra",
   },
   workspaceImage: {
-    src: "/images/workspace-delhi-2026.webp",
+    src: "/images/workspace-delhi-2026.png",
     alt: "Aanchal Malhotra's writing workspace with research pinboard, notebooks, and library",
     caption: "Workspace, New Delhi",
   },
   link: {
-    label: "Read full Biography & background",
+    label: "Read More",
     href: "/about",
   },
 };

@@ -97,7 +97,7 @@ export default function AuthorWorkspaceSection({
   return (
     <section
       ref={sectionRef}
-      className="relative w-full py-12 md:py-16 lg:py-20 bg-[var(--color-bg)] border-t border-[var(--color-border)]"
+      className="relative w-full py-10 sm:py-14 md:py-20 bg-[var(--color-bg)] border-t border-[var(--color-border)]"
       aria-label="Author and Workspace"
     >
       <div className="editorial-container">
@@ -106,7 +106,7 @@ export default function AuthorWorkspaceSection({
             Col 2 (Biography): md:col-span-4 lg:col-span-4 with left margin pushing closer to portrait
             Col 3 (Portrait): md:col-span-4 lg:col-span-4
         */}
-        <div className="max-w-4xl lg:max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 lg:gap-8 items-center">
+        <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 lg:gap-8 items-start">
           {/* Column 1: Workspace & Research Pinboard */}
           <div
             ref={workspaceColRef}
@@ -114,7 +114,7 @@ export default function AuthorWorkspaceSection({
           >
             <div className="relative w-full max-w-[260px] sm:max-w-[270px] md:max-w-[290px] lg:max-w-[305px] aspect-[3/4] overflow-hidden bg-[var(--color-bg-muted)] shadow-[0_10px_28px_rgba(28,27,26,0.06)] group rounded-xs">
               <Image
-                src="/images/workspace-delhi-2026.png"
+                src={data.workspaceImage.src}
                 alt={data.workspaceImage.alt}
                 fill
                 sizes="(max-width: 768px) 80vw, 310px"
@@ -122,33 +122,34 @@ export default function AuthorWorkspaceSection({
                 className="object-cover object-center transition-transform duration-700 ease-[var(--ease-editorial)] group-hover:scale-[1.015]"
               />
             </div>
-            {/* Restored small caption styled consistently with small book captions */}
-            <p className="mt-3 text-center sm:text-left font-[family-name:var(--font-cormorant)] text-[16px] sm:text-[17px] text-[var(--color-text-secondary)] tracking-normal m-0 w-full max-w-[260px] sm:max-w-[270px] md:max-w-[290px] lg:max-w-[305px]">
+            {/* Small caption styled consistently with small book captions */}
+            <p className="mt-3 text-center sm:text-left font-[family-name:var(--font-serif-body)] text-[14px] sm:text-[15px] text-[var(--color-text-secondary)] tracking-normal m-0 w-full max-w-[260px] sm:max-w-[270px] md:max-w-[290px] lg:max-w-[305px]">
               Workspace, New Delhi
             </p>
           </div>
 
-          {/* Column 2: Biography & Editorial Focus - sits naturally closer to portrait */}
+          {/* Column 2: Biography & Editorial Focus */}
           <div
             ref={textColRef}
-            className="md:col-span-4 order-3 md:order-2 flex flex-col justify-center text-left md:pl-3 lg:pl-5"
+            className="md:col-span-4 order-3 md:order-2 flex flex-col justify-center text-left md:pl-3 lg:pl-5 md:self-center"
           >
             <p
               id="author-section-title"
-              className="bio-text-element font-[family-name:var(--font-cormorant)] text-[18px] sm:text-[19px] md:text-[20px] text-[var(--color-text-secondary)] leading-[1.55] m-0 mb-5"
+              className="bio-text-element font-[family-name:var(--font-serif-body)] text-[22.6px] leading-[31px] [font-variant-numeric:oldstyle-nums] text-[var(--color-text-secondary)] text-right m-0 mb-5"
+              style={{ textAlign: "right" }}
             >
               {data.leadParagraph}
             </p>
 
             {/* Link to full About page */}
-            <div className="bio-text-element">
+            <div className="bio-text-element w-full flex justify-end">
               <Link
                 href={data.link.href}
-                className="group inline-flex items-center gap-2.5 text-[16px] sm:text-[17px] font-[family-name:var(--font-cormorant)] font-medium border-b border-[var(--color-text-primary)] pb-0.5 hover:text-[var(--color-accent-mustard)] hover:border-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
+                className="group inline-flex items-center gap-2 text-[13px] font-[family-name:var(--font-serif-body)] tracking-wider uppercase font-medium border-b border-[var(--color-text-primary)] pb-0.5 hover:text-[var(--color-accent-mustard)] hover:border-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
               >
                 <span>{data.link.label}</span>
                 <span
-                  className="transition-transform duration-200 group-hover:translate-x-1 font-sans text-[14px]"
+                  className="transition-transform duration-200 group-hover:translate-x-1 font-sans text-[13px]"
                   aria-hidden="true"
                 >
                   &rarr;

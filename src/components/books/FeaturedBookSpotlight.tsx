@@ -80,12 +80,12 @@ export default function FeaturedBookSpotlight({
     <section
       id="featured-forthcoming-book"
       ref={sectionRef}
-      className="relative w-full py-12 md:py-16 lg:py-20 bg-[var(--color-bg-pure)] border-t border-[var(--color-border)] scroll-mt-20"
+      className="relative w-full py-10 sm:py-14 md:py-20 bg-[var(--color-bg-pure)] border-t border-[var(--color-border)] scroll-mt-20"
       aria-labelledby="spotlight-title"
     >
       <div className="editorial-container">
         {/* Balanced Editorial Composition with Balanced Spacing */}
-        <div className="max-w-4xl lg:max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 lg:gap-14 items-center">
+        <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 lg:gap-14 items-center">
           {/* Left Column: Complete book cover edge-to-edge at its natural aspect ratio without grey background, white frame, padding or shadows */}
           <div className="md:col-span-5 flex justify-center md:justify-start">
             <div
@@ -111,15 +111,15 @@ export default function FeaturedBookSpotlight({
           >
             {/* Publication Label */}
             <div className="spotlight-text-reveal mb-2">
-              <span className="text-[13px] sm:text-[14px] tracking-[var(--tracking-widest)] text-[var(--color-accent-mustard)] uppercase font-semibold">
+              <span className="text-[12px] tracking-[0.15em] text-[var(--color-accent-mustard)] uppercase font-semibold">
                 FORTHCOMING IN MAY 2026
               </span>
             </div>
 
-            {/* Book Title - Increased for clear legibility, with tightened line height */}
+            {/* Book Title */}
             <h2
               id="spotlight-title"
-              className="spotlight-text-reveal font-[family-name:var(--font-cormorant)] font-semibold text-[26px] sm:text-[30px] md:text-[34px] lg:text-[36px] leading-[1.08] text-[var(--color-text-primary)] uppercase tracking-wide m-0"
+              className="spotlight-text-reveal font-[family-name:var(--font-serif-display)] font-normal text-[22px] sm:text-[24px] leading-snug text-[var(--color-text-primary)] uppercase tracking-wide m-0"
               style={{
                 wordBreak: "normal",
                 overflowWrap: "break-word",
@@ -128,15 +128,15 @@ export default function FeaturedBookSpotlight({
               A HANDFUL OF HOME
             </h2>
 
-            {/* Subtitle - Italicised per client instruction */}
+            {/* Subtitle - Italicised */}
             <p
-              className="spotlight-text-reveal mt-2 mb-4 font-[family-name:var(--font-cormorant)] italic font-normal text-[15px] sm:text-[16px] md:text-[17px] leading-[1.3] text-[var(--color-text-secondary)] tracking-wider uppercase"
+              className="spotlight-text-reveal mt-2 mb-4 font-[family-name:var(--font-serif-body)] italic font-normal text-[16px] sm:text-[17px] leading-relaxed text-[var(--color-text-secondary)] tracking-wider uppercase"
             >
               THE PARTITION OF INDIA IN 100 OBJECTS
             </p>
 
-            {/* Exact Client Synopsis - Comfortable readable serif text */}
-            <div className="spotlight-text-reveal space-y-3 text-[var(--color-text-secondary)] font-[family-name:var(--font-cormorant)] text-[17px] sm:text-[18px] leading-[1.55] mb-6">
+            {/* Exact Client Synopsis */}
+            <div className="spotlight-text-reveal space-y-3 text-[var(--color-text-secondary)] font-[family-name:var(--font-serif-body)] text-[18.6px] leading-[24.2px] [font-variant-numeric:oldstyle-nums] mb-6">
               <p className="m-0">
                 Containing 100 objects from the Partition of India, oral historian and expert Aanchal Malhotra transforms a complex history into a gentle and accessible introduction for younger readers.
               </p>
@@ -145,15 +145,15 @@ export default function FeaturedBookSpotlight({
               </p>
             </div>
 
-            {/* Call to Action Link - Increased for comfortable readability */}
+            {/* Call to Action Link */}
             <div className="spotlight-text-reveal flex items-center">
               <Link
                 href={`/books/${book.slug}`}
-                className="group inline-flex items-center gap-2.5 text-[16px] sm:text-[17px] font-[family-name:var(--font-cormorant)] font-medium border-b border-[var(--color-text-primary)] pb-0.5 hover:text-[var(--color-accent-mustard)] hover:border-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
+                className="group inline-flex items-center gap-2 text-[13px] tracking-wider uppercase font-medium border-b border-[var(--color-text-primary)] pb-0.5 hover:text-[var(--color-accent-mustard)] hover:border-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
               >
                 <span>View Book Details</span>
                 <span
-                  className="transition-transform duration-200 group-hover:translate-x-1 font-sans text-[14px]"
+                  className="transition-transform duration-200 group-hover:translate-x-1 font-sans text-[13px]"
                   aria-hidden="true"
                 >
                   &rarr;

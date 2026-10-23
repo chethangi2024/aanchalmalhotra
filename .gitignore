@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# raw intermediate extraction folders (clean web-ready assets are in remnants-reading-guide-all)
+/public/images/books/remnants-reading-guide/
+/public/images/books/remnants-reading-guide-docx/
+
