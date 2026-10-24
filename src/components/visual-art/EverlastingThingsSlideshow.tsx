@@ -74,7 +74,7 @@ export default function EverlastingThingsSlideshow({
           </div>
 
           {/* Centered Project Header */}
-          <div className="text-center mb-8 md:mb-12">
+          <div className="text-center mb-8 md:mb-10">
             <h1
               style={{
                 fontSize: "clamp(22px, 2.5vw, 28px)",
@@ -85,9 +85,6 @@ export default function EverlastingThingsSlideshow({
             >
               THE BOOK OF EVERLASTING THINGS
             </h1>
-            <p className="mt-2 text-[16px] sm:text-[18px] text-[var(--color-text-secondary)] italic leading-relaxed">
-              Research, 2017–2022
-            </p>
           </div>
 
           {/* Gallery Presentation - Centered container approx 680-720px wide on desktop */}

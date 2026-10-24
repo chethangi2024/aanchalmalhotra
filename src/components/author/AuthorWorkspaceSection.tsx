@@ -131,30 +131,32 @@ export default function AuthorWorkspaceSection({
           {/* Column 2: Biography & Editorial Focus */}
           <div
             ref={textColRef}
-            className="md:col-span-4 order-3 md:order-2 flex flex-col justify-center text-left md:pl-3 lg:pl-5 md:self-center"
+            className="md:col-span-4 order-3 md:order-2 flex flex-col justify-center text-left md:items-end md:self-center"
           >
-            <p
-              id="author-section-title"
-              className="bio-text-element font-[family-name:var(--font-serif-body)] text-[22.6px] leading-[31px] [font-variant-numeric:oldstyle-nums] text-[var(--color-text-secondary)] text-right m-0 mb-5"
-              style={{ textAlign: "right" }}
-            >
-              {data.leadParagraph}
-            </p>
-
-            {/* Link to full About page */}
-            <div className="bio-text-element w-full flex justify-end">
-              <Link
-                href={data.link.href}
-                className="group inline-flex items-center gap-2 text-[13px] font-[family-name:var(--font-serif-body)] tracking-wider uppercase font-medium border-b border-[var(--color-text-primary)] pb-0.5 hover:text-[var(--color-accent-mustard)] hover:border-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
+            <div className="w-full md:max-w-[295px] md:ml-auto flex flex-col items-end">
+              <p
+                id="author-section-title"
+                className="bio-text-element font-[family-name:var(--font-serif-body)] text-[22.6px] leading-[31px] [font-variant-numeric:oldstyle-nums] text-[var(--color-text-secondary)] text-right m-0 mb-5"
+                style={{ textAlign: "right" }}
               >
-                <span>{data.link.label}</span>
-                <span
-                  className="transition-transform duration-200 group-hover:translate-x-1 font-sans text-[13px]"
-                  aria-hidden="true"
+                {data.leadParagraph}
+              </p>
+
+              {/* Link to full About page */}
+              <div className="bio-text-element w-full flex justify-end">
+                <Link
+                  href={data.link.href}
+                  className="group inline-flex items-center gap-2 text-[13px] font-[family-name:var(--font-serif-body)] tracking-wider uppercase font-medium border-b border-[var(--color-text-primary)] pb-0.5 hover:text-[var(--color-accent-mustard)] hover:border-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
                 >
-                  &rarr;
-                </span>
-              </Link>
+                  <span>{data.link.label}</span>
+                  <span
+                    className="transition-transform duration-200 group-hover:translate-x-1 font-sans text-[13px]"
+                    aria-hidden="true"
+                  >
+                    &rarr;
+                  </span>
+                </Link>
+              </div>
             </div>
           </div>
 

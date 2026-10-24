@@ -41,7 +41,6 @@ export default function InPraiseOfShadowsPage() {
     <ProjectSlideshow
       slides={inPraiseOfShadowsSlides}
       projectTitle="In Praise of Shadows"
-      projectSubtitle="Traditional Printmaking, 2014"
       aboutSection={aboutSection}
     />
   );

@@ -90,7 +90,7 @@ export default function BookLanding({ books }: BookLandingProps) {
         {/* The Three Book Covers Composition - Spanning full content width, aligned to left and right boundaries */}
         <div
           ref={cardsContainerRef}
-          className="w-full grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 md:gap-8 items-start"
+          className="w-full grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-4 md:gap-5 lg:gap-6 items-start"
         >
           {books.map((book, index) => {
             const alignmentClass =
@@ -103,7 +103,7 @@ export default function BookLanding({ books }: BookLandingProps) {
             return (
               <div
                 key={book.id}
-                className={`book-landing-item book-landing-item-${index} w-full max-w-[220px] sm:max-w-[230px] md:max-w-[245px] lg:max-w-[255px] ${alignmentClass} will-change-transform`}
+                className={`book-landing-item book-landing-item-${index} w-full max-w-[260px] sm:max-w-[270px] md:max-w-[295px] lg:max-w-[325px] ${alignmentClass} will-change-transform`}
               >
                 <BookCover book={book} index={index} priority={index === 0} />
               </div>

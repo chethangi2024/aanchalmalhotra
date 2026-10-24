@@ -52,18 +52,18 @@ export default function ContactPage() {
                 </h2>
                 <div className="min-h-[4.5em] mb-4">
                   <p className="m-0 text-[var(--color-text-secondary)] leading-relaxed">
-                    For enquiries relating to Interviews, Publicity and Speaking Invitations within South Asia, please contact:
+                    For enquiries relating to interviews, publicity and speaking invitations within South Asia, contact:
                   </p>
                 </div>
               </div>
               <div className="pt-1">
-                <div className="mb-2 text-[var(--color-text-primary)] leading-relaxed">
-                  <p className="m-0 font-normal">
+                <div className="text-[var(--color-text-primary)] leading-normal" style={{ marginBottom: "2px" }}>
+                  <p className="m-0 font-normal" style={{ margin: 0, marginBottom: 0 }}>
                     <span className="font-medium text-[#1C1B1A]">Naiyya Singh</span>,{" "}
                     <em className="italic">HarperCollins India</em>
                   </p>
                 </div>
-                <p className="m-0 text-[var(--color-text-primary)] leading-relaxed">
+                <p className="m-0 text-[var(--color-text-primary)] leading-normal" style={{ margin: 0 }}>
                   <span className="text-[var(--color-text-muted)] mr-1">Email:</span>
                   <a
                     href="mailto:naiyya.singh@harpercollins.co.in"
@@ -93,18 +93,18 @@ export default function ContactPage() {
                 </h2>
                 <div className="min-h-[4.5em] mb-4">
                   <p className="m-0 text-[var(--color-text-secondary)] leading-relaxed">
-                    For Rights and all other enquiries, please contact:
+                    For Rights and all other enquiries, contact:
                   </p>
                 </div>
               </div>
               <div className="pt-1">
-                <div className="mb-2 text-[var(--color-text-primary)] leading-relaxed">
-                  <p className="m-0 font-normal">
+                <div className="text-[var(--color-text-primary)] leading-normal" style={{ marginBottom: "2px" }}>
+                  <p className="m-0 font-normal" style={{ margin: 0, marginBottom: 0 }}>
                     <span className="font-medium text-[#1C1B1A]">David Godwin</span>,{" "}
                     <em className="italic">DGA</em>
                   </p>
                 </div>
-                <p className="m-0 text-[var(--color-text-primary)] leading-relaxed">
+                <p className="m-0 text-[var(--color-text-primary)] leading-normal" style={{ margin: 0 }}>
                   <span className="text-[var(--color-text-muted)] mr-1">Email:</span>
                   <a
                     href="mailto:assistant@davidgodwinassociates.co.uk"
@@ -134,17 +134,17 @@ export default function ContactPage() {
                 </h2>
                 <div className="min-h-[4.5em] mb-4">
                   <p className="m-0 text-[var(--color-text-secondary)] leading-relaxed">
-                    To order signed/personalized copies of Aanchal&apos;s books, please contact:
+                    To order signed/personalized copies of Aanchal&apos;s books, contact:
                   </p>
                 </div>
               </div>
               <div className="pt-1">
-                <div className="mb-2 text-[var(--color-text-primary)] leading-relaxed">
-                  <p className="m-0 font-normal text-[#1C1B1A]">
-                    Bahrisons Booksellers, New Delhi
+                <div className="text-[var(--color-text-primary)] leading-normal" style={{ marginBottom: "2px" }}>
+                  <p className="m-0 font-normal" style={{ margin: 0, marginBottom: 0 }}>
+                    <span className="font-medium text-[#1C1B1A]">Bahrisons Booksellers</span>, New Delhi
                   </p>
                 </div>
-                <p className="m-0 text-[var(--color-text-primary)] leading-relaxed">
+                <p className="m-0 text-[var(--color-text-primary)] leading-normal" style={{ margin: 0 }}>
                   <span className="text-[var(--color-text-muted)] mr-1">Email:</span>
                   <a
                     href="mailto:bahrisons@outlook.com"

@@ -139,11 +139,10 @@ export default function PressAndInterviewsPage() {
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="underline underline-offset-4 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
+          className="no-underline transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
           style={{
             color: "#947D53",
-            textDecoration: "underline",
-            textUnderlineOffset: "4px",
+            textDecoration: "none",
           }}
         >
           {item.title}
@@ -172,14 +171,14 @@ export default function PressAndInterviewsPage() {
       <div className="editorial-container">
         <div className="w-full text-left font-[family-name:var(--font-serif-body)]">
           {/* Main Editorial Page Heading - Consistent with other pages (e.g. ABOUT, CONTACT) */}
-          <div className="mb-10 md:mb-12">
+          <div className="text-center mb-10 md:mb-12">
             <h1
               style={{
                 fontSize: "clamp(24px, 2.5vw, 28px)",
                 letterSpacing: "0.2em",
                 fontWeight: 400,
               }}
-              className="text-[#222222] uppercase leading-tight m-0 font-normal font-[family-name:var(--font-serif-display)]"
+              className="text-center text-[#222222] uppercase leading-tight m-0 font-normal font-[family-name:var(--font-serif-display)]"
             >
               PRESS &amp; INTERVIEWS
             </h1>
@@ -189,9 +188,9 @@ export default function PressAndInterviewsPage() {
           <section className="mb-8 md:mb-10" aria-labelledby="heading-interview">
             <h2
               id="heading-interview"
-              className="press-reveal-item font-[family-name:var(--font-serif-display)] text-[#222222] text-[16px] sm:text-[18px] font-semibold tracking-[0.08em] uppercase m-0 mb-3 leading-snug"
+              className="press-reveal-item font-[family-name:var(--font-serif-display)] text-[#222222] text-[16px] sm:text-[18px] font-semibold tracking-[0.08em] m-0 mb-3 leading-snug"
             >
-              INTERVIEW
+              Interview
             </h2>
             <div className="space-y-2.5">
               {interviewEntries.map((item, idx) => renderEntry(item, idx))}
@@ -205,9 +204,9 @@ export default function PressAndInterviewsPage() {
           >
             <h2
               id="heading-podcast-video"
-              className="press-reveal-item font-[family-name:var(--font-serif-display)] text-[#222222] text-[16px] sm:text-[18px] font-semibold tracking-[0.08em] uppercase m-0 mb-3 leading-snug"
+              className="press-reveal-item font-[family-name:var(--font-serif-display)] text-[#222222] text-[16px] sm:text-[18px] font-semibold tracking-[0.08em] m-0 mb-3 leading-snug"
             >
-              PODCAST &amp; VIDEO
+              Podcast &amp; Video
             </h2>
             <div className="space-y-2.5">
               {podcastVideoEntries.map((item, idx) => renderEntry(item, idx))}
@@ -218,9 +217,9 @@ export default function PressAndInterviewsPage() {
           <section className="mb-8 md:mb-10" aria-labelledby="heading-other">
             <h2
               id="heading-other"
-              className="press-reveal-item font-[family-name:var(--font-serif-display)] text-[#222222] text-[16px] sm:text-[18px] font-semibold tracking-[0.08em] uppercase m-0 mb-3 leading-snug"
+              className="press-reveal-item font-[family-name:var(--font-serif-display)] text-[#222222] text-[16px] sm:text-[18px] font-semibold tracking-[0.08em] m-0 mb-3 leading-snug"
             >
-              OTHER
+              Other
             </h2>
             <div className="space-y-2.5">
               {otherEntries.map((item, idx) => renderEntry(item, idx))}

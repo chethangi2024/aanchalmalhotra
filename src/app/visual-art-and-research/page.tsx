@@ -26,9 +26,6 @@ export default function VisualArtAndResearchPage() {
             >
               VISUAL ART &amp; RESEARCH
             </h1>
-            <p className="mt-3 text-[17px] sm:text-[19px] text-[var(--color-text-secondary)] italic leading-relaxed">
-              Printmaking, material archives, photographic fieldwork, and oral history research.
-            </p>
           </div>
 
           {/* Understated Image-Led Project Index (Inspired by Edmund de Waal's "Making") */}

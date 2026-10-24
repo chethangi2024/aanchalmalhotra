@@ -85,7 +85,7 @@ export default function ProjectSlideshow({
           </div>
 
           {/* Centered Project Header */}
-          <div className="text-center mb-8 md:mb-12">
+          <div className={`text-center ${projectSubtitle ? "mb-8 md:mb-12" : "mb-8 md:mb-10"}`}>
             <h1
               style={{
                 fontSize: "clamp(22px, 2.5vw, 28px)",

@@ -25,14 +25,47 @@ export default function OtherWritingPage() {
             >
               OTHER WRITING
             </h1>
-            <p className="mt-3 text-[17px] sm:text-[19px] text-[var(--color-text-secondary)] italic leading-relaxed">
-              Anthology contributions, selected essays, and articles.
-            </p>
           </div>
 
-          {/* Section 1: Anthologies */}
+          {/* Section 1: Selected Essays & Articles */}
           <section className="mb-16 md:mb-24">
-            <h2 className="text-[20px] sm:text-[22px] font-normal tracking-[0.12em] uppercase text-[var(--color-text-primary)] pb-3 mb-8 border-b border-[var(--color-border-subtle)] leading-snug">
+            <h2 className="text-[20px] sm:text-[22px] font-normal tracking-[0.08em] text-[var(--color-text-primary)] pb-3 mb-6 border-b border-[var(--color-border-subtle)] leading-snug">
+              Selected Essays &amp; Articles
+            </h2>
+
+            <div className="space-y-2.5">
+              {selectedEssaysArticlesData.map((essay) => (
+                <p
+                  key={essay.id}
+                  className="m-0 font-[family-name:var(--font-serif-body)] text-[18px] sm:text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums]"
+                >
+                  {essay.url ? (
+                    <a
+                      href={essay.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="no-underline transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
+                      style={{ color: "#947D53", textDecoration: "none" }}
+                    >
+                      {essay.title}
+                    </a>
+                  ) : (
+                    <span className="text-[var(--color-text-primary)]">
+                      {essay.title}
+                    </span>
+                  )}
+                  <span>, </span>
+                  <em className="italic">{essay.publication}</em>
+                  <span>, </span>
+                  <span>{essay.year}</span>
+                </p>
+              ))}
+            </div>
+          </section>
+
+          {/* Section 2: Anthologies */}
+          <section>
+            <h2 className="text-[20px] sm:text-[22px] font-normal tracking-[0.08em] text-[var(--color-text-primary)] pb-3 mb-8 border-b border-[var(--color-border-subtle)] leading-snug">
               Anthologies
             </h2>
 
@@ -69,49 +102,10 @@ export default function OtherWritingPage() {
                           rel="noopener noreferrer"
                           className="inline-flex items-center text-[12.5px] tracking-[0.1em] uppercase font-medium text-[var(--color-accent-mustard)] hover:underline underline-offset-4"
                         >
-                          {item.excerptLabel || "Read an Excerpt"} →
+                          {item.excerptLabel || "Read an Excerpt"} &rarr;
                         </a>
                       </div>
                     )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Section 2: Selected Essays & Articles */}
-          <section>
-            <h2 className="text-[20px] sm:text-[22px] font-normal tracking-[0.12em] uppercase text-[var(--color-text-primary)] pb-3 mb-6 border-b border-[var(--color-border-subtle)] leading-snug">
-              Selected Essays &amp; Articles
-            </h2>
-
-            <div className="divide-y divide-[var(--color-border-subtle)]">
-              {selectedEssaysArticlesData.map((essay) => (
-                <div
-                  key={essay.id}
-                  className="py-4.5 sm:py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1.5 sm:gap-6"
-                >
-                  <div className="flex-1 min-w-0">
-                    {essay.url ? (
-                      <a
-                        href={essay.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[18px] sm:text-[18.6px] leading-[24.2px] text-[var(--color-text-primary)] hover:text-[var(--color-accent-mustard)] transition-colors underline underline-offset-4 decoration-[var(--color-border-subtle)] hover:decoration-current [font-variant-numeric:oldstyle-nums]"
-                      >
-                        {essay.title}
-                      </a>
-                    ) : (
-                      <span className="text-[18px] sm:text-[18.6px] leading-[24.2px] text-[var(--color-text-primary)] [font-variant-numeric:oldstyle-nums]">
-                        {essay.title}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="flex items-center gap-2 shrink-0 text-[14px] sm:text-[15px] text-[var(--color-text-muted)]">
-                    <span className="italic">{essay.publication}</span>
-                    <span>·</span>
-                    <span className="[font-variant-numeric:oldstyle-nums]">{essay.year}</span>
                   </div>
                 </div>
               ))}
