@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { EB_Garamond } from "next/font/google";
+import { Crimson_Text } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
-// EB Garamond - the unified typography throughout the entire website
-const ebGaramond = EB_Garamond({
-  variable: "--font-eb-garamond",
+// Crimson Text - primary typography throughout the entire website
+const crimsonText = Crimson_Text({
+  variable: "--font-crimson-text",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600", "700"],
   style: ["normal", "italic"],
   display: "swap",
 });
@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${ebGaramond.variable}`}
+      className={`${crimsonText.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-[var(--color-bg)] text-[var(--color-text-primary)] antialiased">
         <Header />
