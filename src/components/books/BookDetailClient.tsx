@@ -28,6 +28,7 @@ const COVER_DIMENSIONS: Record<string, { width: number; height: number }> = {
 export default function BookDetailClient({ book }: BookDetailClientProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const coverDim = COVER_DIMENSIONS[book.slug] || { width: 800, height: 1200 };
+  const isBahrisons = book.slug === "bahrisons-chronicle-of-a-bookshop";
   const [activeLightboxItem, setActiveLightboxItem] = useState<{
     items: LightboxItem[];
     index: number;
@@ -205,7 +206,11 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
               </div>
 
               {/* Right Column: Awards & Opening Book Content */}
-              <div className="book-opening-text-col flex flex-col justify-start text-left pt-0">
+              <div
+                className={`book-opening-text-col flex flex-col justify-start text-left pt-0 ${
+                  isBahrisons ? "lg:max-w-[410px]" : ""
+                }`}
+              >
                 {/* Awards if any */}
                 {book.awards && book.awards.length > 0 && (
                   <div className="book-awards-section">

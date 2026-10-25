@@ -18,32 +18,59 @@
   }
 }
 
-/* Global Content Container - Consistent outer horizontal padding across all pages */
+/* Global Content Container - Increased left and right horizontal padding across all content sections (+20px) */
 .editorial-container {
   width: 100%;
   max-width: var(--container-max);
   margin-left: auto;
   margin-right: auto;
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+@media (min-width: 640px) {
+  .editorial-container {
+    padding-left: 84px;
+    padding-right: 84px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .editorial-container {
+    padding-left: 108px;
+    padding-right: 108px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .editorial-container {
+    padding-left: 128px;
+    padding-right: 128px;
+  }
+}
+
+/* Header & Navigation Menu - Preserve exact existing positions, margins, and spacing */
+header .editorial-container {
   padding-left: 20px;
   padding-right: 20px;
 }
 
 @media (min-width: 640px) {
-  .editorial-container {
+  header .editorial-container {
     padding-left: 48px;
     padding-right: 48px;
   }
 }
 
 @media (min-width: 1024px) {
-  .editorial-container {
+  header .editorial-container {
     padding-left: 64px;
     padding-right: 64px;
   }
 }
 
 @media (min-width: 1280px) {
-  .editorial-container {
+  header .editorial-container {
     padding-left: 80px;
     padding-right: 80px;
   }
