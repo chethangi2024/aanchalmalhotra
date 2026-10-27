@@ -30,7 +30,17 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
   const coverDim = COVER_DIMENSIONS[book.slug] || { width: 800, height: 1200 };
   const isBahrisons = book.slug === "bahrisons-chronicle-of-a-bookshop";
   const isLanguageOfRemembering = book.slug === "in-the-language-of-remembering";
-  const isCollapsibleBook = isBahrisons || isLanguageOfRemembering;
+  const isEverlastingThings = book.slug === "the-book-of-everlasting-things";
+  const isRemnants = book.slug === "remnants-of-a-separation";
+  const isCollapsibleBook =
+    isBahrisons ||
+    isLanguageOfRemembering ||
+    isEverlastingThings ||
+    isRemnants;
+  const hasRefinedQuoteSpacing =
+    isLanguageOfRemembering ||
+    isEverlastingThings ||
+    isRemnants;
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({
     gallery: false,
     prologue: false,
@@ -418,8 +428,8 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
 
           {/* SECTION 4: EDITIONS (If present) */}
           {book.editions && book.editions.length > 0 && (
-            <div className={`book-reveal-section ${isBahrisons ? "mt-0" : "mt-16 md:mt-20 pt-12 md:pt-14"} border-t border-[var(--color-border)]`}>
-              {isBahrisons ? (
+            <div className={`book-reveal-section ${isCollapsibleBook ? (isBahrisons ? "mt-0" : "mt-8 md:mt-10") : "mt-16 md:mt-20 pt-12 md:pt-14"} border-t border-[var(--color-border)]`}>
+              {isCollapsibleBook ? (
                 <button
                   type="button"
                   onClick={() => toggleSection("editions")}
@@ -452,8 +462,8 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                 </h2>
               )}
 
-              {(!isBahrisons || openSections.editions) && (
-                <div className={isBahrisons ? "pt-4 pb-8 sm:pt-5 sm:pb-10" : ""}>
+              {(!isCollapsibleBook || openSections.editions) && (
+                <div className={isCollapsibleBook ? "pt-4 pb-8 sm:pt-5 sm:pb-10" : ""}>
                   {/* If editions have cover images, display as interactive gallery grid */}
                   {book.editions.some((ed) => ed.coverImage) ? (
                     <div>
@@ -572,13 +582,13 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                     <div key={idx} className="m-0">
                       <p
                         className="text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums] not-italic m-0 mb-1.5"
-                        style={isLanguageOfRemembering ? { marginBottom: "4px" } : undefined}
+                        style={hasRefinedQuoteSpacing ? { marginBottom: "4px" } : undefined}
                       >
                         “{formatTextWithItalics(p.quote)}”
                       </p>
                       <p
                         className="text-[14px] sm:text-[15px] text-[var(--color-text-primary)] not-italic m-0"
-                        style={isLanguageOfRemembering ? { marginBottom: idx === book.praise!.length - 1 ? "0px" : "22px" } : undefined}
+                        style={hasRefinedQuoteSpacing ? { marginBottom: idx === book.praise!.length - 1 ? "0px" : "22px" } : undefined}
                       >
                         — {p.author}{p.titleOrRole && <>, {formatTextWithItalics(p.titleOrRole)}</>}
                       </p>
@@ -630,13 +640,13 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                     <div key={idx} className="m-0">
                       <p
                         className="text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums] m-0 mb-1.5"
-                        style={isLanguageOfRemembering ? { marginBottom: "4px" } : undefined}
+                        style={hasRefinedQuoteSpacing ? { marginBottom: "4px" } : undefined}
                       >
                         “{formatTextWithItalics(rev.quote)}”
                       </p>
                       <p
                         className="text-[14px] sm:text-[15px] text-[var(--color-text-primary)] m-0"
-                        style={isLanguageOfRemembering ? { marginBottom: idx === book.reviews!.length - 1 ? "0px" : "22px" } : undefined}
+                        style={hasRefinedQuoteSpacing ? { marginBottom: idx === book.reviews!.length - 1 ? "0px" : "22px" } : undefined}
                       >
                         — {rev.reviewer ? `${rev.reviewer}, ` : ""}
                         <em className="italic">{rev.source}</em>
@@ -788,7 +798,7 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                         {media.title}
                       </a>
                       <span className="italic text-[var(--color-text-muted)]">
-                        {" "}— {media.outlet}{media.year ? `, ${media.year}` : ""}
+                        {", "}{media.outlet}{media.year ? `, ${media.year}` : ""}
                       </span>
                     </p>
                   ))}

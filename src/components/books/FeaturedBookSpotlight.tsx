@@ -132,14 +132,18 @@ export default function FeaturedBookSpotlight({
               {/* Subtitle - Italicised */}
               <p
                 className="spotlight-text-reveal mt-2 mb-4 font-[family-name:var(--font-serif-body)] italic font-normal text-[16px] sm:text-[17px] leading-relaxed text-[var(--color-text-secondary)] tracking-wider uppercase"
+                style={{ fontStyle: "italic" }}
               >
-                THE PARTITION OF INDIA IN 100 OBJECTS
+                <em>THE PARTITION OF INDIA IN 100 OBJECTS</em>
               </p>
 
               {/* Exact Client Synopsis */}
               <div className="spotlight-text-reveal space-y-3 text-[var(--color-text-secondary)] font-[family-name:var(--font-serif-body)] text-[18.6px] leading-[24.2px] [font-variant-numeric:oldstyle-nums] mb-6">
                 <p className="m-0">
-                  Containing 100 objects from the Partition of India, oral historian and expert Aanchal Malhotra transforms a complex history into a gentle and accessible introduction for younger readers.
+                  <em className="italic">A Handful of Home</em> is a museum you can hold in your hands.
+                </p>
+                <p className="m-0">
+                  Containing 100 objects from the Partition of India, oral historian and expert Aanchal Malhotra transforms a complex history into a gentle and accessible introduction for younger readers. Through the quiet stories of everyday treasures, the vastness of Partition history becomes tangible; something a child can see, touch and understand. From a grandmother&apos;s gold bangle passed down through generations, to a red cap exchanged between two friends, and even a fifteen and a half foot crocodile head, readers will discover the resilience of the human spirit and the enduring power of memory.
                 </p>
                 <p className="m-0">
                   Vividly brought to life by Bangladeshi-British illustrator Maryam Huq, this book is a testament to the things we keep, the things we remember, and the stories that connect us all — no matter where we call home.
@@ -152,7 +156,7 @@ export default function FeaturedBookSpotlight({
                   href={`/books/${book.slug}`}
                   className="group inline-flex items-center gap-2 text-[13px] tracking-wider uppercase font-medium border-b border-[var(--color-text-primary)] pb-0.5 hover:text-[var(--color-accent-mustard)] hover:border-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
                 >
-                  <span>View Book Details</span>
+                  <span>Read more</span>
                   <span
                     className="transition-transform duration-200 group-hover:translate-x-1 font-sans text-[13px]"
                     aria-hidden="true"

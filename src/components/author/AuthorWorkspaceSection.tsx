@@ -123,7 +123,7 @@ export default function AuthorWorkspaceSection({
               />
             </div>
             {/* Small caption styled consistently with small book captions */}
-            <p className="mt-3 text-center sm:text-left font-[family-name:var(--font-serif-body)] text-[14px] sm:text-[15px] text-[var(--color-text-secondary)] tracking-normal m-0 w-full max-w-[260px] sm:max-w-[270px] md:max-w-[290px] lg:max-w-[305px]">
+            <p className="mt-4 sm:mt-5 text-center sm:text-left font-[family-name:var(--font-serif-body)] text-[16px] sm:text-[18px] leading-[1.35] text-[var(--color-text-secondary)] tracking-normal m-0 w-full max-w-[260px] sm:max-w-[270px] md:max-w-[290px] lg:max-w-[305px]">
               Workspace, New Delhi
             </p>
           </div>

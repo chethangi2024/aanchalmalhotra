@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import Link from "next/link";
 import type { GallerySlide } from "@/data/visualArtData";
 
 interface EverlastingThingsSlideshowProps {
@@ -60,19 +59,9 @@ export default function EverlastingThingsSlideshow({
   };
 
   return (
-    <div className="w-full pt-8 md:pt-12 pb-20 md:pb-28 bg-[var(--color-bg)]">
+    <div className="w-full pt-10 md:pt-14 pb-20 md:pb-28 bg-[var(--color-bg)]">
       <div className="editorial-container">
         <div className="w-full font-[family-name:var(--font-serif-body)]">
-          {/* Breadcrumb near upper-left content margin */}
-          <div className="mb-6 md:mb-8">
-            <Link
-              href="/visual-art-and-research"
-              className="inline-flex items-center gap-1.5 text-[13px] sm:text-[14px] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors tracking-[0.05em]"
-            >
-              <span aria-hidden="true">&larr;</span> Visual Art &amp; Research
-            </Link>
-          </div>
-
           {/* Centered Project Header */}
           <div className="text-center mb-8 md:mb-10">
             <h1

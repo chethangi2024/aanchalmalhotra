@@ -49,10 +49,10 @@ export default function VisualArtAndResearchPage() {
 
                 {/* Project Metadata */}
                 <div className="mt-4">
-                  <h2 className="text-[18px] sm:text-[20px] font-normal text-[var(--color-text-primary)] leading-snug group-hover:text-[var(--color-accent-mustard)] transition-colors">
+                  <h2 className="text-[16px] sm:text-[17.5px] font-normal text-[var(--color-text-primary)] leading-snug group-hover:text-[var(--color-accent-mustard)] transition-colors">
                     {project.title}
                   </h2>
-                  <p className="text-[15px] sm:text-[16px] text-[var(--color-text-secondary)] italic mt-1 leading-normal [font-variant-numeric:oldstyle-nums]">
+                  <p className="text-[13.5px] sm:text-[14.5px] text-[var(--color-text-secondary)] italic mt-1 leading-normal [font-variant-numeric:oldstyle-nums]">
                     {project.subtitle}
                   </p>
                 </div>
