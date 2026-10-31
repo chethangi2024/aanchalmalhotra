@@ -1,3 +1,9 @@
+export interface LightboxItem {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
 export interface BookEdition {
   id: string;
   title: string;

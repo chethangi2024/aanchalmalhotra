@@ -16,7 +16,7 @@ export default function AboutPage() {
           <div className="text-center mb-10 md:mb-14">
             <h1
               style={{
-                fontSize: "clamp(24px, 2.5vw, 28px)",
+                fontSize: "24px",
                 letterSpacing: "0.2em",
                 fontWeight: 400,
               }}
@@ -42,9 +42,9 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Right Column: Exact Client Biography with Reference Body Typography (17.6px / 24.2px) */}
+            {/* Right Column: Exact Client Biography with Reference Body Typography */}
             <div className="md:col-span-7 flex flex-col justify-start text-left pt-0 max-w-[560px]">
-              <div className="space-y-4 text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] font-[family-name:var(--font-serif-body)] font-normal [font-variant-numeric:oldstyle-nums] text-left sm:text-justify [text-align-last:left] [hyphens:none] [word-break:normal] [overflow-wrap:normal]">
+              <div className="space-y-4 text-[17px] leading-[24.2px] text-[#000000] font-[family-name:var(--font-serif-body)] font-normal [font-variant-numeric:oldstyle-nums] text-left sm:text-justify [text-align-last:left] [hyphens:none] [word-break:normal] [overflow-wrap:normal]">
                 {/* Paragraph 1 */}
                 <p className="m-0">
                   Aanchal Malhotra (b.1990) is an oral historian and writer based in New Delhi, India. She is the co-founder of the{" "}
@@ -52,11 +52,7 @@ export default function AboutPage() {
                     href="https://museumofmaterialmemory.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline underline-offset-4 hover:text-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
-                    style={{
-                      textDecoration: "underline",
-                      textUnderlineOffset: "4px",
-                    }}
+                    className="no-underline hover:text-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
                   >
                     <em>Museum of Material Memory</em>
                   </a>
@@ -65,11 +61,7 @@ export default function AboutPage() {
                     href="https://southasiaspeaks.org/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline underline-offset-4 hover:text-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
-                    style={{
-                      textDecoration: "underline",
-                      textUnderlineOffset: "4px",
-                    }}
+                    className="no-underline hover:text-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
                   >
                     <em>South Asia Speaks</em>
                   </a>

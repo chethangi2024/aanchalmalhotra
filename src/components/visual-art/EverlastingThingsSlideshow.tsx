@@ -66,7 +66,7 @@ export default function EverlastingThingsSlideshow({
           <div className="text-center mb-8 md:mb-10">
             <h1
               style={{
-                fontSize: "clamp(22px, 2.5vw, 28px)",
+                fontSize: "24px",
                 letterSpacing: "0.15em",
                 fontWeight: 400,
               }}
@@ -139,12 +139,12 @@ export default function EverlastingThingsSlideshow({
                 </div>
 
                 {/* Title and Tagline positioned neatly beneath image, left-aligned with image left edge */}
-                <div className="mt-4 sm:mt-5 text-left">
+                <div className="image-caption-gap mt-3.5 text-left">
                   <h2 className="text-[18px] sm:text-[20px] italic font-normal text-[var(--color-text-primary)] leading-snug font-[family-name:var(--font-serif-display)]">
                     {currentSlide.title}
                   </h2>
                   {currentSlide.caption ? (
-                    <p className="mt-1.5 text-[18px] sm:text-[19px] not-italic font-normal font-[family-name:var(--font-serif-body)] text-[var(--color-text-secondary)] leading-[26px] whitespace-pre-line [font-variant-numeric:oldstyle-nums]">
+                    <p className="mt-1.5 text-[17px] not-italic font-normal font-[family-name:var(--font-serif-body)] text-[#000000] leading-[26px] whitespace-pre-line [font-variant-numeric:oldstyle-nums]">
                       {currentSlide.caption}
                     </p>
                   ) : null}

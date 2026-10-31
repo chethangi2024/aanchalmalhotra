@@ -27,7 +27,7 @@ export default function PageTitle({
             {tag}
           </span>
         )}
-        <h1 className="text-[var(--text-3xl)] md:text-[var(--text-4xl)] lg:text-[var(--text-5xl)] text-[var(--color-text-primary)] leading-[var(--leading-tight)]">
+        <h1 className="text-[24px] text-[var(--color-text-primary)] leading-[var(--leading-tight)]">
           {title}
         </h1>
         {subtitle && (

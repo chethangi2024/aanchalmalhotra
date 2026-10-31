@@ -18,7 +18,7 @@ export default function VisualArtAndResearchPage() {
           <div className="text-center mb-12 md:mb-16">
             <h1
               style={{
-                fontSize: "clamp(24px, 2.5vw, 28px)",
+                fontSize: "24px",
                 letterSpacing: "0.2em",
                 fontWeight: 400,
               }}
@@ -48,7 +48,7 @@ export default function VisualArtAndResearchPage() {
                 </div>
 
                 {/* Project Metadata */}
-                <div className="mt-4">
+                <div className="image-caption-gap mt-3.5">
                   <h2 className="text-[16px] sm:text-[17.5px] font-normal text-[var(--color-text-primary)] leading-snug group-hover:text-[var(--color-accent-mustard)] transition-colors">
                     {project.title}
                   </h2>

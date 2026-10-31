@@ -17,7 +17,7 @@ export default function OtherWritingPage() {
           <div className="text-center mb-12 md:mb-16">
             <h1
               style={{
-                fontSize: "clamp(24px, 2.5vw, 28px)",
+                fontSize: "24px",
                 letterSpacing: "0.2em",
                 fontWeight: 400,
               }}
@@ -29,7 +29,10 @@ export default function OtherWritingPage() {
 
           {/* Section 1: Selected Essays & Articles */}
           <section className="mb-16 md:mb-24">
-            <h2 className="text-[20px] sm:text-[22px] font-normal tracking-[0.08em] text-[var(--color-text-primary)] pb-3 mb-6 border-b border-[var(--color-border-subtle)] leading-snug">
+            <h2
+              className="font-normal text-[var(--color-text-primary)] pb-3 mb-6 border-b border-[var(--color-border-subtle)] leading-snug"
+              style={{ fontSize: "22px" }}
+            >
               Selected Essays &amp; Articles
             </h2>
 
@@ -37,7 +40,7 @@ export default function OtherWritingPage() {
               {selectedEssaysArticlesData.map((essay) => (
                 <p
                   key={essay.id}
-                  className="m-0 font-[family-name:var(--font-serif-body)] text-[18px] sm:text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums]"
+                  className="m-0 font-[family-name:var(--font-serif-body)] text-[17px] leading-[24.2px] text-[#000000] [font-variant-numeric:oldstyle-nums]"
                 >
                   {essay.url ? (
                     <a
@@ -65,13 +68,16 @@ export default function OtherWritingPage() {
 
           {/* Section 2: Anthologies */}
           <section>
-            <h2 className="text-[20px] sm:text-[22px] font-normal tracking-[0.08em] text-[var(--color-text-primary)] pb-3 mb-8 border-b border-[var(--color-border-subtle)] leading-snug">
+            <h2
+              className="font-normal text-[var(--color-text-primary)] pb-3 mb-8 border-b border-[var(--color-border-subtle)] leading-snug"
+              style={{ fontSize: "22px" }}
+            >
               Anthologies
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+            <div className="flex flex-col space-y-10 md:space-y-12">
               {anthologiesData.map((item) => (
-                <div key={item.id} className="flex items-start gap-5 group">
+                <div key={item.id} className="flex items-start gap-5 sm:gap-6 group">
                   {item.coverImage ? (
                     <div className="relative w-[90px] sm:w-[105px] aspect-[2/3] shrink-0 overflow-hidden shadow-[0_2px_12px_rgba(28,27,26,0.08)] bg-[var(--color-bg-elevated)] border border-[var(--color-border-subtle)]">
                       <Image
@@ -85,22 +91,57 @@ export default function OtherWritingPage() {
                   ) : null}
 
                   <div className="flex-1 min-w-0 pt-0.5">
-                    <h3 className="text-[16px] sm:text-[17.6px] font-normal text-[var(--color-text-primary)] leading-[1.3] [font-variant-numeric:oldstyle-nums]">
-                      &ldquo;{item.chapterTitle}&rdquo;
-                    </h3>
-                    <p className="text-[16px] sm:text-[17px] text-[var(--color-text-secondary)] italic mt-1.5 leading-snug">
-                      in {item.bookTitle}
-                    </p>
-                    <p className="text-[14px] sm:text-[14.5px] text-[var(--color-text-muted)] mt-1.5 leading-normal">
-                      {item.editors} · {item.publisherYear}
-                    </p>
+                    {/* Title block: Essay Title directly followed by Anthology Book Title without extra gap */}
+                    <div className="leading-snug">
+                      <div
+                        className="text-[16px] sm:text-[17px] font-normal text-[var(--color-text-primary)] italic m-0 p-0"
+                        style={{ fontStyle: "italic", margin: 0, padding: 0 }}
+                      >
+                        <em className="italic">
+                          {item.id === "material-memory-partition" ||
+                          item.chapterTitle ===
+                            "Material Memory and the Partition of India: A Narrative Interview with Aanchal Malhotra by E. Dawson Varughese" ? (
+                            <>
+                              Material Memory and the Partition of India:
+                              <br />
+                              A Narrative Interview with Aanchal Malhotra by E. Dawson Varughese
+                            </>
+                          ) : (
+                            item.chapterTitle
+                          )}
+                        </em>
+                      </div>
+                      <div
+                        className="text-[16px] sm:text-[17px] font-normal text-[var(--color-text-secondary)] not-italic m-0 p-0"
+                        style={{ fontStyle: "normal", margin: 0, padding: 0 }}
+                      >
+                        {item.bookTitle}
+                      </div>
+                    </div>
+
+                    {/* Publication block: Small consistent gap only above editor, publisher directly below */}
+                    <div className="mt-3 leading-snug" style={{ marginTop: "12px" }}>
+                      <div
+                        className="text-[16px] sm:text-[17px] font-normal text-[var(--color-text-secondary)] not-italic m-0 p-0"
+                        style={{ fontStyle: "normal", margin: 0, padding: 0 }}
+                      >
+                        {item.editors}
+                      </div>
+                      <div
+                        className="text-[16px] sm:text-[17px] font-normal text-[var(--color-text-secondary)] not-italic m-0 p-0"
+                        style={{ fontStyle: "normal", margin: 0, padding: 0 }}
+                      >
+                        {item.publisherYear}
+                      </div>
+                    </div>
+
                     {item.excerptUrl && (
-                      <div className="mt-2.5">
+                      <div className="mt-3" style={{ marginTop: "12px" }}>
                         <a
                           href={item.excerptUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center text-[12.5px] tracking-[0.1em] uppercase font-medium text-[var(--color-accent-mustard)] hover:underline underline-offset-4"
+                          className="inline-flex items-center text-[12.5px] tracking-[0.1em] font-medium text-[var(--color-accent-mustard)] no-underline hover:opacity-80 transition-opacity"
                         >
                           {item.excerptLabel || "Read an Excerpt"} &rarr;
                         </a>

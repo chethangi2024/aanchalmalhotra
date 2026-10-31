@@ -42,7 +42,7 @@ export default function BookCover({
       </Link>
 
       {/* Book Title Caption Below Cover - Scaled to approximate navigation font size (17-18px), fits cover width with natural wrapping */}
-      <div className="mt-3.5 w-full text-center sm:text-left">
+      <div className="image-caption-gap mt-3.5 w-full text-center sm:text-left">
         <h2
           id={`book-title-${book.id}`}
           className="book-cover-title font-[family-name:var(--font-serif-display)] font-normal leading-[1.35] text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-mustard)] transition-colors duration-300 tracking-normal m-0"
@@ -52,7 +52,7 @@ export default function BookCover({
             hyphens: "none",
           }}
         >
-          <Link href={`/books/${book.slug}`} className="hover:underline focus:outline-none inline-block">
+          <Link href={`/books/${book.slug}`} className="no-underline focus:outline-none inline-block">
             {book.title}
           </Link>
         </h2>

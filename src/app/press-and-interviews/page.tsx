@@ -86,7 +86,7 @@ const otherEntries: PressEntry[] = [
     title: "A Guide to India’s Best Private Libraries",
     url: "https://www.thehindu.com/books/india-best-private-libraries-magazine-curation-aanchal-malhotra-manoj-kumar-jha-ranjit-hoskote-srilata-raman/article67144884.ece",
     publication: "The Hindu",
-    hasCommaBeforePublication: false,
+    hasCommaBeforePublication: true,
   },
 ];
 
@@ -133,7 +133,7 @@ export default function PressAndInterviewsPage() {
     return (
       <p
         key={idx}
-        className="press-reveal-item m-0 font-[family-name:var(--font-serif-body)] text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums]"
+        className="press-reveal-item m-0 font-[family-name:var(--font-serif-body)] text-[17px] leading-[24.2px] text-[#000000] [font-variant-numeric:oldstyle-nums]"
       >
         <a
           href={item.url}
@@ -174,7 +174,7 @@ export default function PressAndInterviewsPage() {
           <div className="text-center mb-10 md:mb-12">
             <h1
               style={{
-                fontSize: "clamp(24px, 2.5vw, 28px)",
+                fontSize: "24px",
                 letterSpacing: "0.2em",
                 fontWeight: 400,
               }}
@@ -188,7 +188,7 @@ export default function PressAndInterviewsPage() {
           <section className="mb-8 md:mb-10" aria-labelledby="heading-interview">
             <h2
               id="heading-interview"
-              className="press-reveal-item font-[family-name:var(--font-serif-display)] text-[#222222] text-[16px] sm:text-[18px] font-semibold tracking-[0.08em] m-0 mb-3 leading-snug"
+              className="press-reveal-item font-[family-name:var(--font-serif-display)] text-[#222222] text-[22px] font-semibold tracking-[0.08em] m-0 mb-3 leading-snug"
             >
               Interview
             </h2>
@@ -204,7 +204,7 @@ export default function PressAndInterviewsPage() {
           >
             <h2
               id="heading-podcast-video"
-              className="press-reveal-item font-[family-name:var(--font-serif-display)] text-[#222222] text-[16px] sm:text-[18px] font-semibold tracking-[0.08em] m-0 mb-3 leading-snug"
+              className="press-reveal-item font-[family-name:var(--font-serif-display)] text-[#222222] text-[22px] font-semibold tracking-[0.08em] m-0 mb-3 leading-snug"
             >
               Podcast &amp; Video
             </h2>
@@ -217,7 +217,7 @@ export default function PressAndInterviewsPage() {
           <section className="mb-8 md:mb-10" aria-labelledby="heading-other">
             <h2
               id="heading-other"
-              className="press-reveal-item font-[family-name:var(--font-serif-display)] text-[#222222] text-[16px] sm:text-[18px] font-semibold tracking-[0.08em] m-0 mb-3 leading-snug"
+              className="press-reveal-item font-[family-name:var(--font-serif-display)] text-[#222222] text-[22px] font-semibold tracking-[0.08em] m-0 mb-3 leading-snug"
             >
               Other
             </h2>

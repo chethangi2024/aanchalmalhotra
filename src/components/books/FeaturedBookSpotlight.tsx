@@ -120,7 +120,7 @@ export default function FeaturedBookSpotlight({
               {/* Book Title */}
               <h2
                 id="spotlight-title"
-                className="spotlight-text-reveal font-[family-name:var(--font-serif-display)] font-normal text-[22px] sm:text-[24px] leading-snug text-[var(--color-text-primary)] uppercase tracking-wide m-0"
+                className="spotlight-text-reveal font-[family-name:var(--font-serif-display)] font-normal text-[22px] leading-snug text-[var(--color-text-primary)] uppercase tracking-wide m-0"
                 style={{
                   wordBreak: "normal",
                   overflowWrap: "break-word",
@@ -138,7 +138,10 @@ export default function FeaturedBookSpotlight({
               </p>
 
               {/* Exact Client Synopsis */}
-              <div className="spotlight-text-reveal space-y-3 text-[var(--color-text-secondary)] font-[family-name:var(--font-serif-body)] text-[18.6px] leading-[24.2px] [font-variant-numeric:oldstyle-nums] mb-6">
+              <div
+                className="spotlight-text-reveal space-y-3 text-[#000000] font-[family-name:var(--font-serif-body)] text-[17px] leading-[24.2px] [font-variant-numeric:oldstyle-nums] m-0 mb-0 text-justify"
+                style={{ textAlign: "justify", marginBottom: "0px" }}
+              >
                 <p className="m-0">
                   <em className="italic">A Handful of Home</em> is a museum you can hold in your hands.
                 </p>
@@ -151,12 +154,15 @@ export default function FeaturedBookSpotlight({
               </div>
 
               {/* Call to Action Link */}
-              <div className="spotlight-text-reveal flex items-center">
+              <div
+                className="spotlight-text-reveal flex items-center mt-2.5"
+                style={{ marginTop: "10px" }}
+              >
                 <Link
                   href={`/books/${book.slug}`}
-                  className="group inline-flex items-center gap-2 text-[13px] tracking-wider uppercase font-medium border-b border-[var(--color-text-primary)] pb-0.5 hover:text-[var(--color-accent-mustard)] hover:border-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
+                  className="group inline-flex items-center gap-2 text-[13px] tracking-wider font-medium hover:text-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)] no-underline m-0"
                 >
-                  <span>Read more</span>
+                  <span>Read More</span>
                   <span
                     className="transition-transform duration-200 group-hover:translate-x-1 font-sans text-[13px]"
                     aria-hidden="true"

@@ -2,15 +2,39 @@
 
 import Image from "next/image";
 import readingGuideData from "@/data/remnantsReadingGuide.json";
-
-interface LightboxItem {
-  src: string;
-  alt: string;
-  caption?: string;
-}
+import { LightboxItem } from "@/data/types";
 
 interface RemnantsReadingGuideProps {
   onOpenLightbox: (items: LightboxItem[], index: number) => void;
+}
+
+const captionClass =
+  "image-caption-gap mt-3.5 mb-2 w-full text-[13.5px] sm:text-[14px] text-[#2C2C2C] leading-normal [hyphens:none] [word-break:normal] [overflow-wrap:normal]";
+const captionStyle: React.CSSProperties = {
+  fontFamily: "var(--font-serif-body)",
+  hyphens: "none",
+  WebkitHyphens: "none",
+};
+
+const subheadingClass =
+  "text-[22px] font-normal text-[#222222] m-0 mb-5 leading-snug font-[family-name:var(--font-serif-display)]";
+const bodyTextClass =
+  "space-y-3.5 text-[17px] leading-[24.2px] text-[#000000] [font-variant-numeric:oldstyle-nums] text-justify [text-align-last:left]";
+
+function renderFormattedText(text?: string): React.ReactNode {
+  if (!text) return text;
+  if (!text.includes("*")) return text;
+  const parts = text.split(/(\*[^*]+\*)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith("*") && part.endsWith("*") && part.length > 2) {
+      return (
+        <em key={index} className="italic font-normal">
+          {part.slice(1, -1)}
+        </em>
+      );
+    }
+    return part;
+  });
 }
 
 export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReadingGuideProps) {
@@ -25,12 +49,12 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
   };
 
   return (
-    <section id="reading-guide" className="book-reveal-section mt-16 md:mt-24 pt-12 md:pt-16 border-t border-[var(--color-border)]">
+    <section id="reading-guide" className="book-reveal-section">
       {/* Main Section Header */}
       <div className="mb-10 md:mb-12">
-        <h2 className="text-[22px] sm:text-[24px] font-normal uppercase leading-snug tracking-[0.06em] text-[#222222] m-0 mb-3">
-          {readingGuideData.title}
-        </h2>
+        <h1 className="text-[22px] font-normal uppercase leading-snug tracking-[0.06em] text-[#222222] m-0 mb-3">
+          REMNANTS OF A SEPARATION – <span className="italic font-normal">A READING GUIDE</span>
+        </h1>
         <div className="w-12 h-[1px] bg-[#947D53] mt-2 mb-6" />
       </div>
 
@@ -42,14 +66,14 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
             const imgIdx = introImg ? registerImage(introImg.src, introImg.alt, introImg.caption) : -1;
             return (
               <div key={sub.id} className="book-reveal-section pt-4">
-                <h3 className="text-[20px] sm:text-[22px] uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-5 leading-snug">
-                  1. {sub.title}
-                </h3>
+                <h2 className={subheadingClass}>
+                  {sub.title}
+                </h2>
                 
                 {/* Intro paragraphs */}
-                <div className="reading-guide-intro-text text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums]">
+                <div className={`reading-guide-intro-text ${bodyTextClass}`}>
                   {(sub as any).text.map((p: string, pIdx: number) => (
-                    <p key={pIdx} className="m-0">{p}</p>
+                    <p key={pIdx} className="m-0">{renderFormattedText(p)}</p>
                   ))}
                 </div>
 
@@ -78,10 +102,10 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                           </button>
                           {img.caption && (
                             <p
-                              className="mt-3.5 mb-2 w-full max-w-[260px] mx-auto text-center text-[15px] sm:text-[16px] text-[#2C2C2C] leading-snug"
-                              style={{ fontFamily: "var(--font-serif-body)", textAlign: "center" }}
+                              className={`${captionClass} text-center max-w-[260px] mx-auto`}
+                              style={captionStyle}
                             >
-                              {img.caption}
+                              {renderFormattedText(img.caption)}
                             </p>
                           )}
                         </div>
@@ -109,10 +133,10 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                     </button>
                     {introImg.caption && (
                       <p
-                        className="mt-3.5 mb-2 w-full text-center text-[15px] sm:text-[16px] text-[#2C2C2C] leading-snug"
-                        style={{ fontFamily: "var(--font-serif-body)", textAlign: "center" }}
+                        className={`${captionClass} text-center`}
+                        style={captionStyle}
                       >
-                        {introImg.caption}
+                        {renderFormattedText(introImg.caption)}
                       </p>
                     )}
                   </div>
@@ -120,9 +144,9 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
 
                 {/* Paragraphs after image */}
                 {(sub as any).paragraphsAfterImage && (
-                  <div className="space-y-3.5 text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums] text-left">
+                  <div className={bodyTextClass}>
                     {(sub as any).paragraphsAfterImage.map((p: string, pIdx: number) => (
-                      <p key={pIdx} className="m-0">{p}</p>
+                      <p key={pIdx} className="m-0">{renderFormattedText(p)}</p>
                     ))}
                   </div>
                 )}
@@ -134,13 +158,13 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
             const items = (sub as any).items || [];
             return (
               <div key={sub.id} className="book-reveal-section pt-8 border-t border-[var(--color-border)]">
-                <h3 className="text-[20px] sm:text-[22px] leading-snug uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-5">
-                  2. {sub.title}
-                </h3>
+                <h2 className={subheadingClass}>
+                  {sub.title}
+                </h2>
                 
-                <div className="space-y-3.5 text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums] text-left mb-8">
+                <div className={`${bodyTextClass} mb-8`}>
                   {(sub as any).text.map((p: string, pIdx: number) => (
-                    <p key={pIdx} className="m-0">{p}</p>
+                    <p key={pIdx} className="m-0">{renderFormattedText(p)}</p>
                   ))}
                 </div>
 
@@ -166,24 +190,19 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                             />
                           </div>
                         </button>
-                        <p
-                          className="mt-3.5 mb-2 w-full text-[15px] sm:text-[16px] text-[#2C2C2C] leading-snug reading-guide-caption"
-                          style={{ fontFamily: "var(--font-serif-body)" }}
-                        >
-                          {item.caption || (sub as any).caption}
-                        </p>
+                        <p className={captionClass} style={captionStyle}>{renderFormattedText(item.caption || (sub as any).caption)}</p>
                       </div>
                     );
                   })}
                 </div>
                 {(sub as any).seeMoreUrl && (
-                  <p className="mt-2 text-left text-[15px] sm:text-[16px] leading-snug">
+                  <p className="mt-2 text-justify [text-align-last:left] text-[15px] sm:text-[16px] leading-snug">
                     <a
                       href={(sub as any).seeMoreUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="underline underline-offset-2 transition-opacity hover:opacity-80"
-                      style={{ color: "#947D53", textDecoration: "underline", textUnderlineOffset: "3px" }}
+                      className="no-underline transition-opacity hover:opacity-80"
+                      style={{ color: "#947D53", textDecoration: "none" }}
                     >
                       See more photographs by Margaret Bourke-White here
                     </a>
@@ -197,13 +216,13 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
             const items = (sub as any).items || [];
             return (
               <div key={sub.id} className="book-reveal-section pt-8 border-t border-[var(--color-border)]">
-                <h3 className="text-[20px] sm:text-[22px] leading-snug uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-5">
-                  3. {sub.title}
-                </h3>
+                <h2 className={subheadingClass}>
+                  {sub.title}
+                </h2>
                 
-                <div className="space-y-3.5 text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums] text-left mb-8">
+                <div className={`${bodyTextClass} mb-8`}>
                   {(sub as any).text.map((p: string, pIdx: number) => (
-                    <p key={pIdx} className="m-0">{p}</p>
+                    <p key={pIdx} className="m-0">{renderFormattedText(p)}</p>
                   ))}
                 </div>
 
@@ -229,12 +248,7 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                             />
                           </div>
                         </button>
-                        <p
-                          className="mt-3.5 mb-2 w-full text-[15px] sm:text-[16px] text-[#2C2C2C] leading-snug reading-guide-caption"
-                          style={{ fontFamily: "var(--font-serif-body)" }}
-                        >
-                          {item.caption}
-                        </p>
+                        <p className={captionClass} style={captionStyle}>{renderFormattedText(item.caption)}</p>
                       </div>
                     );
                   })}
@@ -247,13 +261,13 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
             const items = (sub as any).items || [];
             return (
               <div key={sub.id} className="book-reveal-section pt-8 border-t border-[var(--color-border)]">
-                <h3 className="text-[20px] sm:text-[22px] leading-snug uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-5">
-                  4. {sub.title}
-                </h3>
+                <h2 className={subheadingClass}>
+                  {sub.title}
+                </h2>
                 
-                <div className="space-y-3.5 text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums] text-left mb-8">
+                <div className={`${bodyTextClass} mb-8`}>
                   {(sub as any).text.map((p: string, pIdx: number) => (
-                    <p key={pIdx} className="m-0">{p}</p>
+                    <p key={pIdx} className="m-0">{renderFormattedText(p)}</p>
                   ))}
                 </div>
 
@@ -279,12 +293,7 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                             />
                           </div>
                         </button>
-                        <p
-                          className="mt-3.5 mb-2 w-full text-[15px] sm:text-[16px] text-[#2C2C2C] leading-snug reading-guide-caption"
-                          style={{ fontFamily: "var(--font-serif-body)" }}
-                        >
-                          {item.caption}
-                        </p>
+                        <p className={captionClass} style={captionStyle}>{renderFormattedText(item.caption)}</p>
                       </div>
                     );
                   })}
@@ -297,13 +306,13 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
             const items = (sub as any).items || [];
             return (
               <div key={sub.id} className="book-reveal-section pt-8 border-t border-[var(--color-border)]">
-                <h3 className="text-[20px] sm:text-[22px] leading-snug uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-5">
-                  5. {sub.title}
-                </h3>
+                <h2 className={subheadingClass}>
+                  {sub.title}
+                </h2>
                 
-                <div className="space-y-3.5 text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums] text-left mb-8">
+                <div className={`${bodyTextClass} mb-8`}>
                   {(sub as any).text.map((p: string, pIdx: number) => (
-                    <p key={pIdx} className="m-0">{p}</p>
+                    <p key={pIdx} className="m-0">{renderFormattedText(p)}</p>
                   ))}
                 </div>
 
@@ -328,12 +337,7 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                             />
                           </div>
                         </button>
-                        <p
-                          className="mt-3.5 mb-2 w-full text-[15px] sm:text-[16px] text-[#2C2C2C] leading-snug reading-guide-caption"
-                          style={{ fontFamily: "var(--font-serif-body)" }}
-                        >
-                          {item.caption}
-                        </p>
+                        <p className={captionClass} style={captionStyle}>{renderFormattedText(item.caption)}</p>
                       </div>
                     );
                   })}
@@ -346,13 +350,13 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
             const items = (sub as any).items || [];
             return (
               <div key={sub.id} className="book-reveal-section pt-8 border-t border-[var(--color-border)]">
-                <h3 className="text-[20px] sm:text-[22px] leading-snug uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-5">
-                  6. {sub.title}
-                </h3>
+                <h2 className={subheadingClass}>
+                  {sub.title}
+                </h2>
                 
-                <div className="space-y-3.5 text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums] text-left mb-8">
+                <div className={`${bodyTextClass} mb-8`}>
                   {(sub as any).text.map((p: string, pIdx: number) => (
-                    <p key={pIdx} className="m-0">{p}</p>
+                    <p key={pIdx} className="m-0">{renderFormattedText(p)}</p>
                   ))}
                 </div>
 
@@ -378,12 +382,7 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                             />
                           </div>
                         </button>
-                        <p
-                          className="mt-3.5 mb-2 w-full text-[15px] sm:text-[16px] text-[#2C2C2C] leading-snug reading-guide-caption"
-                          style={{ fontFamily: "var(--font-serif-body)" }}
-                        >
-                          {item.caption}
-                        </p>
+                        <p className={captionClass} style={captionStyle}>{renderFormattedText(item.caption)}</p>
                       </div>
                     );
                   })}
@@ -396,13 +395,13 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
             const items = (sub as any).items || [];
             return (
               <div key={sub.id} className="book-reveal-section pt-8 border-t border-[var(--color-border)]">
-                <h3 className="text-[20px] sm:text-[22px] leading-snug uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-5">
-                  7. {sub.title}
-                </h3>
+                <h2 className={subheadingClass}>
+                  {sub.title}
+                </h2>
                 
-                <div className="space-y-3.5 text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums] text-left mb-8">
+                <div className={`${bodyTextClass} mb-8`}>
                   {(sub as any).text.map((p: string, pIdx: number) => (
-                    <p key={pIdx} className="m-0">{p}</p>
+                    <p key={pIdx} className="m-0">{renderFormattedText(p)}</p>
                   ))}
                 </div>
 
@@ -427,12 +426,7 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                             />
                           </div>
                         </button>
-                        <p
-                          className="mt-3.5 mb-2 w-full text-[15px] sm:text-[16px] text-[#2C2C2C] leading-snug reading-guide-caption"
-                          style={{ fontFamily: "var(--font-serif-body)" }}
-                        >
-                          {item.caption}
-                        </p>
+                        <p className={captionClass} style={captionStyle}>{renderFormattedText(item.caption)}</p>
                       </div>
                     );
                   })}
@@ -445,13 +439,13 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
             const items = (sub as any).items || [];
             return (
               <div key={sub.id} className="book-reveal-section pt-8 border-t border-[var(--color-border)]">
-                <h3 className="text-[20px] sm:text-[22px] leading-snug uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-5">
-                  8. {sub.title}
-                </h3>
+                <h2 className={subheadingClass}>
+                  {sub.title}
+                </h2>
                 
-                <div className="space-y-3.5 text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums] text-left mb-8">
+                <div className={`${bodyTextClass} mb-8`}>
                   {(sub as any).text.map((p: string, pIdx: number) => (
-                    <p key={pIdx} className="m-0">{p}</p>
+                    <p key={pIdx} className="m-0">{renderFormattedText(p)}</p>
                   ))}
                 </div>
 
@@ -476,12 +470,7 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                             />
                           </div>
                         </button>
-                        <p
-                          className="mt-3.5 mb-2 w-full text-[15px] sm:text-[16px] text-[#2C2C2C] leading-snug reading-guide-caption"
-                          style={{ fontFamily: "var(--font-serif-body)" }}
-                        >
-                          {item.caption}
-                        </p>
+                        <p className={captionClass} style={captionStyle}>{renderFormattedText(item.caption)}</p>
                       </div>
                     );
                   })}
@@ -495,13 +484,13 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
             const imgIdx = singleImg ? registerImage(singleImg.src, singleImg.alt, singleImg.caption) : -1;
             return (
               <div key={sub.id} className="book-reveal-section pt-8 border-t border-[var(--color-border)]">
-                <h3 className="text-[20px] sm:text-[22px] leading-snug uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-5">
-                  9. {sub.title}
-                </h3>
+                <h2 className={subheadingClass}>
+                  {sub.title}
+                </h2>
                 
-                <div className="space-y-3.5 text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums] text-left mb-8">
+                <div className={`${bodyTextClass} mb-8`}>
                   {(sub as any).text.map((p: string, pIdx: number) => (
-                    <p key={pIdx} className="m-0">{p}</p>
+                    <p key={pIdx} className="m-0">{renderFormattedText(p)}</p>
                   ))}
                 </div>
 
@@ -523,12 +512,7 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                         />
                       </div>
                     </button>
-                    <p
-                      className="mt-3.5 mb-2 w-full text-[15px] sm:text-[16px] text-[#2C2C2C] leading-snug reading-guide-caption"
-                      style={{ fontFamily: "var(--font-serif-body)" }}
-                    >
-                      {singleImg.caption}
-                    </p>
+                    <p className={captionClass} style={captionStyle}>{renderFormattedText(singleImg.caption)}</p>
                   </div>
                 )}
               </div>
@@ -540,10 +524,10 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
             return (
               <div key={sub.id} id="book-chapters" className="book-reveal-section pt-10 border-t border-[var(--color-border)]">
                 {/* Heading: Book Chapters */}
-                <div className="mb-3 text-left">
-                  <h3 className="text-[24px] sm:text-[26px] md:text-[28px] font-normal text-[#1A1A1A] m-0" style={{ fontFamily: "var(--font-serif-body)" }}>
-                    Book Chapters
-                  </h3>
+                <div className="mb-5 text-left">
+                  <h2 className={subheadingClass}>
+                    {sub.title}
+                  </h2>
                 </div>
 
                 {/* Individual Chapter blocks with thin grey horizontal divider between them */}
@@ -557,12 +541,11 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                         className={`${cIdx === 0 ? "pt-1" : "pt-10 border-t border-[#A0A0A0]/30"}`}
                       >
                         {/* Chapter Title: exact order and wording */}
-                        <h4
-                          className="text-[16px] sm:text-[18px] font-semibold text-[#1A1A1A] leading-snug m-0 mb-4 text-left"
-                          style={{ fontFamily: "var(--font-serif-body)" }}
+                        <h3
+                          className="text-[17px] sm:text-[18px] font-semibold text-[#1A1A1A] leading-snug m-0 mb-4 text-left font-[family-name:var(--font-serif-body)]"
                         >
                           <span className="italic">{ch.title}</span>
-                        </h4>
+                        </h3>
 
                         {/* If single image */}
                         {ch.image && (
@@ -588,12 +571,7 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                                     </div>
                                   </button>
                                   {ch.image.caption && (
-                                    <p
-                                      className="mt-3.5 mb-2 text-left w-full text-[15px] sm:text-[16px] text-[#2C2C2C] leading-snug reading-guide-caption"
-                                      style={{ fontFamily: "var(--font-serif-body)" }}
-                                    >
-                                      {ch.image.caption}
-                                    </p>
+                                    <p className={`${captionClass} text-left`} style={captionStyle}>{renderFormattedText(ch.image.caption)}</p>
                                   )}
                                 </>
                               );
@@ -641,12 +619,7 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                                       />
                                     </div>
                                   </button>
-                                  <p
-                                    className="mt-3.5 mb-2 text-left w-full text-[15px] sm:text-[16px] text-[#2C2C2C] leading-snug reading-guide-caption"
-                                    style={{ fontFamily: "var(--font-serif-body)" }}
-                                  >
-                                    {im.caption}
-                                  </p>
+                                  <p className={`${captionClass} text-left`} style={captionStyle}>{renderFormattedText(im.caption)}</p>
                                 </div>
                               );
                             })}
@@ -658,25 +631,23 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                           <div className="space-y-10 my-4">
                             {ch.subSections.map((subSec: any, ssIdx: number) => (
                               <div key={ssIdx} className="pt-2">
-                                <h5
-                                  className="text-[19px] sm:text-[21px] font-semibold text-[#1A1A1A] m-0 mb-3 text-left"
-                                  style={{ fontFamily: "var(--font-serif-body)" }}
+                                <h4
+                                  className="text-[17px] sm:text-[18px] font-semibold text-[#1A1A1A] m-0 mb-3 text-left font-[family-name:var(--font-serif-body)]"
                                 >
                                   <span className="italic">{subSec.title}</span>
-                                </h5>
+                                </h4>
                                 {subSec.text && (
                                   <p
-                                    className="text-[18px] sm:text-[19px] text-[#2C2C2C] leading-relaxed m-0 mb-6 text-left"
-                                    style={{ fontFamily: "var(--font-serif-body)" }}
+                                    className="text-[17px] leading-[24.2px] text-[#000000] [font-variant-numeric:oldstyle-nums] text-justify [text-align-last:left] m-0 mb-6 font-[family-name:var(--font-serif-body)]"
                                   >
-                                    {subSec.text}{" "}
+                                    {renderFormattedText(subSec.text)}{" "}
                                     {subSec.link && (
                                       <a
                                         href={subSec.link.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="underline underline-offset-2 transition-opacity hover:opacity-80"
-                                        style={{ color: "#947D53", textDecoration: "underline", textUnderlineOffset: "3px" }}
+                                        className="no-underline transition-opacity hover:opacity-80"
+                                        style={{ color: "#947D53", textDecoration: "none" }}
                                       >
                                         {subSec.link.label}
                                       </a>
@@ -705,12 +676,7 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                                               />
                                             </div>
                                           </button>
-                                          <p
-                                            className="mt-3.5 mb-2 text-left w-full text-[15px] sm:text-[16px] text-[#2C2C2C] leading-snug reading-guide-caption"
-                                            style={{ fontFamily: "var(--font-serif-body)" }}
-                                          >
-                                            {im.caption}
-                                          </p>
+                                          <p className={`${captionClass} text-left`} style={captionStyle}>{renderFormattedText(im.caption)}</p>
                                         </div>
                                       );
                                     })}
@@ -732,13 +698,13 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
             const items = (sub as any).items || [];
             return (
               <div key={sub.id} className="book-reveal-section pt-8 border-t border-[var(--color-border)]">
-                <h3 className="text-[20px] sm:text-[22px] leading-snug uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-5">
-                  11. {sub.title}
-                </h3>
+                <h2 className={subheadingClass}>
+                  {sub.title}
+                </h2>
                 
-                <div className="space-y-3.5 text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums] text-left mb-8">
+                <div className={`${bodyTextClass} mb-8`}>
                   {(sub as any).text.map((p: string, pIdx: number) => (
-                    <p key={pIdx} className="m-0">{p}</p>
+                    <p key={pIdx} className="m-0">{renderFormattedText(p)}</p>
                   ))}
                 </div>
 
@@ -763,12 +729,7 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                             />
                           </div>
                         </button>
-                        <p
-                          className="mt-3.5 mb-2 w-full text-[15px] sm:text-[16px] text-[#2C2C2C] leading-snug reading-guide-caption"
-                          style={{ fontFamily: "var(--font-serif-body)" }}
-                        >
-                          {item.caption}
-                        </p>
+                        <p className={captionClass} style={captionStyle}>{renderFormattedText(item.caption)}</p>
                       </div>
                     );
                   })}
@@ -781,30 +742,30 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
             const addRes = (sub as any).additionalResources;
             return (
               <div key={sub.id} className="book-reveal-section pt-8 border-t border-[var(--color-border)]">
-                <h3 className="text-[20px] sm:text-[22px] leading-snug uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-5">
-                  12. {sub.title}
-                </h3>
+                <h2 className={subheadingClass}>
+                  {sub.title}
+                </h2>
                 
-                <div className="space-y-3.5 text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums] text-left mb-10">
+                <div className={`${bodyTextClass} mb-10`}>
                   {(sub as any).text.map((p: string, pIdx: number) => (
-                    <p key={pIdx} className="m-0">{p}</p>
+                    <p key={pIdx} className="m-0">{renderFormattedText(p)}</p>
                   ))}
                 </div>
 
                 {addRes && (
                   <div className="mt-8 pt-6 border-t border-[#E8E4DF]">
-                    <h4 className="text-[15px] sm:text-[16px] uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-4 leading-snug">
+                    <h3 className="text-[18px] sm:text-[19px] font-normal text-[#222222] m-0 mb-4 leading-snug font-[family-name:var(--font-serif-display)]">
                       {addRes.title}
-                    </h4>
-                    <div className="space-y-2 text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums]">
+                    </h3>
+                    <div className="space-y-2 text-[17px] leading-[24.2px] text-[#000000] [font-variant-numeric:oldstyle-nums] text-justify [text-align-last:left]">
                       {addRes.links.map((linkItem: any, lIdx: number) => (
                         <p key={lIdx} className="m-0">
                           <a
                             href={linkItem.url}
                             target={linkItem.url.startsWith("http") ? "_blank" : undefined}
                             rel={linkItem.url.startsWith("http") ? "noopener noreferrer" : undefined}
-                            className="underline underline-offset-4 transition-opacity hover:opacity-80"
-                            style={{ color: "#947D53", textDecoration: "underline", textUnderlineOffset: "4px" }}
+                            className="no-underline transition-opacity hover:opacity-80"
+                            style={{ color: "#947D53", textDecoration: "none" }}
                           >
                             {linkItem.label}
                           </a>

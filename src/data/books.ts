@@ -6,15 +6,16 @@ export const booksData: Book[] = [
     slug: "a-handful-of-home",
     order: 1,
     title: "A Handful of Home",
-    subtitle: "A Museum You Can Hold in Your Hands",
+    subtitle: "THE PARTITION OF INDIA IN 100 OBJECTS",
     tagline: "Transforms a complex history into a gentle and accessible introduction for younger readers.",
-    authorCredit: "Aanchal Malhotra, Illustrated by Maryam Huq",
+    authorCredit: "THE PARTITION OF INDIA IN 100 OBJECTS",
     publisherCredit: "Coming May 2026",
     coverImage: "/images/books/handful-of-home-clean.jpg",
     coverAlt: "A Handful of Home book cover",
     synopsis: [
       "A Handful of Home is a museum you can hold in your hands.",
       "Containing 100 objects from the Partition of India, oral historian and expert Aanchal Malhotra transforms a complex history into a gentle and accessible introduction for younger readers.",
+      "Through the quiet stories of everyday treasures, the vastness of Partition history becomes tangible; something a child can see, touch and understand. From a grandmother's gold bangle passed down through generations, to a red cap exchanged between two friends, and even a fifteen and a half foot crocodile head, readers will discover the resilience of the human spirit and the enduring power of memory.",
       "Vividly brought to life by Bangladeshi-British illustrator Maryam Huq, this book is a testament to the things we keep, the things we remember, and the stories that connect us all — no matter where we call home."
     ]
   },
@@ -136,7 +137,7 @@ export const booksData: Book[] = [
       },
     ],
     prologue: {
-      title: "PROLOGUE",
+      title: "PREFACE",
       text: [
         "Two decades ago, as my grandfather, Balraj Bahri, approached his 75th year and Bahrisons, its 50th anniversary, my father Anuj Bahri, along with his then-editor, Debbie Smith, interviewed him about his life and the setting up of the bookshop. The recordings ran for hours, his voice filled cassette after cassette, and painstakingly, my father transcribed each word. And though the purpose of the exercise was to understand how a twenty-five-year-old man in 1953 set up what would become a literary institution in Delhi, it also became essential to understand the circumstances that led to that establishment. For the most part, the interviews could largely be divided into two sections – life before in what became Pakistan, and life after in an independent India. The sudden uprootedness, the refugeeing of his days, the struggle in the beginning coloured each page. After months of work, my father presented him with the archive, a book called Chronicle of a Bookshop.",
         "In 2013, when I began my work as an oral historian focusing on the Partition, the story of the bookshop became a research interest for me. I, too, spent hours interviewing my grandfather to discover the details of his journey. The flow of the conversation was different from the earlier tapes, but a significant amount of time had also passed – not to mention the change of the interviewer – allowing some memories to find utterance and others to submerge. Additionally, I began interviewing my grandmother about her unique experiences of the Partition and rehabilitation, which can be found in my books Remnants of a Separation and In the Language of Remembering.",
@@ -165,6 +166,7 @@ export const booksData: Book[] = [
       "On a January morning in 1938, Samir Vij first locks eyes with Firdaus Khan through the rows of perfume bottles in his family’s ittar shop in Lahore. Over the years that follow, the perfumer’s apprentice and calligrapher’s apprentice fall in love with their ancient crafts and with each other, dreaming of the life they will one day share. But as the struggle for Indian independence gathers force, their beloved city is ravaged by Partition. Suddenly, they find themselves on opposite sides: Samir, a Hindu, becomes Indian and Firdaus, a Muslim, becomes Pakistani, their love now forbidden. Severed from one another, Samir and Firdaus make a series of fateful decisions that will change the course of their lives forever. As their paths spiral away from each other, they must each decide how much of the past they are willing to let go, and what it will cost them. Lush, sensuous, and deeply romantic, The Book of Everlasting Things is the story of two lovers and two nations, split apart by forces beyond their control, yet bound by love and memory."
     ],
     readingGuideUrl: "/visual-art-and-research",
+    readingGuideLabel: "To View a Research Guide, Click Here",
     editions: [
       {
         id: "north-america",
@@ -199,7 +201,6 @@ export const booksData: Book[] = [
         coverImage: "/images/books/editions/everlasting-things/russia-everbook.png"
       }
     ],
-    forthcomingEditionsNotice: "Forthcoming editions (2027): Hindi (HarperCollins India), Croatia (Hena Com)",
     praise: [
       {
         quote: "Magical, illuminating, and thought-provoking! There is true love, longing, loss, and healing inside The Book of Everlasting Things. Malhotra writes with the power of a novelist who is the master of her craft.",
@@ -527,7 +528,7 @@ export const booksData: Book[] = [
       "Published in South Asia as Remnants of a Separation: A History of Partition through Material Memory (HarperCollins India, 2017) and internationally as Remnants of Partition: 21 Objects from a Continent Divided (Hurst, 2019)."
     ],
     readingGuideUrl: "/books/remnants-of-a-separation/reading-guide",
-    readingGuideLabel: "TO VIEW A READING GUIDE, CLICK HERE",
+    readingGuideLabel: "To View a Reading Guide, Click Here",
     editions: [
       {
         id: "remnants-north-america-uk",

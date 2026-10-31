@@ -39,7 +39,7 @@ export const featuredBookConfig: FeaturedBookConfig = {
     illustratorCredit: "Vividly brought to life by Bangladeshi-British illustrator Maryam Huq",
     note: "Work-in-progress cover artwork shown above; final cover design to be revealed ahead of release.",
     ctaLink: {
-      label: "Read more",
+      label: "Read More",
       href: "/books/a-handful-of-home",
     },
   },

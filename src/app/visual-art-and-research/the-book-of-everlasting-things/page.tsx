@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import EverlastingThingsSlideshow from "@/components/visual-art/EverlastingThingsSlideshow";
+import EverlastingThingsClient from "@/components/visual-art/EverlastingThingsClient";
 import { everlastingThingsSlides } from "@/data/visualArtData";
 
 export const metadata: Metadata = {
@@ -9,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function TheBookOfEverlastingThingsPage() {
-  return <EverlastingThingsSlideshow slides={everlastingThingsSlides} />;
+  return <EverlastingThingsClient slides={everlastingThingsSlides} />;
 }

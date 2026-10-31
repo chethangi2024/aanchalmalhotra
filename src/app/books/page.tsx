@@ -20,7 +20,7 @@ export default function BooksPage() {
           <div className="text-center mb-12 md:mb-16">
             <h1
               style={{
-                fontSize: "clamp(24px, 2.5vw, 28px)",
+                fontSize: "24px",
                 letterSpacing: "0.2em",
                 fontWeight: 400,
               }}
@@ -58,7 +58,7 @@ export default function BooksPage() {
                     <span className="text-[12px] uppercase tracking-[0.15em] text-[var(--color-accent-mustard)] font-medium">
                       {book.publisherCredit || "Publication"}
                     </span>
-                    <h2 className="text-[22px] sm:text-[24px] font-normal leading-snug mt-1 text-[var(--color-text-primary)]">
+                    <h2 className="text-[22px] font-normal leading-snug mt-1 text-[var(--color-text-primary)]">
                       <Link
                         href={`/books/${book.slug}`}
                         className="hover:text-[var(--color-accent-mustard)] transition-colors"
@@ -71,7 +71,7 @@ export default function BooksPage() {
                         {book.subtitle}
                       </p>
                     )}
-                    <p className="text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums] mt-3 line-clamp-3">
+                    <p className="text-[17px] leading-[24.2px] text-[#000000] [font-variant-numeric:oldstyle-nums] mt-3 line-clamp-3">
                       {book.synopsis?.[0]}
                     </p>
                   </div>
@@ -79,14 +79,14 @@ export default function BooksPage() {
                   <div className="mt-4 pt-3 border-t border-[var(--color-border-subtle)] flex items-center justify-between">
                     <Link
                       href={`/books/${book.slug}`}
-                      className="text-[13px] tracking-wider uppercase underline underline-offset-4 hover:text-[var(--color-accent-mustard)] transition-colors"
+                      className="text-[13px] tracking-wider uppercase no-underline hover:text-[var(--color-accent-mustard)] transition-colors"
                     >
                       View Details &rarr;
                     </Link>
                     {book.slug === "remnants-of-a-separation" && (
                       <Link
                         href="/books/remnants-of-a-separation/reading-guide"
-                        className="text-[12px] tracking-wider uppercase text-[var(--color-accent-mustard)] hover:underline"
+                        className="text-[12px] tracking-wider uppercase text-[var(--color-accent-mustard)] no-underline hover:opacity-80 transition-opacity"
                       >
                         Reading Guide
                       </Link>

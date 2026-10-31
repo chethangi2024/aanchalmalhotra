@@ -123,9 +123,22 @@ export default function AuthorWorkspaceSection({
               />
             </div>
             {/* Small caption styled consistently with small book captions */}
-            <p className="mt-4 sm:mt-5 text-center sm:text-left font-[family-name:var(--font-serif-body)] text-[16px] sm:text-[18px] leading-[1.35] text-[var(--color-text-secondary)] tracking-normal m-0 w-full max-w-[260px] sm:max-w-[270px] md:max-w-[290px] lg:max-w-[305px]">
-              Workspace, New Delhi
-            </p>
+            <div
+              className="image-caption-gap mt-3.5 w-full max-w-[260px] sm:max-w-[270px] md:max-w-[290px] lg:max-w-[305px] text-center sm:text-left"
+              style={{ marginTop: "var(--spacing-image-to-caption, 14px)" }}
+            >
+              <p
+                className="book-cover-title font-[family-name:var(--font-serif-body)] font-normal leading-[1.35] text-[var(--color-text-secondary)] tracking-normal m-0"
+                style={{
+                  margin: 0,
+                  wordBreak: "normal",
+                  overflowWrap: "break-word",
+                  hyphens: "none",
+                }}
+              >
+                Workspace, New Delhi
+              </p>
+            </div>
           </div>
 
           {/* Column 2: Biography & Editorial Focus */}
@@ -133,7 +146,7 @@ export default function AuthorWorkspaceSection({
             ref={textColRef}
             className="md:col-span-4 order-3 md:order-2 flex flex-col justify-center text-left md:items-end md:self-center"
           >
-            <div className="w-full md:max-w-[295px] md:ml-auto flex flex-col items-end">
+            <div className="author-bio-container flex flex-col items-end">
               <p
                 id="author-section-title"
                 className="bio-text-element font-[family-name:var(--font-serif-body)] text-[22.6px] leading-[31px] [font-variant-numeric:oldstyle-nums] text-[var(--color-text-secondary)] text-right m-0 mb-5"
@@ -146,7 +159,7 @@ export default function AuthorWorkspaceSection({
               <div className="bio-text-element w-full flex justify-end">
                 <Link
                   href={data.link.href}
-                  className="group inline-flex items-center gap-2 text-[13px] font-[family-name:var(--font-serif-body)] tracking-wider uppercase font-medium border-b border-[var(--color-text-primary)] pb-0.5 hover:text-[var(--color-accent-mustard)] hover:border-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
+                  className="group inline-flex items-center gap-2 text-[13px] font-[family-name:var(--font-serif-body)] tracking-wider font-medium hover:text-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)] no-underline"
                 >
                   <span>{data.link.label}</span>
                   <span

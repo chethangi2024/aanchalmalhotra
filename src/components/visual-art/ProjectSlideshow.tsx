@@ -77,7 +77,7 @@ export default function ProjectSlideshow({
           <div className={`text-center ${projectSubtitle ? "mb-8 md:mb-12" : "mb-8 md:mb-10"}`}>
             <h1
               style={{
-                fontSize: "clamp(22px, 2.5vw, 28px)",
+                fontSize: "24px",
                 letterSpacing: "0.15em",
                 fontWeight: 400,
               }}
@@ -155,7 +155,7 @@ export default function ProjectSlideshow({
                 </div>
 
                 {/* Title and Tagline positioned neatly beneath image, left-aligned with image left edge */}
-                <div className="mt-4 sm:mt-5 text-left">
+                <div className="image-caption-gap mt-3.5 text-left">
                   <h2 className="text-[18px] sm:text-[20px] italic font-normal text-[var(--color-text-primary)] leading-snug font-[family-name:var(--font-serif-display)]">
                     {currentSlide.title}
                   </h2>
@@ -208,7 +208,7 @@ export default function ProjectSlideshow({
                           : "max-h-0 opacity-0"
                       }`}
                     >
-                      <div className="pb-4 text-[17px] sm:text-[18.6px] leading-[26px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums] font-normal not-italic text-justify [text-align-last:left] space-y-4">
+                      <div className="pb-4 text-[17px] leading-[26px] text-[#000000] [font-variant-numeric:oldstyle-nums] font-normal not-italic text-justify [text-align-last:left] space-y-4">
                         {aboutSection.content ? aboutSection.content : aboutSection.text}
                       </div>
                     </div>

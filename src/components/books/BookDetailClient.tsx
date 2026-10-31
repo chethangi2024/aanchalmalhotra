@@ -3,18 +3,13 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Book } from "@/data/types";
+import { Book, LightboxItem } from "@/data/types";
 import { registerGSAP } from "@/lib/animations";
 import { gsap } from "gsap";
+import GalleryLightbox from "@/components/ui/GalleryLightbox";
 
 interface BookDetailClientProps {
   book: Book;
-}
-
-interface LightboxItem {
-  src: string;
-  alt: string;
-  caption?: string;
 }
 
 const COVER_DIMENSIONS: Record<string, { width: number; height: number }> = {
@@ -92,25 +87,6 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
   }, []);
 
   useEffect(() => {
-    if (!activeLightboxItem) return;
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") handleCloseLightbox();
-      if (e.key === "ArrowLeft") handlePrevImage();
-      if (e.key === "ArrowRight") handleNextImage();
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = originalOverflow;
-    };
-  }, [activeLightboxItem, handleCloseLightbox, handlePrevImage, handleNextImage]);
-
-  useEffect(() => {
     registerGSAP();
 
     const prefersReducedMotion = window.matchMedia(
@@ -151,6 +127,8 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
       "Chronicle of a Bookshop",
       "Remnants of a Separation",
       "Remnants of Partition",
+      "A History of Partition through Material Memory",
+      "21 Objects from a Continent Divided",
       "In the Language of Remembering",
       "Language of Remembering",
       "A Handful of Home",
@@ -188,7 +166,7 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
     .map((ed) => ({
       src: ed.coverImage!,
       alt: `${ed.region} edition of ${book.title}`,
-      caption: `${ed.region} — ${ed.publisher}${ed.year ? ` (${ed.year})` : ""}${ed.title && ed.title !== book.title ? ` [${ed.title}]` : ""}`,
+      caption: `${ed.region}, ${ed.publisher}${ed.year ? ` (${ed.year})` : ""}${ed.title && ed.title !== book.title ? ` [${ed.title}]` : ""}`,
     }));
 
   return (
@@ -232,7 +210,13 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                   {/* Caption directly beneath the cover */}
                   {book.publisherCredit && (
                     <p className="book-cover-caption">
-                      {book.publisherCredit}
+                      {isEverlastingThings || isLanguageOfRemembering || isRemnants ? (
+                        <>
+                          South Asia (English), <em className="italic">HarperCollins India</em>
+                        </>
+                      ) : (
+                        book.publisherCredit
+                      )}
                     </p>
                   )}
                 </div>
@@ -255,9 +239,9 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                 )}
 
                 {/* About the Book / Synopsis */}
-                <div className="book-synopsis-content font-normal text-[var(--color-text-secondary)]">
+                <div className="book-synopsis-content font-normal text-[#000000]">
                   {book.synopsis.map((paragraph, index) => (
-                    <p key={index} className="m-0">
+                    <p key={index} className="m-0 text-[#000000]">
                       {formatTextWithItalics(paragraph)}
                     </p>
                   ))}
@@ -268,14 +252,18 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                   <div className="mt-4 pt-1">
                     <Link
                       href={book.readingGuideUrl}
-                      className="inline-block text-[13px] tracking-wider uppercase underline underline-offset-4 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
+                      className={`inline-block ${
+                        isEverlastingThings || isRemnants
+                          ? "text-[16px] sm:text-[17px] font-normal normal-case tracking-normal"
+                          : "text-[13px] tracking-wider uppercase"
+                      } no-underline transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]`}
                       style={{
                         color: "#947D53",
-                        textDecoration: "underline",
-                        textUnderlineOffset: "3px",
+                        textDecoration: "none",
+                        fontWeight: 400,
                       }}
                     >
-                      {book.readingGuideLabel || "TO VIEW A VISUAL RESEARCH GUIDE, CLICK HERE"}
+                      {book.readingGuideLabel || "To View a Reading Guide, Click Here"}
                     </Link>
                   </div>
                 )}
@@ -295,7 +283,7 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                 >
                   <h2
                     className="font-normal text-[#222222] m-0 group-hover:text-[var(--color-accent-mustard)] transition-colors"
-                    style={{ fontSize: "clamp(20px, 1.65vw, 22px)" }}
+                    style={{ fontSize: "22px" }}
                   >
                     Gallery
                   </h2>
@@ -314,7 +302,7 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                   </span>
                 </button>
               ) : (
-                <h2 className="text-[22px] sm:text-[24px] uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-8">
+                <h2 className="text-[22px] uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-8">
                   GALLERY
                 </h2>
               )}
@@ -340,17 +328,17 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                       </div>
                       {image.caption && (
                         <p
-                          className="text-center text-[var(--color-text-secondary)] font-normal leading-snug line-clamp-3 group-hover:text-[var(--color-text-primary)] transition-colors w-full"
+                          className="image-caption-gap text-center text-[var(--color-text-secondary)] font-normal leading-snug line-clamp-3 group-hover:text-[var(--color-text-primary)] transition-colors w-full"
                           style={
                             isBahrisons
                               ? {
                                   fontSize: "clamp(13px, 1vw, 14px)",
-                                  marginTop: "14px",
+                                  marginTop: "var(--spacing-image-to-caption, 14px)",
                                   lineHeight: "1.35",
                                 }
                               : {
                                   fontSize: "14px",
-                                  marginTop: "10px",
+                                  marginTop: "var(--spacing-image-to-caption, 14px)",
                                 }
                           }
                         >
@@ -377,9 +365,9 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                   >
                     <h2
                       className="font-normal text-[#222222] m-0 group-hover:text-[var(--color-accent-mustard)] transition-colors"
-                      style={{ fontSize: "clamp(20px, 1.65vw, 22px)" }}
+                      style={{ fontSize: "22px" }}
                     >
-                      Prologue
+                      Preface
                     </h2>
                     <span className="w-8 h-8 flex items-center justify-center shrink-0">
                       <svg
@@ -396,14 +384,14 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                     </span>
                   </button>
                 ) : (
-                  <h2 className="text-[22px] sm:text-[24px] uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-6">
+                  <h2 className="text-[22px] uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-6">
                     {book.prologue.title}
                   </h2>
                 )}
 
                 {(!isBahrisons || openSections.prologue) && (
                   <div className={isBahrisons ? "pt-4 pb-8 sm:pt-5 sm:pb-10" : ""}>
-                    <div className="space-y-4 text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums] font-normal text-left sm:text-justify [text-align-last:left] [hyphens:none] [word-break:normal] [overflow-wrap:normal]">
+                    <div className="space-y-4 text-[17px] leading-[24.2px] text-[#000000] [font-variant-numeric:oldstyle-nums] font-normal text-left sm:text-justify [text-align-last:left] [hyphens:none] [word-break:normal] [overflow-wrap:normal]">
                       {book.prologue.text.map((pText, pIdx) => (
                         <p
                           key={pIdx}
@@ -438,7 +426,7 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                 >
                   <h2
                     className="font-normal text-[#222222] m-0 group-hover:text-[var(--color-accent-mustard)] transition-colors"
-                    style={{ fontSize: "clamp(20px, 1.65vw, 22px)" }}
+                    style={{ fontSize: "22px" }}
                   >
                     Editions
                   </h2>
@@ -457,7 +445,7 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                   </span>
                 </button>
               ) : (
-                <h2 className="text-[22px] sm:text-[24px] uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-8">
+                <h2 className="text-[22px] uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-8">
                   EDITIONS
                 </h2>
               )}
@@ -506,9 +494,12 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                               )}
 
                               {/* Caption beneath cover */}
-                              <div className="mt-3 text-center w-full">
-                                <p className="text-[15px] sm:text-[16px] text-[var(--color-text-primary)] italic font-normal leading-snug m-0">
-                                  {ed.region} — {ed.publisher}
+                              <div className="image-caption-gap mt-3.5 text-center w-full">
+                                <p
+                                  className="text-[15px] sm:text-[16px] font-normal leading-snug m-0 edition-cover-caption"
+                                  style={{ color: "var(--color-text-muted)" }}
+                                >
+                                  {ed.region}, <em className="italic">{ed.publisher}</em>
                                 </p>
                               </div>
                             </div>
@@ -553,7 +544,7 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                 >
                   <h2
                     className="font-normal text-[#222222] m-0 group-hover:text-[var(--color-accent-mustard)] transition-colors"
-                    style={{ fontSize: "clamp(20px, 1.65vw, 22px)" }}
+                    style={{ fontSize: "22px" }}
                   >
                     Praise
                   </h2>
@@ -572,7 +563,7 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                   </span>
                 </button>
               ) : (
-                <h2 className="text-[22px] sm:text-[24px] uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-8">
+                <h2 className="text-[22px] uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-8">
                   PRAISE
                 </h2>
               )}
@@ -581,7 +572,7 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                   {book.praise.map((p, idx) => (
                     <div key={idx} className="m-0">
                       <p
-                        className="text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums] not-italic m-0 mb-1.5"
+                        className="text-[17px] leading-[24.2px] text-[#000000] [font-variant-numeric:oldstyle-nums] not-italic m-0 mb-1.5"
                         style={hasRefinedQuoteSpacing ? { marginBottom: "4px" } : undefined}
                       >
                         “{formatTextWithItalics(p.quote)}”
@@ -611,7 +602,7 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                 >
                   <h2
                     className="font-normal text-[#222222] m-0 group-hover:text-[var(--color-accent-mustard)] transition-colors"
-                    style={{ fontSize: "clamp(20px, 1.65vw, 22px)" }}
+                    style={{ fontSize: "22px" }}
                   >
                     Reviews
                   </h2>
@@ -630,7 +621,7 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                   </span>
                 </button>
               ) : (
-                <h2 className="text-[22px] sm:text-[24px] uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-8">
+                <h2 className="text-[22px] uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-8">
                   REVIEWS
                 </h2>
               )}
@@ -639,7 +630,7 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                   {book.reviews.map((rev, idx) => (
                     <div key={idx} className="m-0">
                       <p
-                        className="text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums] m-0 mb-1.5"
+                        className="text-[17px] leading-[24.2px] text-[#000000] [font-variant-numeric:oldstyle-nums] m-0 mb-1.5"
                         style={hasRefinedQuoteSpacing ? { marginBottom: "4px" } : undefined}
                       >
                         “{formatTextWithItalics(rev.quote)}”
@@ -671,7 +662,7 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                 >
                   <h2
                     className="font-normal text-[#222222] m-0 group-hover:text-[var(--color-accent-mustard)] transition-colors"
-                    style={{ fontSize: "clamp(20px, 1.65vw, 22px)" }}
+                    style={{ fontSize: "22px" }}
                   >
                     Excerpts &amp; Other Writing
                   </h2>
@@ -690,13 +681,13 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                   </span>
                 </button>
               ) : (
-                <h2 className="text-[22px] sm:text-[24px] uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-6">
+                <h2 className="text-[22px] uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-6">
                   EXCERPTS &amp; OTHER WRITING
                 </h2>
               )}
 
               {(!isCollapsibleBook || openSections.excerpts) && (
-                <div className={`${isCollapsibleBook ? "pt-4 pb-8 sm:pt-5 sm:pb-10" : ""} space-y-2.5 w-full text-[18.6px] leading-[24.2px] text-[var(--color-text-secondary)] [font-variant-numeric:oldstyle-nums]`}>
+                <div className={`${isCollapsibleBook ? "pt-4 pb-8 sm:pt-5 sm:pb-10" : ""} space-y-2.5 w-full text-[17px] leading-[24.2px] text-[#000000] [font-variant-numeric:oldstyle-nums]`}>
                   {book.excerptsAndWriting.map((item, idx) => (
                     <p key={idx} className="m-0">
                       {item.url ? (
@@ -704,15 +695,10 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                           href={item.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={
-                            isCollapsibleBook
-                              ? "no-underline transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
-                              : "underline underline-offset-4 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
-                          }
+                          className="no-underline transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
                           style={{
                             color: "#947D53",
-                            textDecoration: isCollapsibleBook ? "none" : "underline",
-                            textUnderlineOffset: "3px",
+                            textDecoration: "none",
                           }}
                         >
                           {item.title}
@@ -753,7 +739,7 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                 >
                   <h2
                     className="font-normal text-[#222222] m-0 group-hover:text-[var(--color-accent-mustard)] transition-colors"
-                    style={{ fontSize: "clamp(20px, 1.65vw, 22px)" }}
+                    style={{ fontSize: "22px" }}
                   >
                     Related Media
                   </h2>
@@ -772,7 +758,7 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                   </span>
                 </button>
               ) : (
-                <h2 className="text-[22px] sm:text-[24px] uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-6">
+                <h2 className="text-[22px] uppercase tracking-[0.1em] font-normal text-[#222222] m-0 mb-6">
                   RELATED MEDIA
                 </h2>
               )}
@@ -784,15 +770,10 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                         href={media.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={
-                          isCollapsibleBook
-                            ? "no-underline transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
-                            : "underline underline-offset-4 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
-                        }
+                        className="no-underline transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
                         style={{
                           color: "#947D53",
-                          textDecoration: isCollapsibleBook ? "none" : "underline",
-                          textUnderlineOffset: "3px",
+                          textDecoration: "none",
                         }}
                       >
                         {media.title}
@@ -810,88 +791,15 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
         </div>
       </div>
 
-      {/* LIGHTBOX MODAL */}
-      {activeLightboxItem && activeLightboxItem.items.length > 0 && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label="Enlarged view"
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 backdrop-blur-xs p-4 sm:p-6 md:p-10 select-none animate-in fade-in duration-200"
-          onClick={handleCloseLightbox}
-        >
-          {/* Top Actions: Counter & Close button */}
-          <div className="absolute top-4 sm:top-6 left-4 sm:left-8 right-4 sm:right-8 flex items-center justify-between z-10 text-white/80 font-[family-name:var(--font-serif-body)]">
-            <span className="text-[17px] sm:text-[19px] tracking-[0.1em] uppercase">
-              {activeLightboxItem.index + 1} / {activeLightboxItem.items.length}
-            </span>
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                handleCloseLightbox();
-              }}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-[16px] sm:text-[18px] tracking-[0.1em] uppercase text-white/90 hover:text-white bg-black/40 hover:bg-black/60 rounded border border-white/20 transition-colors cursor-pointer focus:outline-none focus:ring-1 focus:ring-white"
-              aria-label="Close enlarged view"
-            >
-              <span className="text-[20px] leading-none">✕</span>
-              <span>Close</span>
-            </button>
-          </div>
-
-          {/* Navigation: Previous Button */}
-          {activeLightboxItem.items.length > 1 && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                handlePrevImage();
-              }}
-              className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 p-2 sm:p-3 text-white/70 hover:text-white bg-black/30 hover:bg-black/60 rounded-full transition-colors z-10 cursor-pointer focus:outline-none focus:ring-1 focus:ring-white"
-              aria-label="Previous image"
-            >
-              <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-          )}
-
-          {/* Modal Content: Image + Caption */}
-          <div
-            className="relative max-w-4xl max-h-[85vh] w-full flex flex-col items-center justify-center z-10"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="relative w-full max-h-[68vh] sm:max-h-[72vh] flex items-center justify-center">
-              <img
-                src={activeLightboxItem.items[activeLightboxItem.index].src}
-                alt={activeLightboxItem.items[activeLightboxItem.index].alt}
-                className="max-h-[68vh] sm:max-h-[72vh] max-w-full object-contain shadow-2xl rounded-xs bg-[#1A1918]"
-              />
-            </div>
-            {activeLightboxItem.items[activeLightboxItem.index].caption && (
-              <p className="mt-4 max-w-2xl text-center text-[17px] sm:text-[19px] md:text-[20px] text-white/95 font-[family-name:var(--font-serif-body)] font-normal leading-[1.35]">
-                {activeLightboxItem.items[activeLightboxItem.index].caption}
-              </p>
-            )}
-          </div>
-
-          {/* Navigation: Next Button */}
-          {activeLightboxItem.items.length > 1 && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                handleNextImage();
-              }}
-              className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 p-2 sm:p-3 text-white/70 hover:text-white bg-black/30 hover:bg-black/60 rounded-full transition-colors z-10 cursor-pointer focus:outline-none focus:ring-1 focus:ring-white"
-              aria-label="Next image"
-            >
-              <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          )}
-        </div>
-      )}
+      {/* SHARED GALLERY LIGHTBOX */}
+      <GalleryLightbox
+        isOpen={Boolean(activeLightboxItem && activeLightboxItem.items.length > 0)}
+        items={activeLightboxItem ? activeLightboxItem.items : []}
+        currentIndex={activeLightboxItem ? activeLightboxItem.index : 0}
+        onClose={handleCloseLightbox}
+        onPrev={handlePrevImage}
+        onNext={handleNextImage}
+      />
     </div>
   );
 }
