@@ -30,13 +30,13 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 lg:gap-12 items-start">
             {/* Left Column: Portrait balanced with biography height while preserving original 3:4 aspect ratio */}
             <div className="md:col-span-5 flex justify-center md:justify-start">
-              <div className="relative w-full max-w-[300px] sm:max-w-[340px] md:max-w-[380px] lg:max-w-[400px] aspect-[3/4] overflow-hidden bg-[var(--color-bg-muted)] shadow-[0_12px_32px_rgba(28,27,26,0.06)] rounded-xs">
+              <div className="relative w-full max-w-[280px] sm:max-w-[300px] md:max-w-[305px] aspect-[3/4] overflow-hidden bg-[var(--color-bg-muted)] shadow-[0_12px_32px_rgba(28,27,26,0.06)] rounded-xs">
                 <Image
                   src="/images/author-portrait.webp"
                   alt="Aanchal Malhotra in a white shirt against a sandstone wall"
                   fill
                   priority
-                  sizes="(max-width: 768px) 85vw, (max-width: 1200px) 42vw, 400px"
+                  sizes="(max-width: 768px) 85vw, 305px"
                   className="object-cover object-top"
                 />
               </div>

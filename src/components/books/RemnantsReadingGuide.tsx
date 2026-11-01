@@ -16,6 +16,15 @@ const captionStyle: React.CSSProperties = {
   WebkitHyphens: "none",
 };
 
+const bookCoverCaptionClass =
+  "image-caption-gap mt-3.5 mb-2 w-full text-[13.5px] sm:text-[14px] text-[var(--color-text-muted)] leading-normal [hyphens:none] [word-break:normal] [overflow-wrap:normal]";
+const bookCoverCaptionStyle: React.CSSProperties = {
+  fontFamily: "var(--font-serif-body)",
+  hyphens: "none",
+  WebkitHyphens: "none",
+  color: "var(--color-text-muted)",
+};
+
 const subheadingClass =
   "text-[22px] font-normal text-[#222222] m-0 mb-5 leading-snug font-[family-name:var(--font-serif-display)]";
 const bodyTextClass =
@@ -102,8 +111,8 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                           </button>
                           {img.caption && (
                             <p
-                              className={`${captionClass} text-center max-w-[260px] mx-auto`}
-                              style={captionStyle}
+                              className={`${bookCoverCaptionClass} text-center max-w-[260px] mx-auto`}
+                              style={bookCoverCaptionStyle}
                             >
                               {renderFormattedText(img.caption)}
                             </p>
@@ -133,8 +142,8 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                     </button>
                     {introImg.caption && (
                       <p
-                        className={`${captionClass} text-center`}
-                        style={captionStyle}
+                        className={`${bookCoverCaptionClass} text-center`}
+                        style={bookCoverCaptionStyle}
                       >
                         {renderFormattedText(introImg.caption)}
                       </p>
@@ -190,24 +199,24 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                             />
                           </div>
                         </button>
-                        <p className={captionClass} style={captionStyle}>{renderFormattedText(item.caption || (sub as any).caption)}</p>
                       </div>
                     );
                   })}
                 </div>
-                {(sub as any).seeMoreUrl && (
-                  <p className="mt-2 text-justify [text-align-last:left] text-[15px] sm:text-[16px] leading-snug">
-                    <a
-                      href={(sub as any).seeMoreUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="no-underline transition-opacity hover:opacity-80"
-                      style={{ color: "#947D53", textDecoration: "none" }}
-                    >
-                      See more photographs by Margaret Bourke-White here
-                    </a>
-                  </p>
-                )}
+
+                <p className={`${captionClass} text-center`} style={captionStyle}>
+                  The mass migration during Partition, photographed by Margaret Bourke-White for LIFE Magazine. See more{" "}
+                  <a
+                    href="https://artsandculture.google.com/entity/margaret-bourke-white/m02grhl?categoryId=artist&hl=en"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-2 hover:text-[var(--color-accent-mustard)] transition-colors"
+                    style={{ color: "#947D53", textDecoration: "underline" }}
+                  >
+                    here
+                  </a>
+                  .
+                </p>
               </div>
             );
           }
@@ -316,7 +325,7 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                   ))}
                 </div>
 
-                <div className="reading-guide-gallery reading-guide-gallery-2 max-w-3xl mx-auto">
+                <div className="reading-guide-gallery reading-guide-gallery-2">
                   {items.map((item: any, iIdx: number) => {
                     const imgIdx = registerImage(item.src, item.alt, item.caption);
                     return (
@@ -364,6 +373,12 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                 <div className="reading-guide-gallery reading-guide-gallery-3">
                   {items.map((item: any, iIdx: number) => {
                     const imgIdx = registerImage(item.src, item.alt, item.caption);
+                    // Match displayed dimensions for specific images:
+                    // Row 1 Img 3 (idx 2), Row 4 Img 2 (idx 10) & Row 4 Img 3 (idx 11): 3:2 displayed dimensions matching row
+                    const isAspect32 = iIdx === 2 || iIdx === 10 || iIdx === 11;
+                    // Row 6 Img 3 (idx 17): 4:3 displayed dimensions matching row (fill container with object-cover)
+                    const isAspect43Cover = iIdx === 17;
+
                     return (
                       <div key={iIdx} className="flex flex-col items-start w-full">
                         <button
@@ -373,13 +388,25 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                           aria-label={`View enlarged image: ${item.caption}`}
                         >
                           <div className="relative w-full aspect-[4/3] overflow-hidden flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.02]">
-                            <Image
-                              src={item.src}
-                              alt={item.alt}
-                              fill
-                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                              className="object-contain"
-                            />
+                            {isAspect32 ? (
+                              <div className="relative w-full aspect-[3/2] overflow-hidden">
+                                <Image
+                                  src={item.src}
+                                  alt={item.alt}
+                                  fill
+                                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                  className="object-cover"
+                                />
+                              </div>
+                            ) : (
+                              <Image
+                                src={item.src}
+                                alt={item.alt}
+                                fill
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                className={isAspect43Cover ? "object-cover" : "object-contain"}
+                              />
+                            )}
                           </div>
                         </button>
                         <p className={captionClass} style={captionStyle}>{renderFormattedText(item.caption)}</p>
@@ -534,6 +561,7 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                 <div className="space-y-10">
                   {chapters.map((ch: any, cIdx: number) => {
                     const is4ImageChapter = ch.images && (ch.images.length === 4 || ch.images.length === 8);
+                    const isParthaMitter = ch.title && ch.title.includes("Prof. Partha Mitter");
                     
                     return (
                       <div
@@ -579,8 +607,94 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                           </div>
                         )}
 
-                        {/* Horizontal row of individual images with captions directly beneath */}
-                        {ch.images && ch.images.length > 0 && (
+                        {/* Special case: The Collection of Prof. Partha Mitter (3 rows: Row 1 = 4 vertical 2:3, Row 2 = 3 horizontal 3:2, Row 3 = 3 horizontal 3:2) */}
+                        {isParthaMitter && ch.images && ch.images.length >= 10 ? (
+                          <div className="my-4 space-y-6 sm:space-y-8">
+                            {/* Row 1 – 4 vertical images */}
+                            <div className="reading-guide-gallery reading-guide-gallery-4">
+                              {ch.images.slice(0, 4).map((im: any, rIdx: number) => {
+                                const imgIdx = registerImage(im.src, im.alt, im.caption);
+                                return (
+                                  <div key={rIdx} className="flex flex-col items-start w-full">
+                                    <button
+                                      type="button"
+                                      onClick={() => onOpenLightbox(allImages, imgIdx)}
+                                      className="group w-full block cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
+                                      aria-label={`View enlarged image: ${im.caption}`}
+                                    >
+                                      <div className="relative w-full aspect-[2/3] overflow-hidden flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.01]">
+                                        <Image
+                                          src={im.src}
+                                          alt={im.alt}
+                                          fill
+                                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 25vw"
+                                          className="object-cover"
+                                        />
+                                      </div>
+                                    </button>
+                                    <p className={`${captionClass} text-left`} style={captionStyle}>{renderFormattedText(im.caption)}</p>
+                                  </div>
+                                );
+                              })}
+                            </div>
+
+                            {/* Row 2 – 3 horizontal images */}
+                            <div className="reading-guide-gallery reading-guide-gallery-3">
+                              {ch.images.slice(4, 7).map((im: any, rIdx: number) => {
+                                const imgIdx = registerImage(im.src, im.alt, im.caption);
+                                return (
+                                  <div key={rIdx} className="flex flex-col items-start w-full">
+                                    <button
+                                      type="button"
+                                      onClick={() => onOpenLightbox(allImages, imgIdx)}
+                                      className="group w-full block cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
+                                      aria-label={`View enlarged image: ${im.caption}`}
+                                    >
+                                      <div className="relative w-full aspect-[3/2] overflow-hidden flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.01]">
+                                        <Image
+                                          src={im.src}
+                                          alt={im.alt}
+                                          fill
+                                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                                          className="object-cover"
+                                        />
+                                      </div>
+                                    </button>
+                                    <p className={`${captionClass} text-left`} style={captionStyle}>{renderFormattedText(im.caption)}</p>
+                                  </div>
+                                );
+                              })}
+                            </div>
+
+                            {/* Row 3 – 3 horizontal images */}
+                            <div className="reading-guide-gallery reading-guide-gallery-3">
+                              {ch.images.slice(7, 10).map((im: any, rIdx: number) => {
+                                const imgIdx = registerImage(im.src, im.alt, im.caption);
+                                return (
+                                  <div key={rIdx} className="flex flex-col items-start w-full">
+                                    <button
+                                      type="button"
+                                      onClick={() => onOpenLightbox(allImages, imgIdx)}
+                                      className="group w-full block cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
+                                      aria-label={`View enlarged image: ${im.caption}`}
+                                    >
+                                      <div className="relative w-full aspect-[3/2] overflow-hidden flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.01]">
+                                        <Image
+                                          src={im.src}
+                                          alt={im.alt}
+                                          fill
+                                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                                          className="object-cover"
+                                        />
+                                      </div>
+                                    </button>
+                                    <p className={`${captionClass} text-left`} style={captionStyle}>{renderFormattedText(im.caption)}</p>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        ) : ch.images && ch.images.length > 0 ? (
                           <div
                             className={`my-4 reading-guide-gallery ${
                               ch.images.length === 1
@@ -624,7 +738,7 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                               );
                             })}
                           </div>
-                        )}
+                        ) : null}
 
                         {/* Special case: Sitara Faiyaz Ali with 3 sub-sections */}
                         {ch.subSections && ch.subSections.length > 0 && (
@@ -708,7 +822,7 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                   ))}
                 </div>
 
-                <div className="reading-guide-gallery reading-guide-gallery-2 max-w-3xl mx-auto">
+                <div className="reading-guide-gallery reading-guide-gallery-2">
                   {items.map((item: any, iIdx: number) => {
                     const imgIdx = registerImage(item.src, item.alt, item.caption);
                     return (
@@ -719,7 +833,7 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                           className="group w-full block cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
                           aria-label={`View enlarged image: ${item.caption}`}
                         >
-                          <div className="relative w-full aspect-[4/3] overflow-hidden flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.02]">
+                          <div className="relative w-full aspect-[3/2] overflow-hidden flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.02]">
                             <Image
                               src={item.src}
                               alt={item.alt}
