@@ -77,7 +77,7 @@ export default function ContactPage() {
             </div>
 
             {/* COLUMN 2: RIGHTS & OTHER ENQUIRIES */}
-            <div className="flex flex-col justify-between h-full">
+            <div className="flex flex-col justify-between h-full md:relative md:left-[28px]">
               <div>
                 <h2
                   style={{

@@ -86,40 +86,58 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                   ))}
                 </div>
 
-                {/* Lead Images (South Asia and UK covers side by side or single) */}
+                {/* Two-column layout for Book Covers (approx 40%) & First Paragraph (approx 60%) */}
                 {(sub as any).leadImages && (
-                  <div className="my-8 reading-guide-gallery reading-guide-gallery-2 max-w-2xl mx-auto items-end">
-                    {(sub as any).leadImages.map((img: any, iIdx: number) => {
-                      const imgIdx = registerImage(img.src, img.alt, img.caption);
-                      return (
-                        <div key={iIdx} className="flex flex-col items-center w-full">
-                          <button
-                            type="button"
-                            onClick={() => onOpenLightbox(allImages, imgIdx)}
-                            className="group block relative w-full cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
-                            aria-label={`View enlarged image: ${img.caption}`}
-                          >
-                            <div className="relative w-full aspect-[2/3] max-w-[260px] mx-auto overflow-hidden flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.02]">
-                              <Image
-                                src={img.src}
-                                alt={img.alt}
-                                fill
-                                sizes="(max-width: 640px) 100vw, 300px"
-                                className="object-contain"
-                              />
+                  <div className="mt-8 md:mt-10 mb-0 grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-10 lg:gap-12 items-start">
+                    {/* Left column (~40% width): Two book covers side by side with captions underneath */}
+                    <div className="md:col-span-2 w-full">
+                      <div className="grid grid-cols-2 gap-3 sm:gap-4 items-start">
+                        {(sub as any).leadImages.map((img: any, iIdx: number) => {
+                          const imgIdx = registerImage(img.src, img.alt, img.caption);
+                          return (
+                            <div key={iIdx} className="flex flex-col items-center w-full">
+                              <button
+                                type="button"
+                                onClick={() => onOpenLightbox(allImages, imgIdx)}
+                                className="group block relative w-full cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
+                                aria-label={`View enlarged image: ${img.caption}`}
+                              >
+                                <div className="relative w-full aspect-[2/3] overflow-hidden flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.02]">
+                                  <Image
+                                    src={img.src}
+                                    alt={img.alt}
+                                    fill
+                                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 250px"
+                                    className="object-contain"
+                                  />
+                                </div>
+                              </button>
+                              {img.caption && (
+                                <p
+                                  className={`${bookCoverCaptionClass} text-center`}
+                                  style={bookCoverCaptionStyle}
+                                >
+                                  {renderFormattedText(img.caption)}
+                                </p>
+                              )}
                             </div>
-                          </button>
-                          {img.caption && (
-                            <p
-                              className={`${bookCoverCaptionClass} text-center max-w-[260px] mx-auto`}
-                              style={bookCoverCaptionStyle}
-                            >
-                              {renderFormattedText(img.caption)}
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* Right column (~60% width): Paragraphs in the right column */}
+                    <div className="md:col-span-3 w-full">
+                      {(sub as any).paragraphsAfterImage && (sub as any).paragraphsAfterImage.length > 0 && (
+                        <div className={bodyTextClass}>
+                          {(sub as any).paragraphsAfterImage.slice(0, 3).map((p: string, pIdx: number) => (
+                            <p key={pIdx} className="m-0">
+                              {renderFormattedText(p)}
                             </p>
-                          )}
+                          ))}
                         </div>
-                      );
-                    })}
+                      )}
+                    </div>
                   </div>
                 )}
                 {!(sub as any).leadImages && introImg && (
@@ -151,8 +169,15 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                   </div>
                 )}
 
-                {/* Paragraphs after image */}
-                {(sub as any).paragraphsAfterImage && (
+                {/* Remaining paragraphs after the two-column block */}
+                {(sub as any).paragraphsAfterImage && (sub as any).paragraphsAfterImage.length > 3 && (
+                  <div className={`space-y-3.5 ${bodyTextClass}`}>
+                    {(sub as any).paragraphsAfterImage.slice(3).map((p: string, pIdx: number) => (
+                      <p key={pIdx} className="m-0">{renderFormattedText(p)}</p>
+                    ))}
+                  </div>
+                )}
+                {!(sub as any).leadImages && (sub as any).paragraphsAfterImage && (
                   <div className={bodyTextClass}>
                     {(sub as any).paragraphsAfterImage.map((p: string, pIdx: number) => (
                       <p key={pIdx} className="m-0">{renderFormattedText(p)}</p>
