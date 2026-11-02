@@ -613,9 +613,9 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                       >
                         {/* Chapter Title: exact order and wording */}
                         <h3
-                          style={isSitaraChapter ? { fontSize: "17px" } : undefined}
+                          style={isSitaraChapter ? { fontSize: "22px" } : undefined}
                           className={`${
-                            isSitaraChapter ? "text-[17px]" : "text-[17px] sm:text-[18px]"
+                            isSitaraChapter ? "text-[22px]" : "text-[17px] sm:text-[18px]"
                           } font-normal text-[#1A1A1A] leading-snug m-0 mb-4 text-left font-[family-name:var(--font-serif-body)]`}
                         >
                           {renderChapterTitle(ch.title)}
@@ -799,8 +799,8 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                                 </h4>
                                 {subSec.text && (
                                   <p
-                                    style={{ fontSize: "14px" }}
-                                    className="text-[14px] leading-[21px] text-[#000000] [font-variant-numeric:oldstyle-nums] text-justify [text-align-last:left] m-0 mb-6 font-[family-name:var(--font-serif-body)]"
+                                    style={{ fontSize: "17px" }}
+                                    className="text-[17px] leading-[24.2px] text-[#000000] [font-variant-numeric:oldstyle-nums] text-justify [text-align-last:left] m-0 mb-6 font-[family-name:var(--font-serif-body)]"
                                   >
                                     {renderFormattedText(subSec.text)}{" "}
                                     {subSec.link && (
@@ -839,8 +839,8 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                                             </div>
                                           </button>
                                           <p
-                                            style={{ ...captionStyle, fontSize: "14px" }}
-                                            className="image-caption-gap mt-3.5 mb-2 w-full text-[14px] text-[#2C2C2C] leading-normal [hyphens:none] [word-break:normal] [overflow-wrap:normal] text-left"
+                                            style={{ ...captionStyle, fontSize: "17px", lineHeight: "24.2px" }}
+                                            className="image-caption-gap mt-3.5 mb-2 w-full text-[17px] leading-[24.2px] text-[#2C2C2C] [font-variant-numeric:oldstyle-nums] [hyphens:none] [word-break:normal] [overflow-wrap:normal] text-left"
                                           >
                                             {renderFormattedText(im.caption)}
                                           </p>
