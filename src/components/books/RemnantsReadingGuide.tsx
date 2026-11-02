@@ -789,35 +789,44 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                         {/* Special case: Sitara Faiyaz Ali with 3 sub-sections */}
                         {ch.subSections && ch.subSections.length > 0 && (
                           <div className="space-y-10 my-4">
-                            {ch.subSections.map((subSec: any, ssIdx: number) => (
-                              <div key={ssIdx} className="pt-2">
-                                <h4
-                                  style={{ fontSize: "17px" }}
-                                  className="text-[17px] font-normal not-italic text-[#1A1A1A] m-0 mb-3 text-left font-[family-name:var(--font-serif-body)]"
-                                >
-                                  {subSec.title}
-                                </h4>
-                                {subSec.text && (
-                                  <p
-                                    style={{ fontSize: "17px" }}
-                                    className="text-[17px] leading-[24.2px] text-[#000000] [font-variant-numeric:oldstyle-nums] text-justify [text-align-last:left] m-0 mb-6 font-[family-name:var(--font-serif-body)]"
+                            {ch.subSections.map((subSec: any, ssIdx: number) => {
+                              const isKehkashan = subSec.title && subSec.title.includes("Kehkashan Cottage");
+                              return (
+                                <div key={ssIdx} className="pt-2">
+                                  <h4
+                                    style={{ fontSize: "20px" }}
+                                    className="text-[20px] font-normal not-italic text-[#1A1A1A] m-0 mb-3 text-left font-[family-name:var(--font-serif-body)]"
                                   >
-                                    {renderFormattedText(subSec.text)}{" "}
-                                    {subSec.link && (
-                                      <a
-                                        href={subSec.link.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="no-underline transition-opacity hover:opacity-80"
-                                        style={{ color: "#947D53", textDecoration: "none" }}
-                                      >
-                                        {subSec.link.label}
-                                      </a>
-                                    )}
-                                  </p>
-                                )}
-                                {subSec.images && subSec.images.length > 0 && (
-                                  <div className="my-4 reading-guide-gallery reading-guide-gallery-3">
+                                    {subSec.title}
+                                  </h4>
+                                  {subSec.text && (
+                                    <p
+                                      style={{
+                                        fontSize: "17px",
+                                        ...(isKehkashan ? { marginBottom: "40px" } : {}),
+                                      }}
+                                      className={`text-[17px] leading-[24.2px] text-[#000000] [font-variant-numeric:oldstyle-nums] text-justify [text-align-last:left] ${
+                                        isKehkashan ? "m-0 mb-[40px]" : "m-0 mb-6"
+                                      } font-[family-name:var(--font-serif-body)]`}
+                                    >
+                                      {renderFormattedText(subSec.text)}{" "}
+                                      {subSec.link && (
+                                        <a
+                                          href={subSec.link.url}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="no-underline transition-opacity hover:opacity-80"
+                                          style={{ color: "#947D53", textDecoration: "none" }}
+                                        >
+                                          {subSec.link.label}
+                                        </a>
+                                      )}
+                                    </p>
+                                  )}
+                                  {subSec.images && subSec.images.length > 0 && (
+                                    <div
+                                      style={isKehkashan ? { marginTop: "0px" } : undefined}
+                                      className={`${isKehkashan ? "mb-4" : "my-4"} reading-guide-gallery reading-guide-gallery-3`}>
                                     {subSec.images.map((im: any, imIdx: number) => {
                                       const imgIdx = registerImage(im.src, im.alt, im.caption);
                                       return (
@@ -850,9 +859,10 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                                   </div>
                                 )}
                               </div>
-                            ))}
-                          </div>
-                        )}
+                            );
+                          })}
+                        </div>
+                      )}
                       </div>
                     );
                   })}
