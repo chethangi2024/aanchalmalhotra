@@ -163,9 +163,10 @@ export const booksData: Book[] = [
       "BEST BOOK OF THE MONTH on ABC News, Good Morning America, USA Today, Christian Science Monitor, Ms. Magazine, BookRiot, PopSugar, The A.V. Club"
     ],
     synopsis: [
-      "On a January morning in 1938, Samir Vij first locks eyes with Firdaus Khan through the rows of perfume bottles in his family’s ittar shop in Lahore. Over the years that follow, the perfumer’s apprentice and calligrapher’s apprentice fall in love with their ancient crafts and with each other, dreaming of the life they will one day share. But as the struggle for Indian independence gathers force, their beloved city is ravaged by Partition. Suddenly, they find themselves on opposite sides: Samir, a Hindu, becomes Indian and Firdaus, a Muslim, becomes Pakistani, their love now forbidden. Severed from one another, Samir and Firdaus make a series of fateful decisions that will change the course of their lives forever. As their paths spiral away from each other, they must each decide how much of the past they are willing to let go, and what it will cost them. Lush, sensuous, and deeply romantic, The Book of Everlasting Things is the story of two lovers and two nations, split apart by forces beyond their control, yet bound by love and memory."
+      "On a January morning in 1938, Samir Vij first locks eyes with Firdaus Khan through the rows of perfume bottles in his family’s ittar shop in Lahore. Over the years that follow, the perfumer’s apprentice and calligrapher’s apprentice fall in love with their ancient crafts and with each other, dreaming of the life they will one day share. But as the struggle for Indian independence gathers force, their beloved city is ravaged by Partition. Suddenly, they find themselves on opposite sides: Samir, a Hindu, becomes Indian and Firdaus, a Muslim, becomes Pakistani, their love now forbidden. Severed from one another, Samir and Firdaus make a series of fateful decisions that will change the course of their lives forever. As their paths spiral away from each other, they must each decide how much of the past they are willing to let go, and what it will cost them.",
+      "Lush, sensuous, and deeply romantic, The Book of Everlasting Things is the story of two lovers and two nations, split apart by forces beyond their control, yet bound by love and memory."
     ],
-    readingGuideUrl: "/visual-art-and-research",
+    readingGuideUrl: "/visual-art-and-research/the-book-of-everlasting-things",
     readingGuideLabel: "To View a Research Guide, Click Here",
     editions: [
       {
@@ -285,6 +286,7 @@ export const booksData: Book[] = [
       },
       {
         quote: "Malhotra writes beautifully, and patient readers will be immersed in a bygone world of kaleidoscopic scenes and fervid emotions. She puts her training as an oral historian to good use, bringing the past to life",
+        reviewer: "Murali Kamma",
         source: "New York Journal of Books"
       },
       {
@@ -518,9 +520,8 @@ export const booksData: Book[] = [
     coverAlt: "Remnants of a Separation South Asia book cover",
     awards: [
       "A HINDUSTAN TIMES 'INDIA @ 70' BOOK, THE ASIAN AGE Best Books of 2017",
-      "WINNER: Literary Prize of The Chambre de Commerce et d'Industrie Franco-Indienne 2024; Council for Museum Anthropology Book Prize 2022; Valley of Words Prize for Hindi Translation; Oxford Book Cover Prize",
-      "SHORTLISTED: British Academy Book Prize; Sahitya Akademi Yuva Puraskar; Shakti Bhatt First Book Award; Kamaladevi Chattopadhyay NIF Book Prize; Hindu Lit for Life Non Fiction Prize",
-      "LONGLISTED: Tata Literature Live! First Book Award"
+      "WINNER: Literary Prize of The Chambre de Commerce et d'Industrie Franco-Indienne 2024, Council for Museum Anthropology Book Prize 2022, Valley of Words Prize for Hindi Translation, Oxford Book Cover Prize",
+      "SHORTLISTED: British Academy Book Prize, Sahitya Akademi Yuva Puraskar, Shakti Bhatt First Book Award, Kamaladevi Chattopadhyay NIF Book Prize, Hindu Lit for Life Non Fiction Prize"
     ],
     synopsis: [
       "Remnants of a Separation is an oral history archive and the first and only study of the belongings carried by refugees who migrated during the 1947 Partition of India. Written as a crossover between history and anthropology, it tells stories from both sides of the Radcliffe Line, using precious and mundane personal objects as catalysts to evoke memory.",

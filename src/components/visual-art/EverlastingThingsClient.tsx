@@ -57,7 +57,7 @@ export default function EverlastingThingsClient({
               }}
               className="text-[#222222] uppercase leading-tight m-0 font-normal font-[family-name:var(--font-serif-display)]"
             >
-              The Book of Everlasting Things
+              THE BOOK OF EVERLASTING THINGS – <span className="italic font-normal">A RESEARCH GUIDE</span>
             </h1>
           </div>
 
@@ -79,7 +79,8 @@ export default function EverlastingThingsClient({
                         fill
                         sizes="(max-width: 640px) 45vw, (max-width: 1024px) 25vw, 200px"
                         className="object-contain"
-                        priority={idx <= 3}
+                        priority={idx < 4}
+                        loading={idx < 4 ? "eager" : "lazy"}
                       />
                     </div>
                   </button>
@@ -127,7 +128,7 @@ export default function EverlastingThingsClient({
 
                 <p className="m-0 leading-[26px]">
                   Upon his return to India, I imagined Vivek with a nephew, who would inherit his profound sense
-                  of smell. <em className="italic">Samir, the boy who swallowed the monsoon,</em> grew up in the
+                  of smell. Samir, <em className="italic">the boy who swallowed the monsoon,</em> grew up in the
                   family ittar shop in the Walled City of Lahore, a city that also held my history. The Lahore of
                   the novel was constructed memory by memory, through family member’s descriptions of homes and
                   schools, architecture, social life, and the ambience of growing up in as magnificent and
@@ -161,14 +162,8 @@ export default function EverlastingThingsClient({
                 </p>
 
                 <p className="m-0 leading-[26px]">
-                  I wrote large sections of the book by hand, and included here are glimpses of that process -
-                  notebooks, illustrations, research outlines, and marked-up manuscripts.
-                </p>
-
-                <p className="m-0 leading-[26px]">
-                  The Book of Everlasting Things may have begun with my mother’s memory of scent, but I could not
-                  have known where it would eventually lead me: across history, partition lines, oceans and
-                  amidst the depth of memory. This Guide is but a record of that journey.
+                  I wrote large sections of the book by hand, and included here are glimpses of that process -{" "}
+                  notebooks, illustrations, research outlines, and marked-up manuscripts. <em className="italic">The Book of Everlasting Things</em> may have begun with my mother’s memory of scent, but I could not have known where it would eventually lead me: across history, beyond partition lines, on the other side of oceans, and deep into memory. This Guide is but a record of that journey.
                 </p>
               </div>
             </div>

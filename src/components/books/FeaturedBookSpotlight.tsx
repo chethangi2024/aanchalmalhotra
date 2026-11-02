@@ -113,7 +113,7 @@ export default function FeaturedBookSpotlight({
               {/* Publication Label */}
               <div className="spotlight-text-reveal mb-2">
                 <span className="text-[12px] tracking-[0.15em] text-[var(--color-accent-mustard)] uppercase font-semibold">
-                  FORTHCOMING IN MAY 2026
+                  FORTHCOMING IN MAY 2027
                 </span>
               </div>
 

@@ -53,6 +53,19 @@ export default function GalleryLightbox({
     };
   }, [isOpen, items.length, onClose, onPrev, onNext]);
 
+  // Preload adjacent images to prevent repeated re-fetching and eliminate lag
+  useEffect(() => {
+    if (!isOpen || items.length <= 1) return;
+    const nextIdx = (currentIndex + 1) % items.length;
+    const prevIdx = (currentIndex - 1 + items.length) % items.length;
+    [items[nextIdx]?.src, items[prevIdx]?.src].forEach((src) => {
+      if (src && typeof window !== "undefined") {
+        const img = new window.Image();
+        img.src = src;
+      }
+    });
+  }, [isOpen, currentIndex, items]);
+
   if (!isOpen || items.length === 0) return null;
 
   const currentItem = items[currentIndex] || items[0];

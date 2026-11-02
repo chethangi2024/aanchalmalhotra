@@ -46,6 +46,21 @@ function renderFormattedText(text?: string): React.ReactNode {
   });
 }
 
+const renderChapterTitle = (title: string) => {
+  const colonIdx = title.indexOf(":");
+  if (colonIdx !== -1) {
+    const intro = title.slice(0, colonIdx + 1);
+    const rest = title.slice(colonIdx + 1);
+    return (
+      <>
+        <span className="italic">{intro}</span>
+        <span className="font-normal not-italic">{rest}</span>
+      </>
+    );
+  }
+  return <span>{title}</span>;
+};
+
 export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReadingGuideProps) {
   // Collect all images in the reading guide for lightbox navigation if desired
   const allImages: LightboxItem[] = [];
@@ -61,10 +76,9 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
     <section id="reading-guide" className="book-reveal-section">
       {/* Main Section Header */}
       <div className="mb-10 md:mb-12">
-        <h1 className="text-[22px] font-normal uppercase leading-snug tracking-[0.06em] text-[#222222] m-0 mb-3">
+        <h1 className="text-[22px] font-normal uppercase leading-snug tracking-[0.06em] text-[#222222] m-0">
           REMNANTS OF A SEPARATION – <span className="italic font-normal">A READING GUIDE</span>
         </h1>
-        <div className="w-12 h-[1px] bg-[#947D53] mt-2 mb-6" />
       </div>
 
       <div className="space-y-16 md:space-y-20">
@@ -107,6 +121,7 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                                     src={img.src}
                                     alt={img.alt}
                                     fill
+                                    priority={iIdx < 2}
                                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 250px"
                                     className="object-contain"
                                   />
@@ -540,33 +555,35 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                   {sub.title}
                 </h2>
                 
-                <div className={`${bodyTextClass} mb-8`}>
-                  {(sub as any).text.map((p: string, pIdx: number) => (
-                    <p key={pIdx} className="m-0">{renderFormattedText(p)}</p>
-                  ))}
-                </div>
-
-                {singleImg && (
-                  <div className="flex flex-col items-start max-w-xl mx-auto w-full">
-                    <button
-                      type="button"
-                      onClick={() => onOpenLightbox(allImages, imgIdx)}
-                      className="group w-full block cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
-                      aria-label={`View enlarged image: ${singleImg.caption}`}
-                    >
-                      <div className="relative w-full aspect-[4/3] overflow-hidden flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.02]">
-                        <Image
-                          src={singleImg.src}
-                          alt={singleImg.alt}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 600px"
-                          className="object-cover"
-                        />
-                      </div>
-                    </button>
-                    <p className={captionClass} style={captionStyle}>{renderFormattedText(singleImg.caption)}</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-start mt-6">
+                  <div className={bodyTextClass}>
+                    {(sub as any).text.map((p: string, pIdx: number) => (
+                      <p key={pIdx} className="m-0">{renderFormattedText(p)}</p>
+                    ))}
                   </div>
-                )}
+
+                  {singleImg && (
+                    <div className="flex flex-col items-start w-full">
+                      <button
+                        type="button"
+                        onClick={() => onOpenLightbox(allImages, imgIdx)}
+                        className="group w-full block cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
+                        aria-label={`View enlarged image: ${singleImg.caption}`}
+                      >
+                        <div className="relative w-full aspect-[4/3] overflow-hidden flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.02]">
+                          <Image
+                            src={singleImg.src}
+                            alt={singleImg.alt}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className="object-cover"
+                          />
+                        </div>
+                      </button>
+                      <p className={captionClass} style={captionStyle}>{renderFormattedText(singleImg.caption)}</p>
+                    </div>
+                  )}
+                </div>
               </div>
             );
           }
@@ -595,9 +612,9 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                       >
                         {/* Chapter Title: exact order and wording */}
                         <h3
-                          className="text-[17px] sm:text-[18px] font-semibold text-[#1A1A1A] leading-snug m-0 mb-4 text-left font-[family-name:var(--font-serif-body)]"
+                          className="text-[17px] sm:text-[18px] font-normal text-[#1A1A1A] leading-snug m-0 mb-4 text-left font-[family-name:var(--font-serif-body)]"
                         >
-                          <span className="italic">{ch.title}</span>
+                          {renderChapterTitle(ch.title)}
                         </h3>
 
                         {/* If single image */}
@@ -771,9 +788,9 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                             {ch.subSections.map((subSec: any, ssIdx: number) => (
                               <div key={ssIdx} className="pt-2">
                                 <h4
-                                  className="text-[17px] sm:text-[18px] font-semibold text-[#1A1A1A] m-0 mb-3 text-left font-[family-name:var(--font-serif-body)]"
+                                  className="text-[17px] sm:text-[18px] font-normal not-italic text-[#1A1A1A] m-0 mb-3 text-left font-[family-name:var(--font-serif-body)]"
                                 >
-                                  <span className="italic">{subSec.title}</span>
+                                  {subSec.title}
                                 </h4>
                                 {subSec.text && (
                                   <p

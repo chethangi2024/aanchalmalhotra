@@ -27,6 +27,7 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
   const isLanguageOfRemembering = book.slug === "in-the-language-of-remembering";
   const isEverlastingThings = book.slug === "the-book-of-everlasting-things";
   const isRemnants = book.slug === "remnants-of-a-separation";
+  const isHandfulOfHome = book.slug === "a-handful-of-home";
   const isCollapsibleBook =
     isBahrisons ||
     isLanguageOfRemembering ||
@@ -141,6 +142,11 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
       "The Secrets We Kept",
       "The Yellow Bird Sings",
       "Once We Were Home",
+      "New Delhi, 2023",
+      "The Hare With Amber Eyes",
+      "The Great Partition",
+      "Inglorious Empire",
+      "Since 1947",
     ];
 
     // Regex that matches any of the titles
@@ -210,7 +216,15 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                   {/* Caption directly beneath the cover */}
                   {book.publisherCredit && (
                     <p className="book-cover-caption">
-                      {isEverlastingThings || isLanguageOfRemembering || isRemnants ? (
+                      {isHandfulOfHome ? (
+                        <>
+                          <em className="italic">Two Hoots, Pan Macmillan,</em> Forthcoming May 2027
+                        </>
+                      ) : isBahrisons ? (
+                        <>
+                          <em className="italic">Tara-India Research Press</em>, 2023
+                        </>
+                      ) : isEverlastingThings || isLanguageOfRemembering || isRemnants ? (
                         <>
                           South Asia (English), <em className="italic">HarperCollins India</em>
                         </>
@@ -405,7 +419,11 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                     {(book.prologue.byline || book.prologue.dateLocation) && (
                       <div className="mt-6 text-[15px] sm:text-[16px] text-[var(--color-text-primary)] font-normal">
                         {book.prologue.byline && <p className="m-0 font-medium">{book.prologue.byline}</p>}
-                        {book.prologue.dateLocation && <p className="m-0 text-[var(--color-text-muted)] italic">{book.prologue.dateLocation}</p>}
+                        {book.prologue.dateLocation && (
+                          <p className="m-0 text-[var(--color-text-muted)] italic">
+                            <em className="italic">{book.prologue.dateLocation}</em>
+                          </p>
+                        )}
                       </div>
                     )}
                   </div>
@@ -494,9 +512,16 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                               )}
 
                               {/* Caption beneath cover */}
-                              <div className="image-caption-gap mt-3.5 text-center w-full">
+                              <div className="image-caption-gap mt-3.5 text-center w-full flex justify-center">
                                 <p
-                                  className="text-[15px] sm:text-[16px] font-normal leading-snug m-0 edition-cover-caption"
+                                  className={`text-[15px] sm:text-[16px] font-normal leading-snug m-0 edition-cover-caption ${
+                                    ed.region === "The Netherlands" ||
+                                    ed.id === "the-netherlands" ||
+                                    ed.id === "remnants-north-america-uk" ||
+                                    ed.region === "North America / UK"
+                                      ? "whitespace-nowrap"
+                                      : ""
+                                  }`}
                                   style={{ color: "var(--color-text-muted)" }}
                                 >
                                   {ed.region}, <em className="italic">{ed.publisher}</em>
