@@ -12,7 +12,7 @@ export default function InPraiseOfShadowsClient() {
   const lightboxItems: LightboxItem[] = inPraiseOfShadowsSlides.map((slide) => ({
     src: slide.image,
     alt: slide.alt || slide.title,
-    caption: `${slide.title}\nLimited edition intaglio on copper\n8.5 x 11 inch plate on 11 x 15 inch Arches paper`,
+    caption: `*In Praise of Shadows* after Jun'ichirō Tanizaki, 2014`,
   }));
 
   const handleOpenLightbox = (index: number) => {

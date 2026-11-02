@@ -604,6 +604,7 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                   {chapters.map((ch: any, cIdx: number) => {
                     const is4ImageChapter = ch.images && (ch.images.length === 4 || ch.images.length === 8);
                     const isParthaMitter = ch.title && ch.title.includes("Prof. Partha Mitter");
+                    const isSitaraChapter = ch.title && ch.title.includes("Sitara Faiyaz Ali");
                     
                     return (
                       <div
@@ -612,7 +613,10 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                       >
                         {/* Chapter Title: exact order and wording */}
                         <h3
-                          className="text-[17px] sm:text-[18px] font-normal text-[#1A1A1A] leading-snug m-0 mb-4 text-left font-[family-name:var(--font-serif-body)]"
+                          style={isSitaraChapter ? { fontSize: "17px" } : undefined}
+                          className={`${
+                            isSitaraChapter ? "text-[17px]" : "text-[17px] sm:text-[18px]"
+                          } font-normal text-[#1A1A1A] leading-snug m-0 mb-4 text-left font-[family-name:var(--font-serif-body)]`}
                         >
                           {renderChapterTitle(ch.title)}
                         </h3>
@@ -788,13 +792,15 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                             {ch.subSections.map((subSec: any, ssIdx: number) => (
                               <div key={ssIdx} className="pt-2">
                                 <h4
-                                  className="text-[17px] sm:text-[18px] font-normal not-italic text-[#1A1A1A] m-0 mb-3 text-left font-[family-name:var(--font-serif-body)]"
+                                  style={{ fontSize: "17px" }}
+                                  className="text-[17px] font-normal not-italic text-[#1A1A1A] m-0 mb-3 text-left font-[family-name:var(--font-serif-body)]"
                                 >
                                   {subSec.title}
                                 </h4>
                                 {subSec.text && (
                                   <p
-                                    className="text-[17px] leading-[24.2px] text-[#000000] [font-variant-numeric:oldstyle-nums] text-justify [text-align-last:left] m-0 mb-6 font-[family-name:var(--font-serif-body)]"
+                                    style={{ fontSize: "14px" }}
+                                    className="text-[14px] leading-[21px] text-[#000000] [font-variant-numeric:oldstyle-nums] text-justify [text-align-last:left] m-0 mb-6 font-[family-name:var(--font-serif-body)]"
                                   >
                                     {renderFormattedText(subSec.text)}{" "}
                                     {subSec.link && (
@@ -832,7 +838,12 @@ export default function RemnantsReadingGuide({ onOpenLightbox }: RemnantsReading
                                               />
                                             </div>
                                           </button>
-                                          <p className={`${captionClass} text-left`} style={captionStyle}>{renderFormattedText(im.caption)}</p>
+                                          <p
+                                            style={{ ...captionStyle, fontSize: "14px" }}
+                                            className="image-caption-gap mt-3.5 mb-2 w-full text-[14px] text-[#2C2C2C] leading-normal [hyphens:none] [word-break:normal] [overflow-wrap:normal] text-left"
+                                          >
+                                            {renderFormattedText(im.caption)}
+                                          </p>
                                         </div>
                                       );
                                     })}

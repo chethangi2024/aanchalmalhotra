@@ -49,7 +49,10 @@ export default function VisualArtAndResearchPage() {
 
                 {/* Project Metadata */}
                 <div className="image-caption-gap mt-3.5">
-                  <h2 className="text-[16px] sm:text-[17.5px] font-normal text-[var(--color-text-primary)] leading-snug group-hover:text-[var(--color-accent-mustard)] transition-colors">
+                  <h2
+                    style={{ fontSize: "20px" }}
+                    className="text-[20px] font-normal text-[var(--color-text-primary)] leading-snug group-hover:text-[var(--color-accent-mustard)] transition-colors"
+                  >
                     {project.title}
                   </h2>
                   <p className="text-[13.5px] sm:text-[14.5px] text-[var(--color-text-secondary)] italic mt-1 leading-normal [font-variant-numeric:oldstyle-nums]">

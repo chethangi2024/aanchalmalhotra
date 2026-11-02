@@ -26,7 +26,7 @@ export const visualArtProjects: VisualProjectIndexItem[] = [
     id: "remnants-of-a-separation",
     title: "Remnants of A Separation",
     subtitle: "Research and Exhibition, 2013-2018",
-    image: "/images/visual-art/remnants/Thumbnail.jpg",
+    image: "/images/visual-art/remnants/2014_Montreal home studio.jpg",
     href: "/books/remnants-of-a-separation/reading-guide",
   },
   {

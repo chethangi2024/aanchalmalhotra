@@ -57,11 +57,11 @@ const podcastVideoEntries: PressEntry[] = [
 
 const otherEntries: PressEntry[] = [
   {
-    // [Aanchal Malhotra](https://the-moment.io/aanchal-malhotra) The Moment
+    // [Aanchal Malhotra](https://the-moment.io/aanchal-malhotra), The Moment
     title: "Aanchal Malhotra",
     url: "https://the-moment.io/aanchal-malhotra",
     publication: "The Moment",
-    hasCommaBeforePublication: false,
+    hasCommaBeforePublication: true,
   },
   {
     // [Writers Explore the Long Shadow of Partition in South Asia](https://newlinesmag.com/review/writers-explore-the-long-shadow-of-partition-in-south-asia/), Surbhi Gupta, New Lines Magazine

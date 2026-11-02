@@ -26,65 +26,67 @@ export default function AboutPage() {
             </h1>
           </div>
 
-          {/* Balanced Two-Column Layout: Portrait on Left, Biography on Right */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 lg:gap-12 items-start">
-            {/* Left Column: Portrait balanced with biography height while preserving original 3:4 aspect ratio */}
-            <div className="md:col-span-5 flex justify-center md:justify-start">
-              <div className="relative w-full max-w-[280px] sm:max-w-[300px] md:max-w-[305px] aspect-[3/4] overflow-hidden bg-[var(--color-bg-muted)] shadow-[0_12px_32px_rgba(28,27,26,0.06)] rounded-xs">
-                <Image
-                  src="/images/author-portrait.webp"
-                  alt="Aanchal Malhotra in a white shirt against a sandstone wall"
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 85vw, 305px"
-                  className="object-cover object-top"
-                />
+          {/* Centred Combined Unit: Portrait on Left, Biography on Right (matching homepage second section) */}
+          <div className="w-full flex justify-center">
+            <div className="w-full max-w-[960px] flex flex-col md:flex-row items-center md:items-start justify-center gap-8 md:gap-10 lg:gap-12">
+              {/* Left Column: Portrait preserved at current size and aspect ratio */}
+              <div className="w-full md:w-auto shrink-0 flex justify-center">
+                <div className="relative w-full max-w-[280px] sm:max-w-[300px] md:w-[305px] aspect-[3/4] overflow-hidden bg-[var(--color-bg-muted)] shadow-[0_12px_32px_rgba(28,27,26,0.06)] rounded-xs">
+                  <Image
+                    src="/images/author-portrait.webp"
+                    alt="Aanchal Malhotra in a white shirt against a sandstone wall"
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 85vw, 305px"
+                    className="object-cover object-top"
+                  />
+                </div>
               </div>
-            </div>
 
-            {/* Right Column: Exact Client Biography with Reference Body Typography */}
-            <div className="md:col-span-7 flex flex-col justify-start text-left pt-0 max-w-[560px]">
-              <div className="space-y-4 text-[17px] leading-[24.2px] text-[#000000] font-[family-name:var(--font-serif-body)] font-normal [font-variant-numeric:oldstyle-nums] text-left sm:text-justify [text-align-last:left] [hyphens:none] [word-break:normal] [overflow-wrap:normal]">
-                {/* Paragraph 1 */}
-                <p className="m-0">
-                  Aanchal Malhotra (b.1990) is an oral historian and writer based in New Delhi, India. She is the co-founder of the{" "}
-                  <a
-                    href="https://museumofmaterialmemory.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="no-underline hover:text-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
-                  >
-                    <em>Museum of Material Memory</em>
-                  </a>
-                  , a crowdsourced digital archive of South Asian material culture and family heirlooms, and Head of Oral History Projects at{" "}
-                  <a
-                    href="https://southasiaspeaks.org/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="no-underline hover:text-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
-                  >
-                    <em>South Asia Speaks</em>
-                  </a>
-                  .
-                </p>
+              {/* Right Column: Exact Client Biography with Reference Body Typography */}
+              <div className="w-full max-w-[560px] flex flex-col justify-start text-left pt-0">
+                <div className="space-y-4 text-[17px] leading-[24.2px] text-[#000000] font-[family-name:var(--font-serif-body)] font-normal [font-variant-numeric:oldstyle-nums] text-left sm:text-justify [text-align-last:left] [hyphens:none] [word-break:normal] [overflow-wrap:normal]">
+                  {/* Paragraph 1 */}
+                  <p className="m-0">
+                    Aanchal Malhotra (b.1990) is an oral historian and writer based in New Delhi, India. She holds degrees in Traditional Printmaking and Art History, and is the co-founder of the{" "}
+                    <a
+                      href="https://museumofmaterialmemory.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="no-underline hover:text-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
+                    >
+                      <em>Museum of Material Memory</em>
+                    </a>
+                    , a crowdsourced digital archive of South Asian material culture and family heirlooms, and Head of Oral History Projects at{" "}
+                    <a
+                      href="https://southasiaspeaks.org/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="no-underline hover:text-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
+                    >
+                      <em>South Asia Speaks</em>
+                    </a>
+                    .
+                  </p>
 
-                {/* Paragraph 2 */}
-                <p className="m-0">
-                  Malhotra is the author of the non-fiction books{" "}
-                  <em>Remnants of A Separation: A History of Partition through Material Memory</em> (2017) and{" "}
-                  <em>In the Language of Remembering: The Inheritance of Partition</em> (2022), which together trace the long-term, cross-border, generational impact of the 1947 Partition. Her debut novel titled{" "}
-                  <em>The Book of Everlasting Things</em> was listed in NPR’s Best Books of 2022.
-                </p>
+                  {/* Paragraph 2 */}
+                  <p className="m-0">
+                    Malhotra is the author of the non-fiction books{" "}
+                    <em>Remnants of A Separation: A History of Partition through Material Memory</em> (2017) and{" "}
+                    <em>In the Language of Remembering: The Inheritance of Partition</em> (2022), which together trace the long-term, cross-border, generational impact of the 1947 Partition. Her debut novel titled{" "}
+                    <em>The Book of Everlasting Things</em> was listed in NPR’s Best Books of 2022.
+                  </p>
 
-                {/* Paragraph 3 */}
-                <p className="m-0">
-                  Her work has won the Council for Museum Anthropology Book Award and been shortlisted for the British Academy Book Prize and Sahitya Akademi Yuva Puraskar, among other honours. She is currently working on a children&apos;s book about Partition (forthcoming, May 2026).
-                </p>
+                  {/* Paragraph 3 */}
+                  <p className="m-0">
+                    Her work has won the Council for Museum Anthropology Book Award and been shortlisted for the British Academy Book Prize and Sahitya Akademi Yuva Puraskar, among other honours. She is currently working on a children&apos;s book about Partition (forthcoming, May 2027).
+                  </p>
 
-                {/* Paragraph 4 */}
-                <p className="m-0">
-                  She is represented by David Godwin Associates.
-                </p>
+                  {/* Paragraph 4 */}
+                  <p className="m-0">
+                    She is represented by David Godwin Associates.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
