@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -84,14 +85,51 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Copyright Notice */}
-          <div className="pt-2">
-            <p
-              className="m-0 text-[13px] sm:text-[13.5px] tracking-[0.04em] font-normal"
-              style={{ color: "#FFFFFF" }}
-            >
-              © 2026 Aanchal Malhotra. All rights reserved.
-            </p>
+          {/* Bottom Row: Copyright & Developer Credit on Left, Legal Links on Right */}
+          <div
+            className="w-full pt-2 flex flex-col md:flex-row md:items-center md:justify-between gap-2.5 md:gap-6 tracking-[0.04em] font-normal leading-normal"
+            style={{ fontSize: "13px", color: "#FFFFFF" }}
+          >
+            <div className="flex flex-wrap md:flex-nowrap items-center gap-x-6 gap-y-1.5">
+              <p
+                className="m-0 md:whitespace-nowrap"
+                style={{ color: "#FFFFFF", margin: 0, fontSize: "13px" }}
+              >
+                © 2026 Aanchal Malhotra. All rights reserved.
+              </p>
+              <p
+                className="m-0 md:whitespace-nowrap"
+                style={{ color: "#FFFFFF", margin: 0, fontSize: "13px" }}
+              >
+                Designed &amp; Developed by{" "}
+                <a
+                  href="https://growinvicta.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FFFFFF]"
+                  style={{ color: "#FFFFFF", fontSize: "13px" }}
+                >
+                  Grow Invicta
+                </a>
+              </p>
+            </div>
+
+            <div className="flex items-center gap-6 md:whitespace-nowrap">
+              <Link
+                href="/privacy-policy"
+                className="focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FFFFFF]"
+                style={{ color: "#FFFFFF", fontSize: "13px" }}
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                href="/terms-of-use"
+                className="focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FFFFFF]"
+                style={{ color: "#FFFFFF", fontSize: "13px" }}
+              >
+                Terms of Use
+              </Link>
+            </div>
           </div>
         </div>
       </div>
