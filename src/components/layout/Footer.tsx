@@ -78,19 +78,19 @@ export default function Footer() {
               href="https://museumofmaterialmemory.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[12px] sm:text-[13px] tracking-[0.14em] uppercase font-normal block py-0.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FFFFFF]"
+              className="text-[12px] sm:text-[13px] tracking-[0.14em] uppercase font-normal block py-0.5 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FFFFFF]"
               style={{ color: "#FFFFFF" }}
             >
               MUSEUM OF MATERIAL MEMORY
             </a>
           </div>
 
-          {/* Bottom Row: Copyright & Developer Credit on Left, Legal Links on Right */}
+          {/* Bottom Row: Copyright (with Developer Credit directly underneath) on Left, Legal Links on Right */}
           <div
-            className="w-full pt-2 flex flex-col md:flex-row md:items-center md:justify-between gap-2.5 md:gap-6 tracking-[0.04em] font-normal leading-normal"
+            className="w-full pt-2 flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-6 tracking-[0.04em] font-normal leading-normal"
             style={{ fontSize: "13px", color: "#FFFFFF" }}
           >
-            <div className="flex flex-wrap md:flex-nowrap items-center gap-x-6 gap-y-1.5">
+            <div className="flex flex-col items-start gap-1.5">
               <p
                 className="m-0 md:whitespace-nowrap"
                 style={{ color: "#FFFFFF", margin: 0, fontSize: "13px" }}

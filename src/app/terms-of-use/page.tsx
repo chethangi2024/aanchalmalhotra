@@ -175,22 +175,22 @@ export default function TermsOfUsePage() {
                   <p className="m-0" style={{ margin: 0 }}>
                     <span className="font-medium">David Godwin</span>, <em>David Godwin Associates (DGA)</em>
                   </p>
-                  <p className="m-0" style={{ margin: 0 }}>
+                  <p className="m-0 [overflow-wrap:anywhere]" style={{ margin: 0 }}>
                     Email:{" "}
                     <a
                       href="mailto:assistant@davidgodwinassociates.co.uk"
-                      className="no-underline transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
+                      className="no-underline transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53] [overflow-wrap:anywhere]"
                       style={{ color: "#947D53", textDecoration: "none" }}
                     >
                       assistant@davidgodwinassociates.co.uk
                     </a>
                   </p>
                 </div>
-                <p className="m-0">
+                <p className="m-0 [overflow-wrap:anywhere]">
                   For interviews, publicity, and speaking enquiries within South Asia, please contact <span className="font-medium">Naiyya Singh</span>, <em>HarperCollins India</em> (
                   <a
                     href="mailto:naiyya.singh@harpercollins.co.in"
-                    className="no-underline transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53]"
+                    className="no-underline transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#947D53] [overflow-wrap:anywhere]"
                     style={{ color: "#947D53", textDecoration: "none" }}
                   >
                     naiyya.singh@harpercollins.co.in

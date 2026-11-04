@@ -226,7 +226,7 @@ export default function Header() {
         {/* Mobile Compact Menu Trigger */}
         <button
           type="button"
-          className="md:hidden p-2 -mr-2 text-[var(--color-text-primary)] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)] cursor-pointer"
+          className="md:hidden py-2 pl-2 pr-0 text-[var(--color-text-primary)] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)] cursor-pointer"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-expanded={isMobileMenuOpen}
           aria-controls="mobile-navigation-drawer"

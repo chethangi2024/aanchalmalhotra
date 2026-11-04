@@ -200,7 +200,7 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
             {/* Two-Column Layout below title/byline: 375px cover column, expanded text column */}
             <div className="book-opening-columns items-start">
               {/* Left Column: Book Cover Image & Caption */}
-              <div className="book-opening-cover-col flex flex-col items-center sm:items-start">
+              <div className="book-opening-cover-col flex flex-col items-center md:items-start">
                 <div className="book-cover-wrapper">
                   <div className="w-full relative overflow-hidden rounded-xs shadow-[0_10px_28px_rgba(28,27,26,0.08)] bg-[var(--color-bg-muted)]">
                     <Image
@@ -514,14 +514,7 @@ export default function BookDetailClient({ book }: BookDetailClientProps) {
                               {/* Caption beneath cover */}
                               <div className="image-caption-gap mt-3.5 text-center w-full flex justify-center">
                                 <p
-                                  className={`text-[15px] sm:text-[16px] font-normal leading-snug m-0 edition-cover-caption ${
-                                    ed.region === "The Netherlands" ||
-                                    ed.id === "the-netherlands" ||
-                                    ed.id === "remnants-north-america-uk" ||
-                                    ed.region === "North America / UK"
-                                      ? "whitespace-nowrap"
-                                      : ""
-                                  }`}
+                                  className="text-[15px] sm:text-[16px] font-normal leading-snug m-0 edition-cover-caption"
                                   style={{ color: "var(--color-text-muted)" }}
                                 >
                                   {ed.region}, <em className="italic">{ed.publisher}</em>

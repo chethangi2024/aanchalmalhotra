@@ -157,7 +157,16 @@ header .editorial-container {
   width: 100%;
 }
 
-@media (min-width: 640px) {
+.book-opening-cover-col {
+  width: 100%;
+}
+
+.book-opening-text-col {
+  width: 100%;
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
   .book-opening-columns {
     flex-direction: row;
     gap: 28px;
@@ -165,9 +174,9 @@ header .editorial-container {
   }
   
   .book-opening-cover-col {
-    width: 315px;
-    max-width: 315px;
-    min-width: 280px;
+    width: 250px;
+    max-width: 250px;
+    min-width: 230px;
     flex-shrink: 0;
   }
 
@@ -201,9 +210,9 @@ header .editorial-container {
   margin-right: auto;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .book-cover-wrapper {
-    max-width: 315px;
+    max-width: 250px;
     margin-left: 0;
     margin-right: 0;
   }
@@ -469,9 +478,9 @@ a:active,
 
 @media (min-width: 768px) {
   .author-bio-container {
-    width: 282px;
+    width: 100%;
     max-width: 282px;
-    margin-left: calc(100% - 282px);
+    margin-left: auto;
     margin-right: 0;
   }
 }

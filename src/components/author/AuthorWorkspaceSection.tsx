@@ -110,7 +110,7 @@ export default function AuthorWorkspaceSection({
           {/* Column 1: Workspace & Research Pinboard */}
           <div
             ref={workspaceColRef}
-            className="md:col-span-4 order-2 md:order-1 will-change-transform flex flex-col items-center sm:items-start"
+            className="md:col-span-4 order-2 md:order-1 will-change-transform flex flex-col items-center md:items-start"
           >
             <div className="relative w-full max-w-[260px] sm:max-w-[270px] md:max-w-[290px] lg:max-w-[305px] aspect-[3/4] overflow-hidden bg-[var(--color-bg-muted)] shadow-[0_10px_28px_rgba(28,27,26,0.06)] group rounded-xs">
               <Image
@@ -124,7 +124,7 @@ export default function AuthorWorkspaceSection({
             </div>
             {/* Small caption styled consistently with small book captions */}
             <div
-              className="image-caption-gap mt-3.5 w-full max-w-[260px] sm:max-w-[270px] md:max-w-[290px] lg:max-w-[305px] text-center sm:text-left"
+              className="image-caption-gap mt-3.5 w-full max-w-[260px] sm:max-w-[270px] md:max-w-[290px] lg:max-w-[305px] text-center md:text-left"
               style={{ marginTop: "var(--spacing-image-to-caption, 14px)" }}
             >
               <p
@@ -149,7 +149,7 @@ export default function AuthorWorkspaceSection({
             <div className="author-bio-container flex flex-col items-end">
               <p
                 id="author-section-title"
-                className="bio-text-element font-[family-name:var(--font-serif-body)] text-[22.6px] leading-[31px] [font-variant-numeric:oldstyle-nums] text-[var(--color-text-secondary)] text-right m-0 mb-5"
+                className="bio-text-element font-[family-name:var(--font-serif-body)] text-[22.6px] md:text-[18.5px] lg:text-[21px] xl:text-[22.6px] leading-[31px] md:leading-[26px] lg:leading-[29px] xl:leading-[31px] [font-variant-numeric:oldstyle-nums] text-[var(--color-text-secondary)] text-right m-0 mb-5"
                 style={{ textAlign: "right" }}
               >
                 {data.leadParagraph}

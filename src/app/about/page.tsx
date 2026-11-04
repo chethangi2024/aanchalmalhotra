@@ -53,9 +53,17 @@ export default function AboutPage() {
                       href="https://museumofmaterialmemory.com/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="no-underline hover:text-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
+                      className="hover:text-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)] rounded-xs"
                     >
-                      <em>Museum of Material Memory</em>
+                      <em
+                        style={{
+                          textDecoration: "underline",
+                          textDecorationThickness: "1px",
+                          textUnderlineOffset: "3px",
+                        }}
+                      >
+                        Museum of Material Memory
+                      </em>
                     </a>
                     , a crowdsourced digital archive of South Asian material culture and family heirlooms, and Head of Oral History Projects at{" "}
                     <a

@@ -142,24 +142,24 @@ export default function GalleryLightbox({
 
       {/* Modal Content: Image + Caption */}
       <div
-        className="relative max-w-4xl max-h-[85vh] w-full flex flex-col items-center justify-center z-10"
+        className="relative max-w-4xl max-h-[85vh] w-full px-9 sm:px-14 md:px-16 flex flex-col items-center justify-center z-10"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative w-full max-h-[68vh] sm:max-h-[72vh] flex items-center justify-center">
+        <div className="relative w-full max-h-[58vh] sm:max-h-[66vh] md:max-h-[72vh] flex items-center justify-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={currentItem.src}
             alt={currentItem.alt}
-            className="max-h-[68vh] sm:max-h-[72vh] max-w-full object-contain shadow-2xl rounded-xs bg-[#1A1918]"
+            className="max-h-[58vh] sm:max-h-[66vh] md:max-h-[72vh] max-w-full object-contain shadow-2xl rounded-xs bg-[#1A1918]"
           />
         </div>
         {currentItem.caption && (
           <div
-            className="image-caption-gap w-full flex justify-center text-center"
+            className="image-caption-gap w-full max-h-[24vh] overflow-y-auto px-1 flex justify-center text-center"
             style={{ marginTop: "var(--spacing-image-to-caption, 14px)" }}
           >
             <p
-              className="max-w-2xl text-center text-[17px] sm:text-[19px] md:text-[20px] font-[family-name:var(--font-serif-body)] font-normal leading-[1.35] m-0 whitespace-pre-line"
+              className="max-w-2xl text-center text-[15px] sm:text-[18px] md:text-[20px] font-[family-name:var(--font-serif-body)] font-normal leading-[1.35] m-0 whitespace-pre-line"
               style={{
                 color: "#FFFFFF",
                 marginTop: 0,

@@ -34,7 +34,7 @@ export default function BooksPage() {
           </div>
 
           {/* Books Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 xl:gap-12">
             {books.map((book) => (
               <div
                 key={book.id}
@@ -53,7 +53,7 @@ export default function BooksPage() {
                   />
                 </Link>
 
-                <div className="flex flex-col justify-between flex-1 text-center sm:text-left">
+                <div className="flex flex-col justify-between flex-1 min-w-0 text-center sm:text-left">
                   <div>
                     <span className="text-[12px] uppercase tracking-[0.15em] text-[var(--color-accent-mustard)] font-medium">
                       {book.publisherCredit || "Publication"}
