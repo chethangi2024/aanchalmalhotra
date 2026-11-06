@@ -70,9 +70,17 @@ export default function AboutPage() {
                       href="https://southasiaspeaks.org/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="no-underline hover:text-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)]"
+                      className="hover:text-[var(--color-accent-mustard)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent-mustard)] rounded-xs"
                     >
-                      <em>South Asia Speaks</em>
+                      <em
+                        style={{
+                          textDecoration: "underline",
+                          textDecorationThickness: "1px",
+                          textUnderlineOffset: "3px",
+                        }}
+                      >
+                        South Asia Speaks
+                      </em>
                     </a>
                     .
                   </p>
